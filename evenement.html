@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Événements - Green Campus 221</title>
+
+  <!-- Icônes dynamiques -->
+  <script src="https://kit.fontawesome.com/a2d9d6b3f1.js" crossorigin="anonymous"></script>
+
+  <!-- Style CSS intégré -->
+  <style>
+    body.dark {
+      background: #0f172a;
+      color: #f1f5f9;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: #f1f5f9;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #38bdf8;
+    }
+
+    #burger {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: white;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      border-radius: 1rem;
+      margin: 2rem;
+    }
+
+    .section {
+      padding: 3rem 2rem;
+    }
+
+    .events-filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f1f5f9;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: #38bdf8;
+      color: #0f172a;
+      transform: scale(1.05);
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .event-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      overflow: hidden;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      transition: all 0.3s;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(56, 189, 248, 0.3);
+    }
+
+    .event-date {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0f172a;
+      padding: 1.5rem;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .event-day {
+      font-size: 2rem;
+      display: block;
+    }
+
+    .event-month {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    .event-content {
+      padding: 2rem;
+    }
+
+    .event-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #38bdf8;
+      margin-bottom: 1rem;
+    }
+
+    .event-description {
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 1.​​​​​​​​​​​​​​​​
