@@ -1,168 +1,567 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Clubs étudiants – GreenCampus221</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="https://kit.fontawesome.com/5c3e0b6b5c.js" crossorigin="anonymous"></script>
-  </head>
-  <body class="glass-background">
-    <header>
-      <h1 class="page-title">🤝 Nos clubs étudiants</h1>
-      <p class="page-subtitle">Découvrez les initiatives étudiantes qui font vivre notre campus !</p>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clubs - Green Campus 221</title>
 
-    <main>
-      <section class="clubs-grid">
+  <!-- Icônes dynamiques -->
+  <script src="https://kit.fontawesome.com/a2d9d6b3f1.js" crossorigin="anonymous"></script>
 
-        <!-- Club Sunu Mbey -->
-        <div class="club-card">
-          <div class="club-header">
-            <div class="club-icon">🌾</div>
-            <div class="club-title">Sunu Mbey</div>
-          </div>
-          <div class="club-description">
-            Groupe d'étudiants engagés pour une agriculture durable et intelligente. Nous expérimentons des solutions agroécologiques et technologiques adaptées à notre campus.
-          </div>
-          <div class="club-activities">
-            <h4>Activités principales :</h4>
-            <ul class="activities-list">
-              <li>Création d'une serre connectée</li>
-              <li>Utilisation de capteurs IoT pour l’agriculture</li>
-              <li>Production et expérimentation de cultures durables</li>
-              <li>Partage de semences et formations agricoles</li>
-            </ul>
-          </div>
-          <div class="club-contact">
-            <div class="contact-info">
-              <i class="fas fa-user"></i>
-              <span>Coordonnateur : Pierre TENDENG</span>
-            </div>
-            <div class="contact-info">
-              <i class="fas fa-envelope"></i>
-              <span>sunumbey@campus221.sn</span>
-            </div>
-            <div class="contact-info">
-              <i class="fas fa-calendar"></i>
-              <span>Réunions : Vendredi 10h</span>
-            </div>
-          </div>
-          <button class="btn-join">Rejoindre le club</button>
+  <!-- Style CSS intégré -->
+  <style>
+    body.dark {
+      background: #0f172a;
+      color: #f1f5f9;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: #f1f5f9;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #38bdf8;
+    }
+
+    #burger {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: white;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      border-radius: 1rem;
+      margin: 2rem;
+    }
+
+    .section {
+      padding: 3rem 2rem;
+    }
+
+    .clubs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .club-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 1rem;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .club-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+    }
+
+    .club-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .club-icon {
+      font-size: 2.5rem;
+      color: #38bdf8;
+    }
+
+    .club-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    .club-description {
+      margin: 1rem 0;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+
+    .club-activities {
+      margin: 1.5rem 0;
+    }
+
+    .club-activities h4 {
+      color: #38bdf8;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .activities-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .activities-list li {
+      padding: 0.3rem 0;
+      color: #94a3b8;
+    }
+
+    .activities-list li:before {
+      content: "▶ ";
+      color: #38bdf8;
+      margin-right: 0.5rem;
+    }
+
+    .club-contact {
+      background: rgba(56, 189, 248, 0.1);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    .btn-join {
+      background: #38bdf8;
+      color: #0f172a;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 1rem;
+      width: 100%;
+    }
+
+    .btn-join:hover {
+      background: #0ea5e9;
+      transform: scale(1.02);
+    }
+
+    .stats-section {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 1rem;
+      margin: 2rem;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      padding: 1rem;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    .stat-label {
+      color: #94a3b8;
+      margin-top: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        display: none;
+        background: #1e293b;
+        padding: 1rem;
+        border-radius: 1rem;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      #burger {
+        display: block;
+      }
+
+      .clubs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Animation fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="dark">
+  <header>
+    <div class="logo">🌿 Green Campus 221</div>
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="filieres.html">Filières</a></li>
+        <li><a href="clubs.html" class="active">Clubs</a></li>
+        <li><a href="evenements.html">Événements</a></li>
+        <li><a href="ressources.html">Ressources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div id="burger">&#9776;</div>
+    </nav>
+  </header>
+
+  <section class="hero fade-in">
+    <h1><i class="fas fa-users"></i> Nos Clubs Étudiants</h1>
+    <p>Rejoignez nos clubs dynamiques et engagés pour un campus plus vert et solidaire</p>
+  </section>
+
+  <section class="stats-section fade-in">
+    <h2><i class="fas fa-chart-bar"></i> Nos Clubs en Chiffres</h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">12</div>
+        <div class="stat-label">Clubs Actifs</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">450+</div>
+        <div class="stat-label">Membres</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">25</div>
+        <div class="stat-label">Projets Réalisés</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">8</div>
+        <div class="stat-label">Partenariats</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade-in">
+    <h2><i class="fas fa-seedling"></i> Découvrez Nos Clubs</h2>
+    
+    <div class="clubs-grid">
+      <!-- Club Environnement -->
+      <div class="club-card">
+        <div class="club-header">
+          <div class="club-icon">🌱</div>
+          <div class="club-title">Green Impact</div>
         </div>
-
-        <!-- Club Environnement -->
-        <div class="club-card">
-          <div class="club-header">
-            <div class="club-icon">🌍</div>
-            <div class="club-title">Club Environnement</div>
-          </div>
-          <div class="club-description">
-            Acteur clé de la sensibilisation écologique sur le campus. Nous œuvrons à la préservation de l’environnement par des actions concrètes et éducatives.
-          </div>
-          <div class="club-activities">
-            <h4>Activités principales :</h4>
-            <ul class="activities-list">
-              <li>Campagnes de sensibilisation et éducation environnementale</li>
-              <li>Projets de recyclage et gestion des déchets</li>
-              <li>Nettoyages de zones naturelles</li>
-              <li>Partenariats avec ONG écologiques</li>
-            </ul>
-          </div>
-          <div class="club-contact">
-            <div class="contact-info">
-              <i class="fas fa-user"></i>
-              <span>Présidente : Awa NDIAYE</span>
-            </div>
-            <div class="contact-info">
-              <i class="fas fa-envelope"></i>
-              <span>clubenviro@campus221.sn</span>
-            </div>
-            <div class="contact-info">
-              <i class="fas fa-calendar"></i>
-              <span>Réunions : Mercredi 11h</span>
-            </div>
-          </div>
-          <button class="btn-join">Rejoindre le club</button>
+        <div class="club-description">
+          Club dédié à la protection de l'environnement et au développement durable. Nous menons des actions concrètes pour un campus plus vert.
         </div>
-
-        <!-- Club Générique 3 -->
-        <div class="club-card">
-          <div class="club-header">
-            <div class="club-icon">📷</div>
-            <div class="club-title">Club Photo</div>
-          </div>
-          <div class="club-description">
-            Capturez les plus beaux moments de la vie étudiante ! Ce club propose des ateliers photo et participe aux événements du campus.
-          </div>
-          <div class="club-activities">
-            <h4>Activités principales :</h4>
-            <ul class="activities-list">
-              <li>Initiation à la photographie</li>
-              <li>Reportage sur les événements du campus</li>
-              <li>Expositions thématiques</li>
-              <li>Sorties photo</li>
-            </ul>
-          </div>
-          <div class="club-contact">
-            <div class="contact-info">
-              <i class="fas fa-user"></i>
-              <span>Responsable : Cheikh BA</span>
-            </div>
-            <div class="contact-info">
-              <i class="fas fa-envelope"></i>
-              <span>photo.club@campus221.sn</span>
-            </div>
-            <div class="contact-info">
-              <i class="fas fa-calendar"></i>
-              <span>Réunions : Mardi 14h</span>
-            </div>
-          </div>
-          <button class="btn-join">Rejoindre le club</button>
+        <div class="club-activities">
+          <h4>Activités principales :</h4>
+          <ul class="activities-list">
+            <li>Campagnes de sensibilisation environnementale</li>
+            <li>Jardinage et permaculture sur le campus</li>
+            <li>Gestion des déchets et recyclage</li>
+            <li>Projets d'énergie renouvelable</li>
+          </ul>
         </div>
-
-        <!-- Club Générique 4 -->
-        <div class="club-card">
-          <div class="club-header">
-            <div class="club-icon">🎭</div>
-            <div class="club-title">Club Théâtre</div>
+        <div class="club-contact">
+          <div class="contact-info">
+            <i class="fas fa-user"></i>
+            <span>Président : Aminata DIOP</span>
           </div>
-          <div class="club-description">
-            Pour les amoureux de la scène et de la créativité ! Un espace d’expression à travers des pièces engagées et ludiques.
+          <div class="contact-info">
+            <i class="fas fa-envelope"></i>
+            <span>greenimpact@campus221.sn</span>
           </div>
-          <div class="club-activities">
-            <h4>Activités principales :</h4>
-            <ul class="activities-list">
-              <li>Écriture et répétitions de pièces</li>
-              <li>Représentations sur le campus</li>
-              <li>Ateliers de diction et de mise en scène</li>
-              <li>Participation à des festivals étudiants</li>
-            </ul>
+          <div class="contact-info">
+            <i class="fas fa-calendar"></i>
+            <span>Réunions : Mercredi 16h</span>
           </div>
-          <div class="club-contact">
-            <div class="contact-info">
-              <i class="fas fa-user"></i>
-              <span>Metteur en scène : Fatou DIOP</span>
-            </div>
-            <div class="contact-info">
-              <i class="fas fa-envelope"></i>
-              <span>theatre@campus221.sn</span>
-            </div>
-            <div class="contact-info">
-              <i class="fas fa-calendar"></i>
-              <span>Réunions : Jeudi 17h</span>
-            </div>
-          </div>
-          <button class="btn-join">Rejoindre le club</button>
         </div>
+        <button class="btn-join">Rejoindre le club</button>
+      </div>
 
-      </section>
-    </main>
+      <!-- Club Tech -->
+      <div class="club-card">
+        <div class="club-header">
+          <div class="club-icon">💻</div>
+          <div class="club-title">Tech Innovators</div>
+        </div>
+        <div class="club-description">
+          Passionnés de technologie, nous développons des solutions numériques innovantes pour améliorer la vie étudiante et campus.
+        </div>
+        <div class="club-activities">
+          <h4>Activités principales :</h4>
+          <ul class="activities-list">
+            <li>Développement d'applications mobiles</li>
+            <li>Ateliers de programmation</li>
+            <li>Hackathons et défis tech</li>
+            <li>Formation en nouvelles technologies</li>
+          </ul>
+        </div>
+        <div class="club-contact">
+          <div class="contact-info">
+            <i class="fas fa-user"></i>
+            <span>Président : Moussa KANE</span>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-envelope"></i>
+            <span>techinnovators@campus221.sn</span>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-calendar"></i>
+            <span>Réunions : Vendredi 15h</span>
+          </div>
+        </div>
+        <button class="btn-join">Rejoindre le club</button>
+      </div>
 
-    <footer>
-      <p>&copy; 2025 GreenCampus221. Tous droits réservés.</p>
-    </footer>
+      <!-- Club Entrepreneuriat -->
+      <div class="club-card">
+        <div class="club-header">
+          <div class="club-icon">🚀</div>
+          <div class="club-title">Entrepreneurs 221</div>
+        </div>
+        <div class="club-description">
+          Nous accompagnons les futurs entrepreneurs dans la réalisation de leurs projets et favorisons l'esprit d'entreprise sur le campus.
+        </div>
+        <div class="club-activities">
+          <h4>Activités principales :</h4>
+          <ul class="activities-list">
+            <li>Incubation de projets étudiants</li>
+            <li>Conférences avec entrepreneurs</li>
+            <li>Concours de business plans</li>
+            <li>Networking et mentorat</li>
+          </ul>
+        </div>
+        <div class="club-contact">
+          <div class="contact-info">
+            <i class="fas fa-user"></i>
+            <span>Présidente : Fatou SALL</span>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-envelope"></i>
+            <span>entrepreneurs@campus221.sn</span>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-calendar"></i>
+            <span>Réunions : Mardi 17h</span>
+          </div>
+        </div>
+        <button class="btn-join">Rejoindre le club</button>
+      </div>
 
-    <script src="js/main.js"></script>
-  </body>
+      <!-- Club Solidarité -->
+      <div class="club-card">
+        <div class="club-header">
+          <div class="club-icon">🤝</div>
+          <div class="club-title">Solidarité Campus</div>
+        </div>
+        <div class="club-description">
+          Club engagé dans l'action sociale et humanitaire, nous organisons des activités de soutien aux communautés locales.
+        </div>
+        <div class="club-activities">
+          <h4>Activités principales :</h4>
+          <ul class="activities-list">
+            <li>Actions caritatives et collectes</li>
+            <li>Soutien scolaire aux enfants</li>
+            <li>Missions humanitaires</li>
+            <li>Sensibilisation aux causes sociales</li>
+          </ul>
+        </div>
+        <div class="club-contact">
+          <div class="contact-info">
+            <i class="fas fa-user"></i>
+            <span>Président : Omar NDIAYE</span>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-envelope"></i>
+            <span>solidarite@campus221.sn</span>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-calendar"></i>
+            <span>Réunions : Jeudi 16h</span>
+          </div>
+        </div>
+        <button class="btn-join">Rejoindre le club</button>
+      </div>
+
+      <!-- Club Culture -->
+      <div class="club-card">
+        <div class="club-header">
+          <div class="club-icon">🎭</div>
+          <div class="club-title">Arts & Culture</div>
+        </div>
+        <div class="club-description">
+          Promotion de la culture sénégalaise et africaine à travers diverses expressions artistiques et événements culturels.
+        </div>
+        <div class="club-activities">
+          <h4>Activités principales :</h4>
+          <ul class="activities-list">
+            <li>Spectacles de danse et théâtre</li>
+            <li>Expositions d'art local</li>
+            <li>Festivals culturels</li>
+            <li>Ateliers artistiques</li>
+          </ul>
+        </div>
+        <div class="club-contact">
+          <div class="contact-info">
+            <i class="fas fa-user"></i>
+            <span>Présidente : Aïda FALL</span>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-envelope"></i>
+            <span>culture@campus221.sn</span>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-calendar"></i>
+            <span>Réunions : Lundi 18h</span>
+          </div>
+        </div>
+        <button class="btn-join">Rejoindre le club</button>
+      </div>
+
+      <!-- Club Sport -->
+      <div class="club-card">
+        <div class="club-header">
+          <div class="club-icon">⚽</div>
+          <div class="club-title">Sports & Bien-être</div>
+        </div>
+        <div class="club-description">
+          Promotion du sport et du bien-être sur le campus avec diverses activités physiques et compétitions inter-écoles.
+        </div>
+        <div class="club-activities">
+          <h4>Activités principales :</h4>
+          <ul class="activities-list">
+            <li>Tournois inter-filières</li>
+            <li>Séances de fitness et yoga</li>
+            <li>Compétitions inter-écoles</li>
+            <li>Sensibilisation à la santé</li>
+          </ul>
+        </div>
+        <div class="club-contact">
+          <div class="contact-info">
+            <i class="fas fa-user"></i>
+            <span>Président : Mamadou BA</span>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-envelope"></i>
+            <span>sports@campus221.sn</span>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-calendar"></i>
+            <span>Réunions : Samedi 14h</span>
+          </div>
+        </div>
+        <button class="btn-join">Rejoindre le club</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Green Campus 221 | Réalisé avec 💚</p>
+  </footer>
+
+  <!-- JavaScript intégré -->
+  <script>
+    // Menu responsive
+    const burger = document.getElementById('burger');
+    const navList = document.querySelector('nav ul');
+
+    burger.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+
+    // Effet fade-in au scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    faders.forEach(f => observer.observe(f));
+
+    // Animation des boutons "Rejoindre"
+    const joinButtons = document.querySelectorAll('.btn-join');
+    joinButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const clubName = this.closest('.club-card').querySelector('.club-title').textContent;
+        alert(`Demande d'adhésion envoyée pour le club "${clubName}". Vous recevrez un email de confirmation bientôt !`);
+      });
+    });
+
+    // Animation au hover sur les cartes
+    const clubCards = document.querySelectorAll('.club-card');
+    clubCards.forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        card.style.borderColor = 'rgba(56, 189, 248, 0.5)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        card.style.borderColor = 'rgba(56, 189, 248, 0.2)';
+      });
+    });
+  </script>
+</body>
 </html>
