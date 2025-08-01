@@ -1,168 +1,741 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ressources - Green Campus 221</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- Icônes dynamiques -->
+
+  <script src="https://kit.fontawesome.com/a2d9d6b3f1.js" crossorigin="anonymous"></script>
+
+  <!-- Style CSS intégré -->
+
   <style>
-    body {
+    body.dark {
+      background: #0f172a;
+      color: #f1f5f9;
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at top, #0d1b2a, #1b263b);
-      color: #fff;
     }
 
     header {
-      background: rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      background: rgba(15, 23, 42, 0.8);
       backdrop-filter: blur(10px);
-      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
     }
 
-    header h1 {
-      font-size: 1.5rem;
-      color: #00ffb3;
-    }
-
-    nav a {
-      margin: 0 1rem;
-      color: #ccc;
-      text-decoration: none;
-    }
-
-    nav a.active {
-      color: #00d4ff;
+    .logo {
       font-weight: bold;
+      font-size: 1.2rem;
     }
 
-    .container {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .search-bar {
-      margin-bottom: 2rem;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 0.8rem;
-      border-radius: 10px;
-      border: none;
-      font-size: 1rem;
-    }
-
-    .section {
-      margin-bottom: 2rem;
-      background: rgba(255, 255, 255, 0.07);
-      padding: 1.5rem;
-      border-radius: 15px;
-    }
-
-    .section h2 {
-      color: #00ffb3;
-      margin-bottom: 1rem;
-    }
-
-    ul {
+    nav ul {
       list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
       padding: 0;
     }
 
-    ul li {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    nav a {
+      color: #f1f5f9;
+      text-decoration: none;
+      transition: color 0.3s;
     }
 
-    .btn-retour {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.8rem 1.5rem;
-      background: #00ffb3;
-      color: #000;
-      border-radius: 10px;
-      text-decoration: none;
+    nav a:hover, nav a.active {
+      color: #38bdf8;
+    }
+
+    #burger {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: white;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      border-radius: 1rem;
+      margin: 2rem;
+    }
+
+    .section {
+      padding: 3rem 2rem;
+    }
+
+    /* Navigation par étapes */
+    .navigation-steps {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .step-number {
+      background: #38bdf8;
+      color: #0f172a;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .step.inactive .step-number {
+      background: rgba(255, 255, 255, 0.2);
+      color: #94a3b8;
+    }
+
+    .step-arrow {
+      color: #38bdf8;
+      font-size: 1.2rem;
+    }
+
+    /* Sélection des filières */
+    .filiere-selection {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .filiere-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .filiere-card:hover, .filiere-card.selected {
+      border-color: #38bdf8;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+    }
+
+    .filiere-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .filiere-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #38bdf8;
+      margin-bottom: 0.5rem;
+    }
+
+    .filiere-full-name {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    /* Sélection des années */
+    .year-selection {
+      display: none;
+      justify-content: center;
+      gap: 2rem;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+    }
+
+    .year-selection.show {
+      display: flex;
+    }
+
+    .year-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f1f5f9;
+      border: 2px solid rgba(56, 189, 248, 0.3);
+      padding: 1.5rem 2rem;
+      border-radius: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1.1rem;
       font-weight: bold;
     }
 
-    @media (max-width: 600px) {
-      header {
+    .year-btn:hover, .year-btn.selected {
+      background: #38bdf8;
+      color: #0f172a;
+      border-color: #38bdf8;
+      transform: scale(1.05);
+    }
+
+    /* Grille des examens */
+    .exams-container {
+      display: none;
+      margin-top: 3rem;
+    }
+
+    .exams-container.show {
+      display: block;
+    }
+
+    .exams-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+    }
+
+    .exams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .exam-photo-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: all 0.3s;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      cursor: pointer;
+    }
+
+    .exam-photo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(56, 189, 248, 0.3);
+      border-color: #38bdf8;
+    }
+
+    .exam-photo {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exam-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .exam-placeholder {
+      height: 100%;
+      background: linear-gradient(135deg, #1e293b, #334155);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      color: #38bdf8;
+    }
+
+    .exam-placeholder i {
+      font-size: 3rem;
+    }
+
+    .exam-placeholder-text {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    .exam-info {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .exam-name {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #38bdf8;
+      margin-bottom: 0.5rem;
+    }
+
+    .exam-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    .download-btn {
+      background: #38bdf8;
+      color: #0f172a;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .download-btn:hover {
+      background: #0ea5e9;
+      transform: scale(1.05);
+    }
+
+    /* Bouton retour */
+    .back-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f1f5f9;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 0.7rem 1.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 2rem;
+      display: none;
+    }
+
+    .back-btn.show {
+      display: inline-block;
+    }
+
+    .back-btn:hover {
+      background: rgba(56, 189, 248, 0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
         flex-direction: column;
-        align-items: flex-start;
+        display: none;
+        background: #1e293b;
+        padding: 1rem;
+        border-radius: 1rem;
+        position: absolute;
+        top: 60px;
+        right: 10px;
       }
 
-      nav {
-        margin-top: 1rem;
+      nav ul.active {
+        display: flex;
       }
 
-      nav a {
-        display: inline-block;
-        margin-bottom: 0.5rem;
+      #burger {
+        display: block;
+      }
+
+      .filiere-selection {
+        grid-template-columns: 1fr;
+      }
+
+      .year-selection {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .navigation-steps {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .step-arrow {
+        transform: rotate(90deg);
       }
     }
+
+    /* Animation fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
+
 </head>
-<body>
+
+<body class="dark">
   <header>
-    <h1>Green Campus 221</h1>
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="#">Filières</a>
-      <a href="#">Clubs</a>
-      <a href="#">Événements</a>
-      <a href="ressources.html" class="active">Ressources</a>
-      <a href="#">Contact</a>
+    <div class="logo">🌿 Green Campus 221</div>
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="filieres.html">Filières</a></li>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="evenements.html">Événements</a></li>
+        <li><a href="ressources.html" class="active">Ressources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div id="burger">&#9776;</div>
     </nav>
   </header>
 
-  <div class="container">
-    <div class="search-bar">
-      <input type="text" placeholder="🔍 Rechercher une matière ou un document..." />
+  <section class="hero fade-in">
+    <h1><i class="fas fa-book-open"></i> Ressources Pédagogiques</h1>
+    <p>Accédez aux examens classés par filière et année d'études</p>
+  </section>
+
+  <section class="section fade-in">
+    <!-- Navigation par étapes -->
+    <div class="navigation-steps">
+      <div class="step active" id="step1">
+        <div class="step-number">1</div>
+        <span>Choisir la filière</span>
+      </div>
+      <div class="step-arrow">
+        <i class="fas fa-arrow-right"></i>
+      </div>
+      <div class="step inactive" id="step2">
+        <div class="step-number">2</div>
+        <span>Choisir l'année</span>
+      </div>
+      <div class="step-arrow">
+        <i class="fas fa-arrow-right"></i>
+      </div>
+      <div class="step inactive" id="step3">
+        <div class="step-number">3</div>
+        <span>Examens disponibles</span>
+      </div>
     </div>
 
-    <div class="section">
-      <h2>Licence 1 - Environnement et Développement Durable (EDD)</h2>
-      <h3>Semestre 1</h3>
-      <ul>
-        <li>Biologie cellulaire</li>
-        <li>Écologie générale</li>
-        <li>Nutrition et développement végétal</li>
-        <li>Biodiversité végétale</li>
-        <li>Biodiversité microbienne</li>
-        <li>Problématique de l’environnement</li>
-        <li>Principes et fondements du développement durable</li>
-        <li>Climatologie générale</li>
-        <li>Climatologie appliquée au Sénégal</li>
-        <li>Anglais niveau 1</li>
-        <li>Langues nationales niveau 1</li>
-        <li>Techniques d’expression française</li>
-        <li>Informatique / Bureautique</li>
-        <li>Initiation à la programmation avec R</li>
-      </ul>
+```
+<!-- Bouton retour -->
+<button class="back-btn" id="backBtn">
+  <i class="fas fa-arrow-left"></i> Retour
+</button>
 
-      <h3>Semestre 2</h3>
-      <ul>
-        <li>Systèmes de coordonnées de localisation dans l’espace</li>
-        <li>Cartographie</li>
-        <li>Microbiologie environnementale</li>
-        <li>Physique de l’environnement</li>
-        <li>Chimie de l’environnement</li>
-        <li>Techniques d’échantillonnage</li>
-        <li>Écosystèmes terrestres</li>
-        <li>Écosystèmes humides</li>
-        <li>Écosystèmes aquatiques</li>
-        <li>Entreprenariat 1</li>
-        <li>Technique de recherche documentaire</li>
-        <li>Typologie et caractérisation des impacts environnementaux</li>
-        <li>Contenu et méthodologie des études d’impacts</li>
-      </ul>
-    </div>
-
-    <a href="index.html" class="btn-retour">← Retour à l'accueil</a>
+<!-- Sélection des filières -->
+<div class="filiere-selection" id="filiereSelection">
+  <div class="filiere-card" data-filiere="edd">
+    <div class="filiere-icon">🌱</div>
+    <div class="filiere-name">EDD</div>
+    <div class="filiere-full-name">Environnement et Développement Durable</div>
   </div>
+  
+  <div class="filiere-card" data-filiere="agap">
+    <div class="filiere-icon">👩‍🌾</div>
+    <div class="filiere-name">AGAP</div>
+    <div class="filiere-full-name">Agroalimentaire et Productions Alimentaires</div>
+  </div>
+  
+  <div class="filiere-card" data-filiere="gc">
+    <div class="filiere-icon">🏗️</div>
+    <div class="filiere-name">GC</div>
+    <div class="filiere-full-name">Génie Civil</div>
+  </div>
+  
+  <div class="filiere-card" data-filiere="dl">
+    <div class="filiere-icon">🌐</div>
+    <div class="filiere-name">DL</div>
+    <div class="filiere-full-name">Développement Local</div>
+  </div>
+</div>
+
+<!-- Sélection des années -->
+<div class="year-selection" id="yearSelection">
+  <div class="year-btn" data-year="1">
+    <i class="fas fa-graduation-cap"></i>
+    Licence 1
+  </div>
+  <div class="year-btn" data-year="2">
+    <i class="fas fa-user-graduate"></i>
+    Licence 2
+  </div>
+  <div class="year-btn" data-year="3">
+    <i class="fas fa-medal"></i>
+    Licence 3
+  </div>
+</div>
+
+<!-- Container des examens -->
+<div class="exams-container" id="examsContainer">
+  <div class="exams-header">
+    <h2 id="examsTitle">Examens disponibles</h2>
+    <p id="examsSubtitle">Cliquez sur un examen pour le télécharger</p>
+  </div>
+  
+  <div class="exams-grid" id="examsGrid">
+    <!-- Les examens seront générés dynamiquement ici -->
+  </div>
+</div>
+```
+
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Green Campus 221 | Réalisé avec 💚</p>
+  </footer>
+
+  <!-- JavaScript intégré -->
+
+  <script>
+    // Menu responsive
+    const burger = document.getElementById('burger');
+    const navList = document.querySelector('nav ul');
+
+    burger.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+
+    // Variables globales
+    let selectedFiliere = null;
+    let selectedYear = null;
+
+    // Données des examens (simulation)
+    const examensData = {
+      edd: {
+        1: [
+          { name: "Écologie Générale", image: "assets/images/exams/edd/l1-ecologie.jpg", date: "Juin 2024" },
+          { name: "Mathématiques Environnementales", image: "assets/images/exams/edd/l1-maths.jpg", date: "Juin 2024" },
+          { name: "Chimie de l'Environnement", image: "assets/images/exams/edd/l1-chimie.jpg", date: "Janvier 2024" },
+          { name: "Introduction au Développement Durable", image: "assets/images/exams/edd/l1-dd.jpg", date: "Juin 2024" }
+        ],
+        2: [
+          { name: "Énergies Renouvelables", image: "assets/images/exams/edd/l2-energie.jpg", date: "Mai 2024" },
+          { name: "Gestion des Déchets", image: "assets/images/exams/edd/l2-dechets.jpg", date: "Janvier 2024" },
+          { name: "Biodiversité et Conservation", image: "assets/images/exams/edd/l2-biodiversite.jpg", date: "Juin 2024" },
+          { name: "Économie Verte", image: "assets/images/exams/edd/l2-economie.jpg", date: "Mai 2024" }
+        ],
+        3: [
+          { name: "Audit Environnemental", image: "assets/images/exams/edd/l3-audit.jpg", date: "Avril 2024" },
+          { name: "Politique Environnementale", image: "assets/images/exams/edd/l3-politique.jpg", date: "Juin 2024" },
+          { name: "Projet de Fin d'Études", image: "assets/images/exams/edd/l3-projet.jpg", date: "Juin 2024" }
+        ]
+      },
+      agap: {
+        1: [
+          { name: "Sciences Alimentaires de Base", image: "assets/images/exams/agap/l1-sciences.jpg", date: "Juin 2024" },
+          { name: "Biologie Végétale", image: "assets/images/exams/agap/l1-biologie.jpg", date: "Janvier 2024" },
+          { name: "Chimie Organique", image: "assets/images/exams/agap/l1-chimie.jpg", date: "Juin 2024" }
+        ],
+        2: [
+          { name: "Technologie Alimentaire", image: "assets/images/exams/agap/l2-techno.jpg", date: "Mai 2024" },
+          { name: "Nutrition Humaine", image: "assets/images/exams/agap/l2-nutrition.jpg", date: "Janvier 2024" },
+          { name: "Microbiologie Alimentaire", image: "assets/images/exams/agap/l2-micro.jpg", date: "Juin 2024" }
+        ],
+        3: [
+          { name: "Sécurité Alimentaire", image: "assets/images/exams/agap/l3-securite.jpg", date: "Avril 2024" },
+          { name: "Management Qualité", image: "assets/images/exams/agap/l3-qualite.jpg", date: "Juin 2024" }
+        ]
+      },
+      gc: {
+        1: [
+          { name: "Mathématiques pour l'Ingénieur", image: "assets/images/exams/gc/l1-maths.jpg", date: "Juin 2024" },
+          { name: "Matériaux de Construction", image: "assets/images/exams/gc/l1-materiaux.jpg", date: "Janvier 2024" },
+          { name: "Dessin Technique", image: "assets/images/exams/gc/l1-dessin.jpg", date: "Juin 2024" }
+        ],
+        2: [
+          { name: "Résistance des Matériaux", image: "assets/images/exams/gc/l2-resistance.jpg", date: "Mai 2024" },
+          { name: "Béton Armé", image: "assets/images/exams/gc/l2-beton.jpg", date: "Janvier 2024" },
+          { name: "Topographie", image: "assets/images/exams/gc/l2-topo.jpg", date: "Juin 2024" }
+        ],
+        3: [
+          { name: "Construction Durable", image: "assets/images/exams/gc/l3-durable.jpg", date: "Avril 2024" },
+          { name: "Gestion de Projet", image: "assets/images/exams/gc/l3-gestion.jpg", date: "Juin 2024" }
+        ]
+      },
+      dl: {
+        1: [
+          { name: "Introduction au Développement Local", image: "assets/images/exams/dl/l1-intro.jpg", date: "Juin 2024" },
+          { name: "Sociologie Rurale", image: "assets/images/exams/dl/l1-socio.jpg", date: "Janvier 2024" }
+        ],
+        2: [
+          { name: "Gestion des Projets Communautaires", image: "assets/images/exams/dl/l2-projets.jpg", date: "Mai 2024" },
+          { name: "Économie du Développement", image: "assets/images/exams/dl/l2-economie.jpg", date: "Janvier 2024" }
+        ],
+        3: [
+          { name: "Évaluation de Projets", image: "assets/images/exams/dl/l3-evaluation.jpg", date: "Avril 2024" },
+          { name: "Partenariat Public-Privé", image: "assets/images/exams/dl/l3-partenariat.jpg", date: "Juin 2024" }
+        ]
+      }
+    };
+
+    // Éléments du DOM
+    const filiereCards = document.querySelectorAll('.filiere-card');
+    const yearBtns = document.querySelectorAll('.year-btn');
+    const filiereSelection = document.getElementById('filiereSelection');
+    const yearSelection = document.getElementById('yearSelection');
+    const examsContainer = document.getElementById('examsContainer');
+    const examsGrid = document.getElementById('examsGrid');
+    const examsTitle = document.getElementById('examsTitle');
+    const examsSubtitle = document.getElementById('examsSubtitle');
+    const backBtn = document.getElementById('backBtn');
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const step3 = document.getElementById('step3');
+
+    // Sélection de filière
+    filiereCards.forEach(card => {
+      card.addEventListener('click', () => {
+        // Retirer la sélection précédente
+        filiereCards.forEach(c => c.classList.remove('selected'));
+        
+        // Sélectionner la nouvelle filière
+        card.classList.add('selected');
+        selectedFiliere = card.getAttribute('data-filiere');
+        
+        // Passer à l'étape 2
+        setTimeout(() => {
+          filiereSelection.style.display = 'none';
+          yearSelection.classList.add('show');
+          backBtn.classList.add('show');
+          
+          // Mettre à jour les étapes
+          step1.classList.remove('active');
+          step1.classList.add('inactive');
+          step2.classList.remove('inactive');
+          step2.classList.add('active');
+        }, 300);
+      });
+    });
+
+    // Sélection d'année
+    yearBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Retirer la sélection précédente
+        yearBtns.forEach(b => b.classList.remove('selected'));
+        
+        // Sélectionner la nouvelle année
+        btn.classList.add('selected');
+        selectedYear = btn.getAttribute('data-year');
+        
+        // Afficher les examens
+        showExams();
+        
+        // Passer à l'étape 3
+        setTimeout(() => {
+          yearSelection.classList.remove('show');
+          examsContainer.classList.add('show');
+          
+          // Mettre à jour les étapes
+          step2.classList.remove('active');
+          step2.classList.add('inactive');
+          step3.classList.remove('inactive');
+          step3.classList.add('active');
+        }, 300);
+      });
+    });
+
+    // Fonction pour afficher les examens
+    function showExams() {
+      const examens = examensData[selectedFiliere][selectedYear];
+      const filiereNames = {
+        edd: "Environnement et Développement Durable",
+        agap: "Agroalimentaire et Productions Alimentaires",
+        gc: "Génie Civil",
+        dl: "Développement Local"
+      };
+      
+      examsTitle.textContent = `Examens ${filiereNames[selectedFiliere]} - Licence ${selectedYear}`;
+      examsSubtitle.textContent = `${examens.length} examens disponibles`;
+      
+      // Vider la grille
+      examsGrid.innerHTML = '';
+      
+      // Créer les cartes d'examens
+      examens.forEach(examen => {
+        const examCard = document.createElement('div');
+        examCard.className = 'exam-photo-card';
+        
+        examCard.innerHTML = `
+          <div class="exam-photo">
+            <img src="${examen.image}" alt="${examen.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="exam-placeholder" style="display: none;">
+              <i class="fas fa-file-alt"></i>
+              <div class="exam-placeholder-text">Photo d'examen</div>
+            </div>
+          </div>
+          <div class="exam-info">
+            <div class="exam-name">${examen.name}</div>
+            <div class="exam-details">
+              <span><i class="fas fa-calendar"></i> ${examen.date}</span>
+              <button class="download-btn">
+                <i class="fas fa-download"></i>
+                Télécharger
+              </button>
+            </div>
+          </div>
+        `;
+        
+        // Ajouter l'événement de téléchargement
+        const downloadBtn = examCard.querySelector('.download-btn');
+        downloadBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          alert(`Téléchargement de l'examen "${examen.name}" en cours...`);
+        });
+        
+        examsGrid.appendChild(examCard);
+      });
+    }
+
+    // Bouton retour
+    backBtn.addEventListener('click', () => {
+      if (examsContainer.classList.contains('show')) {
+        // Retour des examens vers les années
+        examsContainer.classList.remove('show');
+        yearSelection.classList.add('show');
+        
+        step3.classList.remove('active');
+        step3.classList.add('inactive');
+        step2.classList.remove('inactive');
+        step2.classList.add('active');
+      } else if (yearSelection.classList.contains('show')) {
+        // Retour des années vers les filières
+        yearSelection.classList.remove('show');
+        filiereSelection.style.display = 'grid';
+        backBtn.classList.remove('show');
+        
+        step2.classList.remove('active');
+        step2.classList.add('inactive');
+        step1.classList.remove('inactive');
+        step1.classList.add('active');
+        
+        // Réinitialiser les sélections
+        yearBtns.forEach(b => b.classList.remove('selected'));
+        selectedYear = null;
+      }
+    });
+
+    // Effet fade-in au scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    faders.forEach(f => observer.observe(f));
+  </script>
+
 </body>
 </html>
