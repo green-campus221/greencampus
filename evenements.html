@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -149,4 +150,572 @@
     .event-description {
       color: #cbd5e1;
       line-height: 1.6;
-      margin-bottom: 1.​​​​​​​​​​​​​​​​
+      margin-bottom: 1.5rem;
+    }
+
+    .event-details {
+      display: grid;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .event-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    .event-detail i {
+      color: #38bdf8;
+      width: 16px;
+    }
+
+    .event-tag {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      padding: 0.2rem 0.5rem;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+      margin: 0.2rem;
+    }
+
+    .event-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn-register {
+      flex: 1;
+      background: #38bdf8;
+      color: #0f172a;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-register:hover {
+      background: #0ea5e9;
+      transform: scale(1.02);
+    }
+
+    .btn-info {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f1f5f9;
+      padding: 0.7rem;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-info:hover {
+      background: rgba(56, 189, 248, 0.2);
+    }
+
+    .calendar-section {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 1rem;
+      margin: 2rem;
+      text-align: center;
+    }
+
+    .mini-calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+      max-width: 400px;
+      margin: 2rem auto;
+    }
+
+    .calendar-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .calendar-header {
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    .calendar-day.today {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+
+    .calendar-day.event-day {
+      background: rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
+    }
+
+    .calendar-day:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        display: none;
+        background: #1e293b;
+        padding: 1rem;
+        border-radius: 1rem;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      #burger {
+        display: block;
+      }
+
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .events-filters {
+        justify-content: center;
+      }
+
+      .event-actions {
+        flex-direction: column;
+      }
+    }
+
+    /* Animation fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Animation pour les cartes d'événements */
+    .event-card {
+      animation: slideUp 0.6s ease-out forwards;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body class="dark">
+  <header>
+    <div class="logo">🌿 Green Campus 221</div>
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="filieres.html">Filières</a></li>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="evenements.html" class="active">Événements</a></li>
+        <li><a href="ressources.html">Ressources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div id="burger">&#9776;</div>
+    </nav>
+  </header>
+
+  <section class="hero fade-in">
+    <h1><i class="fas fa-calendar-alt"></i> Événements à Venir</h1>
+    <p>Découvrez les prochains événements du campus et ne manquez aucune opportunité !</p>
+  </section>
+
+  <section class="calendar-section fade-in">
+    <h2><i class="fas fa-calendar"></i> Calendrier Août 2025</h2>
+    <div class="mini-calendar">
+      <div class="calendar-day calendar-header">Dim</div>
+      <div class="calendar-day calendar-header">Lun</div>
+      <div class="calendar-day calendar-header">Mar</div>
+      <div class="calendar-day calendar-header">Mer</div>
+      <div class="calendar-day calendar-header">Jeu</div>
+      <div class="calendar-day calendar-header">Ven</div>
+      <div class="calendar-day calendar-header">Sam</div>
+      
+      <div class="calendar-day"></div>
+      <div class="calendar-day"></div>
+      <div class="calendar-day"></div>
+      <div class="calendar-day"></div>
+      <div class="calendar-day"></div>
+      <div class="calendar-day today">1</div>
+      <div class="calendar-day">2</div>
+      
+      <div class="calendar-day">3</div>
+      <div class="calendar-day">4</div>
+      <div class="calendar-day event-day">5</div>
+      <div class="calendar-day">6</div>
+      <div class="calendar-day">7</div>
+      <div class="calendar-day">8</div>
+      <div class="calendar-day">9</div>
+      
+      <div class="calendar-day">10</div>
+      <div class="calendar-day">11</div>
+      <div class="calendar-day event-day">12</div>
+      <div class="calendar-day">13</div>
+      <div class="calendar-day">14</div>
+      <div class="calendar-day event-day">15</div>
+      <div class="calendar-day">16</div>
+      
+      <div class="calendar-day">17</div>
+      <div class="calendar-day">18</div>
+      <div class="calendar-day">19</div>
+      <div class="calendar-day event-day">20</div>
+      <div class="calendar-day">21</div>
+      <div class="calendar-day">22</div>
+      <div class="calendar-day">23</div>
+      
+      <div class="calendar-day">24</div>
+      <div class="calendar-day event-day">25</div>
+      <div class="calendar-day">26</div>
+      <div class="calendar-day">27</div>
+      <div class="calendar-day">28</div>
+      <div class="calendar-day">29</div>
+      <div class="calendar-day">30</div>
+      
+      <div class="calendar-day">31</div>
+    </div>
+  </section>
+
+  <section class="section fade-in">
+    <div class="events-filters">
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn" data-filter="conference">Conférences</button>
+      <button class="filter-btn" data-filter="workshop">Ateliers</button>
+      <button class="filter-btn" data-filter="competition">Concours</button>
+      <button class="filter-btn" data-filter="social">Social</button>
+      <button class="filter-btn" data-filter="academic">Académique</button>
+    </div>
+
+    <div class="events-grid" id="events-container">
+      <!-- Événement 1 -->
+      <div class="event-card" data-category="conference">
+        <div class="event-date">
+          <span class="event-day">05</span>
+          <span class="event-month">Août</span>
+        </div>
+        <div class="event-content">
+          <h3 class="event-title">Conférence : Agriculture Durable au Sénégal</h3>
+          <p class="event-description">
+            Rencontre avec des experts en agriculture durable pour discuter des innovations dans le secteur agroalimentaire sénégalais.
+          </p>
+          <div class="event-details">
+            <div class="event-detail">
+              <i class="fas fa-clock"></i>
+              <span>14h00 - 17h00</span>
+            </div>
+            <div class="event-detail">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Amphithéâtre A</span>
+            </div>
+            <div class="event-detail">
+              <i class="fas fa-users"></i>
+              <span>150 places disponibles</span>
+            </div>
+          </div>
+          <div>
+            <span class="event-tag">AGAP</span>
+            <span class="event-tag">EDD</span>
+          </div>
+          <div class="event-actions">
+            <button class="btn-register">S'inscrire</button>
+            <button class="btn-info">Plus d'infos</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Événement 2 -->
+      <div class="event-card" data-category="workshop">
+        <div class="event-date">
+          <span class="event-day">12</span>
+          <span class="event-month">Août</span>
+        </div>
+        <div class="event-content">
+          <h3 class="event-title">Atelier : Techniques de Construction Écologique</h3>
+          <p class="event-description">
+            Atelier pratique sur les matériaux de construction durables et les techniques de construction respectueuses de l'environnement.
+          </p>
+          <div class="event-details">
+            <div class="event-detail">
+              <i class="fas fa-clock"></i>
+              <span>09h00 - 12h00</span>
+            </div>
+            <div class="event-detail">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Laboratoire GC</span>
+            </div>
+            <div class="event-detail">
+              <i class="fas fa-users"></i>
+              <span>30 places disponibles</span>
+            </div>
+          </div>
+          <div>
+            <span class="event-tag">GC</span>
+            <span class="event-tag">EDD</span>
+          </div>
+          <div class="event-actions">
+            <button class="btn-register">S'inscrire</button>
+            <button class="btn-info">Plus d'infos</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Événement 3 -->
+      <div class="event-card" data-category="competition">
+        <div class="event-date">
+          <span class="event-day">15</span>
+          <span class="event-month">Août</span>
+        </div>
+        <div class="event-content">
+          <h3 class="event-title">Hackathon Green Tech</h3>
+          <p class="event-description">
+            Compétition de 48h pour développer des solutions technologiques innovantes aux défis environnementaux locaux.
+          </p>
+          <div class="event-details">
+            <div class="event-detail">
+              <i class="fas fa-clock"></i>
+              <span>Vendredi 18h - Dimanche 18h</span>
+            </div>
+            <div class="event-detail">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Salle informatique</span>
+            </div>
+            <div class="event-detail">
+              <i class="fas fa-users"></i>
+              <span>60 participants max</span>
+            </div>
+          </div>
+          <div>
+            <span class="event-tag">Tech</span>
+            <span class="event-tag">Innovation</span>
+          </div>
+          <div class="event-actions">
+            <button class="btn-register">S'inscrire</button>
+            <button class="btn-info">Plus d'infos</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Événement 4 -->
+      <div class="event-card" data-category="academic">
+        <div class="event-date">
+          <span class="event-day">20</span>
+          <span class="event-month">Août</span>
+        </div>
+        <div class="event-content">
+          <h3 class="event-title">Soutenances de Projet - Développement Local</h3>
+          <p class="event-description">
+            Présentation des projets de fin d'études des étudiants en Développement Local devant un jury d'experts.
+          </p>
+          <div class="event-details">
+            <div class="event-detail">
+              <i class="fas fa-clock"></i>
+              <span>08h00 - 18h00</span>
+            </div>
+            <div class="event-detail">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Salle de conférence</span>
+            </div>
+            <div class="event-detail">
+              <i class="fas fa-users"></i>
+              <span>Ouvert au public</span>
+            </div>
+          </div>
+          <div>
+            <span class="event-tag">DL</span>
+            <span class="event-tag">Soutenance</span>
+          </div>
+          <div class="event-actions">
+            <button class="btn-register">Assister</button>
+            <button class="btn-info">Programme</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Événement 5 -->
+      <div class="event-card" data-category="social">
+        <div class="event-date">
+          <span class="event-day">25</span>
+          <span class="event-month">Août</span>
+        </div>
+        <div class="event-content">
+          <h3 class="event-title">Journée Portes Ouvertes Campus Vert</h3>
+          <p class="event-description">
+            Découverte du campus, rencontres avec les étudiants et professeurs, démonstrations pratiques dans tous les laboratoires.
+          </p>
+          <div class="event-details">
+            <div class="event-detail">
+              <i class="fas fa-clock"></i>
+              <span>10h00 - 16h00</span>
+            </div>
+            <div class="event-detail">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Tout le campus</span>
+            </div>
+            <div class="event-detail">
+              <i class="fas fa-users"></i>
+              <span>Accès libre</span>
+            </div>
+          </div>
+          <div>
+            <span class="event-tag">Découverte</span>
+            <span class="event-tag">Orientation</span>
+          </div>
+          <div class="event-actions">
+            <button class="btn-register">Participer</button>
+            <button class="btn-info">Programme</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Événement 6 -->
+      <div class="event-card" data-category="conference">
+        <div class="event-date">
+          <span class="event-day">30</span>
+          <span class="event-month">Août</span>
+        </div>
+        <div class="event-content">
+          <h3 class="event-title">Rencontres Professionnelles</h3>
+          <p class="event-description">
+            Forum emploi et stage avec plus de 20 entreprises partenaires du secteur privé et des ONG locales.
+          </p>
+          <div class="event-details">
+            <div class="event-detail">
+              <i class="fas fa-clock"></i>
+              <span>09h00 - 17h00</span>
+            </div>
+            <div class="event-detail">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Hall principal</span>
+            </div>
+            <div class="event-detail">
+              <i class="fas fa-users"></i>
+              <span>Tous les étudiants</span>
+            </div>
+          </div>
+          <div>
+            <span class="event-tag">Emploi</span>
+            <span class="event-tag">Stage</span>
+          </div>
+          <div class="event-actions">
+            <button class="btn-register">S'inscrire</button>
+            <button class="btn-info">Entreprises</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Green Campus 221 | Réalisé avec 💚</p>
+  </footer>
+
+  <!-- JavaScript intégré -->
+  <script>
+    // Menu responsive
+    const burger = document.getElementById('burger');
+    const navList = document.querySelector('nav ul');
+
+    burger.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+
+    // Effet fade-in au scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    faders.forEach(f => observer.observe(f));
+
+    // Filtres d'événements
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const eventCards = document.querySelectorAll('.event-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        eventCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'block';
+            card.style.animation = 'slideUp 0.6s ease-out forwards';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Actions des boutons d'événements
+    const registerBtns = document.querySelectorAll('.btn-register');
+    const infoBtns = document.querySelectorAll('.btn-info');
+
+    registerBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const eventTitle = this.closest('.event-content').querySelector('.event-title').textContent;
+        alert(`Inscription confirmée pour : "${eventTitle}". Vous recevrez un email de confirmation bientôt !`);
+      });
+    });
+
+    infoBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const eventTitle = this.closest('.event-content').querySelector('.event-title').textContent;
+        alert(`Plus d'informations sur : "${eventTitle}" seront envoyées par email.`);
+      });
+    });
+
+    // Animation du calendrier
+    const calendarDays = document.querySelectorAll('.calendar-day:not(.calendar-header)');
+    calendarDays.forEach(day => {
+      day.addEventListener('click', function() {
+        if (this.textContent && !this.classList.contains('today')) {
+          alert(`Événements du ${this.textContent} août 2025 - Consultez le calendrier complet pour plus de détails !`);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
