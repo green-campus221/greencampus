@@ -1,403 +1,38 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ressources - Green Campus 221</title>
-
-  <!-- Icônes dynamiques -->
-
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ressources – Examens | Green Campus 221</title>
   <script src="https://kit.fontawesome.com/a2d9d6b3f1.js" crossorigin="anonymous"></script>
-
-  <!-- Style CSS intégré -->
-
   <style>
-    body.dark {
-      background: #0f172a;
-      color: #f1f5f9;
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(15, 23, 42, 0.8);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      z-index: 1000;
-    }
-
-    .logo {
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav a {
-      color: #f1f5f9;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    nav a:hover, nav a.active {
-      color: #38bdf8;
-    }
-
-    #burger {
-      display: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: white;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: linear-gradient(145deg, #1e293b, #0f172a);
-      border-radius: 1rem;
-      margin: 2rem;
-    }
-
-    .section {
-      padding: 3rem 2rem;
-    }
-
-    .filiere-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin: 2rem 0;
-      flex-wrap: wrap;
-    }
-
-    .tab-btn {
-      background: rgba(255, 255, 255, 0.1);
-      color: #f1f5f9;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 0.8rem 1.5rem;
-      border-radius: 2rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-weight: 500;
-    }
-
-    .tab-btn:hover, .tab-btn.active {
-      background: #38bdf8;
-      color: #0f172a;
-      transform: scale(1.05);
-    }
-
-    .resources-container {
-      margin-top: 3rem;
-    }
-
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.5s ease-in;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .filiere-header {
-      text-align: center;
-      margin-bottom: 3rem;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 1rem;
-    }
-
-    .filiere-title {
-      font-size: 2rem;
-      color: #38bdf8;
-      margin-bottom: 1rem;
-    }
-
-    .filiere-description {
-      color: #cbd5e1;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    .exams-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .exam-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 1rem;
-      overflow: hidden;
-      backdrop-filter: blur(5px);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-      transition: all 0.3s;
-      border: 1px solid rgba(56, 189, 248, 0.2);
-    }
-
-    .exam-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(56, 189, 248, 0.3);
-    }
-
-    .exam-image {
-      height: 200px;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .exam-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .exam-placeholder {
-      height: 100%;
-      background: linear-gradient(45deg, rgba(56, 189, 248, 0.1), rgba(14, 165, 233, 0.1));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 1rem;
-      color: #38bdf8;
-      font-size: 3rem;
-    }
-
-    .exam-content {
-      padding: 2rem;
-    }
-
-    .exam-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #38bdf8;
-      margin-bottom: 1rem;
-    }
-
-    .exam-details {
-      display: grid;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .exam-detail {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #94a3b8;
-      font-size: 0.9rem;
-    }
-
-    .exam-detail i {
-      color: #38bdf8;
-      width: 16px;
-    }
-
-    .exam-tags {
-      margin-bottom: 1.5rem;
-    }
-
-    .exam-tag {
-      display: inline-block;
-      background: rgba(56, 189, 248, 0.2);
-      color: #38bdf8;
-      padding: 0.2rem 0.5rem;
-      border-radius: 1rem;
-      font-size: 0.8rem;
-      margin: 0.2rem;
-    }
-
-    .exam-actions {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .btn-download {
-      flex: 1;
-      background: #38bdf8;
-      color: #0f172a;
-      padding: 0.7rem;
-      border: none;
-      border-radius: 0.5rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .btn-download:hover {
-      background: #0ea5e9;
-      transform: scale(1.02);
-    }
-
-    .btn-preview {
-      background: rgba(255, 255, 255, 0.1);
-      color: #f1f5f9;
-      padding: 0.7rem 1rem;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 0.5rem;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .btn-preview:hover {
-      background: rgba(56, 189, 248, 0.2);
-    }
-
-    .stats-section {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 1rem;
-      margin: 2rem;
-      text-align: center;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .stat-item {
-      padding: 1rem;
-    }
-
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #38bdf8;
-    }
-
-    .stat-label {
-      color: #94a3b8;
-      margin-top: 0.5rem;
-    }
-
-    .search-section {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 1rem;
-      margin: 2rem;
-      text-align: center;
-    }
-
-    .search-box {
-      max-width: 500px;
-      margin: 2rem auto;
-      position: relative;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 1rem 1rem 1rem 3rem;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 2rem;
-      color: #f1f5f9;
-      font-size: 1rem;
-      box-sizing: border-box;
-    }
-
-    .search-input::placeholder {
-      color: #94a3b8;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #38bdf8;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-        display: none;
-        background: #1e293b;
-        padding: 1rem;
-        border-radius: 1rem;
-        position: absolute;
-        top: 60px;
-        right: 10px;
-      }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      #burger {
-        display: block;
-      }
-
-      .exams-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .filiere-tabs {
-        justify-content: center;
-      }
-
-      .exam-actions {
-        flex-direction: column;
-      }
-    }
-
-    /* Animation fade-in */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
-    }
-
-    .fade-in.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    body.dark { background: #0f172a; color: #f1f5f9; margin: 0; font-family: 'Segoe UI', sans-serif; }
+    header { position: sticky; top: 0; background: rgba(15,23,42,0.8); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; padding:1rem 2rem; z-index:1000; }
+    .logo{ font-weight:bold; font-size:1.2rem; color:#f1f5f9 }
+    nav ul{ list-style:none; display:flex; gap:1rem; margin:0; padding:0 }
+    nav a{ color:#f1f5f9; text-decoration:none; transition:color .3s }
+    nav a:hover, nav a.active{ color:#38bdf8 }
+    #burger{ display:none; font-size:1.5rem; cursor:pointer; color:white }
+    .section{ padding:2rem }
+    .filters, .year-filter, .matiere-filter{ display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center; margin:1rem 0 }
+    .filter-btn{ background: rgba(255,255,255,0.1); color:#f1f5f9; border:1px solid rgba(56,189,248,0.3); padding:.5rem 1rem; border-radius:2rem; cursor:pointer; transition:all .3s }
+    .filter-btn:hover, .filter-btn.active{ background:#38bdf8; color:#0f172a; transform:scale(1.05) }
+    .examens-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; margin-top:2rem }
+    .exam-card{ background: rgba(255,255,255,0.05); border-radius:1rem; overflow:hidden; backdrop-filter: blur(5px); box-shadow:0 0 20px rgba(255,255,255,0.1); transition:all .3s; border:1px solid rgba(56,189,248,0.2) }
+    .exam-card:hover{ transform:translateY(-5px); box-shadow:0 15px 40px rgba(56,189,248,0.3) }
+    .exam-thumb{ width:100%; height:180px; object-fit:cover }
+    .exam-content{ padding:1rem }
+    .exam-title{ font-size:1.1rem; font-weight:bold; color:#38bdf8; margin-bottom:.5rem }
+    .btn-download{ display:inline-block; background:#38bdf8; color:#0f172a; padding:.5rem 1rem; border:none; border-radius:.5rem; font-weight:bold; cursor:pointer; text-decoration:none; transition:all .3s }
+    .btn-download:hover{ background:#0ea5e9; transform:scale(1.02) }
+    .fade-in{ opacity:0; transform:translateY(30px); transition:opacity 1s ease-out, transform 1s ease-out }
+    .fade-in.show{ opacity:1; transform:translateY(0) }
+    @media(max-width:768px){ nav ul{ flex-direction:column; display:none; background:#1e293b; padding:1rem; border-radius:1rem; position:absolute; top:60px; right:10px } nav ul.active{ display:flex } .examens-grid{ grid-template-columns:1fr } }
   </style>
-
 </head>
-
 <body class="dark">
   <header>
-    <div class="logo">🌿 Green Campus 221</div>
-    <nav id="nav">
-      <ul>
+    <div class="logo">🌿 Green Campus 221</div>
+    <nav id="nav"><ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="filieres.html">Filières</a></li>
         <li><a href="clubs.html">Clubs</a></li>
@@ -408,429 +43,120 @@
       <div id="burger">&#9776;</div>
     </nav>
   </header>
-
-  <section class="hero fade-in">
-    <h1><i class="fas fa-book-open"></i> Ressources Pédagogiques</h1>
-    <p>Accédez aux examens, corrigés et supports de cours classés par filière</p>
-  </section>
-
-  <section class="stats-section fade-in">
-    <h2><i class="fas fa-chart-line"></i> Nos Ressources en Chiffres</h2>
-    <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-number">280+</div>
-        <div class="stat-label">Examens</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">120+</div>
-        <div class="stat-label">Corrigés</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">45</div>
-        <div class="stat-label">Matières</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">4</div>
-        <div class="stat-label">Filières</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="search-section fade-in">
-    <h2><i class="fas fa-search"></i> Rechercher des Ressources</h2>
-    <div class="search-box">
-      <i class="fas fa-search search-icon"></i>
-      <input type="text" class="search-input" placeholder="Rechercher un examen, matière ou année..." id="searchInput">
-    </div>
-  </section>
-
   <section class="section fade-in">
-    <div class="filiere-tabs">
-      <button class="tab-btn active" data-filiere="edd">🌱 EDD</button>
-      <button class="tab-btn" data-filiere="agap">👩‍🌾 AGAP</button>
-      <button class="tab-btn" data-filiere="gc">🏗️ GC</button>
-      <button class="tab-btn" data-filiere="dl">🌐 DL</button>
+    <h2>Examens</h2>
+    <div class="filters">
+      <button class="filter-btn active" data-licence="EDD">EDD</button>
+      <button class="filter-btn" data-licence="AGAP">AGAP</button>
+      <button class="filter-btn" data-licence="GC">GC</button>
+      <button class="filter-btn" data-licence="DL">DL</button>
     </div>
-
-```
-<div class="resources-container">
-  <!-- Filière EDD -->
-  <div class="tab-content active" id="edd">
-    <div class="filiere-header">
-      <h2 class="filiere-title">🌱 Environnement et Développement Durable (EDD)</h2>
-      <p class="filiere-description">
-        Retrouvez tous les examens et ressources pédagogiques de la filière EDD.
-      </p>
-    </div>
-
-    <div class="exams-grid">
-      <div class="exam-card">
-        <div class="exam-image">
-          <img src="assets/images/exams/edd-ecologie.jpg" alt="Examen Écologie" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="exam-placeholder" style="display: none;">
-            <i class="fas fa-leaf"></i>
-            <span style="font-size: 0.8rem;">Écologie Générale</span>
-          </div>
-        </div>
-        <div class="exam-content">
-          <h3 class="exam-title">Examen Écologie Générale</h3>
-          <div class="exam-details">
-            <div class="exam-detail">
-              <i class="fas fa-calendar"></i>
-              <span>Session Juin 2024</span>
-            </div>
-            <div class="exam-detail">
-              <i class="fas fa-clock"></i>
-              <span>Durée : 3h</span>
-            </div>
-            <div class="exam-detail">
-              <i class="fas fa-user-graduate"></i>
-              <span>2ème année EDD</span>
-            </div>
-          </div>
-          <div class="exam-tags">
-            <span class="exam-tag">Écosystèmes</span>
-            <span class="exam-tag">Biodiversité</span>
-          </div>
-          <div class="exam-actions">
-            <button class="btn-download">
-              <i class="fas fa-download"></i>
-              Télécharger
-            </button>
-            <button class="btn-preview">Aperçu</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="exam-card">
-        <div class="exam-image">
-          <div class="exam-placeholder">
-            <i class="fas fa-solar-panel"></i>
-            <span style="font-size: 0.8rem;">Énergies Renouvelables</span>
-          </div>
-        </div>
-        <div class="exam-content">
-          <h3 class="exam-title">Examen Énergies Renouvelables</h3>
-          <div class="exam-details">
-            <div class="exam-detail">
-              <i class="fas fa-calendar"></i>
-              <span>Session Janvier 2024</span>
-            </div>
-            <div class="exam-detail">
-              <i class="fas fa-clock"></i>
-              <span>Durée : 2h30</span>
-            </div>
-            <div class="exam-detail">
-              <i class="fas fa-user-graduate"></i>
-              <span>3ème année EDD</span>
-            </div>
-          </div>
-          <div class="exam-tags">
-            <span class="exam-tag">Solaire</span>
-            <span class="exam-tag">Éolien</span>
-          </div>
-          <div class="exam-actions">
-            <button class="btn-download">
-              <i class="fas fa-download"></i>
-              Télécharger
-            </button>
-            <button class="btn-preview">Aperçu</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="exam-card">
-        <div class="exam-image">
-          <div class="exam-placeholder">
-            <i class="fas fa-recycle"></i>
-            <span style="font-size: 0.8rem;">Gestion des Déchets</span>
-          </div>
-        </div>
-        <div class="exam-content">
-          <h3 class="exam-title">Examen Gestion des Déchets</h3>
-          <div class="exam-details">
-            <div class="exam-detail">
-              <i class="fas fa-calendar"></i>
-              <span>Session Juin 2024</span>
-            </div>
-            <div class="exam-detail">
-              <i class="fas fa-clock"></i>
-              <span>Durée : 2h</span>
-            </div>
-            <div class="exam-detail">
-              <i class="fas fa-user-graduate"></i>
-              <span>1ère année EDD</span>
-            </div>
-          </div>
-          <div class="exam-tags">
-            <span class="exam-tag">Recyclage</span>
-            <span class="exam-tag">Compostage</span>
-          </div>
-          <div class="exam-actions">
-            <button class="btn-download">
-              <i class="fas fa-download"></i>
-              Télécharger
-            </button>
-            <button class="btn-preview">Aperçu</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Filière AGAP -->
-  <div class="tab-content" id="agap">
-    <div class="filiere-header">
-      <h2 class="filiere-title">👩‍🌾 Agroalimentaire et Productions Alimentaires (AGAP)</h2>
-      <p class="filiere-description">
-        Ressources pédagogiques en sciences alimentaires et nutrition.
-      </p>
-    </div>
-
-    <div class="exams-grid">
-      <div class="exam-card">
-        <div class="exam-image">
-          <div class="exam-placeholder">
-            <i class="fas fa-wheat-awn"></i>
-            <span style="font-size: 0.8rem;">Sciences Alimentaires</span>
-          </div>
-        </div>
-        <div class="exam-content">
-          <h3 class="exam-title">Examen Sciences Alimentaires</h3>
-          <div class="exam-details">
-            <div class="exam-detail">
-              <i class="fas fa-calendar"></i>
-              <span>Session Mai 2024</span>
-            </div>
-            <div class="exam-detail">
-              <i class="fas fa-clock"></i>
-              <span>Durée : 3h</span>
-            </div>
-            <div class="exam-detail">
-              <i class="fas fa-user-graduate"></i>
-              <span>2ème année AGAP</span>
-            </div>
-          </div>
-          <div class="exam-tags">
-            <span class="exam-tag">Nutrition</span>
-            <span class="exam-tag">Biochimie</span>
-          </div>
-          <div class="exam-actions">
-            <button class="btn-download">
-              <i class="fas fa-download"></i>
-              Télécharger
-            </button>
-            <button class="btn-preview">Aperçu</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="exam-card">
-        <div class="exam-image">
-          <div class="exam-placeholder">
-            <i class="fas fa-industry"></i>
-            <span style="font-size: 0.8rem;">Technologie Alimentaire</span>
-          </div>
-        </div>
-        <div class="exam-content">
-          <h3 class="exam-title">Examen Technologie Alimentaire</h3>
-          <div class="exam-details">
-            <div class="exam-detail">
-              <i class="fas fa-calendar"></i>
-              <span>Session Janvier 2024</span>
-            </div>
-            <div class="exam-detail">
-              <i class="fas fa-clock"></i>
-              <span>Durée : 2h30</span>
-            </div>
-            <div class="exam-detail">
-              <i class="fas fa-user-graduate"></i>
-              <span>3ème année AGAP</span>
-            </div>
-          </div>
-          <div class="exam-tags">
-            <span class="exam-tag">Transformation</span>
-            <span class="exam-tag">Conservation</span>
-          </div>
-          <div class="exam-actions">
-            <button class="btn-download">
-              <i class="fas fa-download"></i>
-              Télécharger
-            </button>
-            <button class="btn-preview">Aperçu</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Filière GC -->
-  <div class="tab-content" id="gc">
-    <div class="filiere-header">
-      <h2 class="filiere-title">🏗️ Génie Civil (GC)</h2>
-      <p class="filiere-description">
-        Examens en construction durable et matériaux écologiques.
-      </p>
-    </div>
-
-    <div class="exams-grid">
-      <div class="exam-card">
-        <div class="exam-image">
-          <div class="exam-placeholder">
-            <i class="fas fa-building"></i>
-            <span style="font-size: 0.8rem;">Construction Durable</span>
-          </div>
-        </div>
-        <div class="exam-content">
-          <h3 class="exam-title">Examen Construction Durable</h3>
-          <div class="exam-details">
-            <div class="exam-detail">
-              <i class="fas fa-calendar"></i>
-              <span>Session Avril 2024</span>
-            </div>
-            <div class="exam-detail">
-              <i class="fas fa-clock"></i>
-              <span>Durée : 4h</span>
-            </div>
-            <div class="exam-detail">
-              <i class="fas fa-user-graduate"></i>
-              <span>3ème année GC</span>
-            </div>
-          </div>
-          <div class="exam-tags">
-            <span class="exam-tag">Matériaux</span>
-            <span class="exam-tag">Écologique</span>
-          </div>
-          <div class="exam-actions">
-            <button class="btn-download">
-              <i class="fas fa-download"></i>
-              Télécharger
-            </button>
-            <button class="btn-preview">Aperçu</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Filière DL -->
-  <div class="tab-content" id="dl">
-    <div class="filiere-header">
-      <h2 class="filiere-title">🌐 Développement Local (DL)</h2>
-      <p class="filiere-description">
-        Ressources en développement communautaire et local.
-      </p>
-    </div>
-
-    <div class="exams-grid">
-      <div class="exam-card">
-        <div class="exam-image">
-          <div class="exam-placeholder">
-            <i class="fas fa-handshake"></i>
-            <span style="font-size: 0.8rem;">Développement Communautaire</span>
-          </div>
-        </div>
-        <div class="exam-content">
-          <h3 class="exam-title">Examen Développement Communautaire</h3>
-          <div class="exam-details">
-            <div class="exam-detail">
-              <i class="fas fa-calendar"></i>
-              <span>Session Mars 2024</span>
-            </div>
-            <div class="exam-detail">
-              <i class="fas fa-clock"></i>
-              <span>Durée : 3h</span>
-            </div>
-            <div class="exam-detail">
-              <i class="fas fa-user-graduate"></i>
-              <span>2ème année DL</span>
-            </div>
-          </div>
-          <div class="exam-tags">
-            <span class="exam-tag">Communauté</span>
-            <span class="exam-tag">Projets</span>
-          </div>
-          <div class="exam-actions">
-            <button class="btn-download">
-              <i class="fas fa-download"></i>
-              Télécharger
-            </button>
-            <button class="btn-preview">Aperçu</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-```
-
+    <div class="year-filter"></div>
+    <div class="matiere-filter"></div>
+    <div class="examens-grid" id="grid-examens"></div>
   </section>
-
-  <footer>
-    <p>&copy; 2025 Green Campus 221 | Réalisé avec 💚</p>
-  </footer>
-
-  <!-- JavaScript intégré -->
 
   <script>
-    // Menu responsive
-    const burger = document.getElementById('burger');
-    const navList = document.querySelector('nav ul');
-
-    burger.addEventListener('click', () => {
-      navList.classList.toggle('active');
-    });
-
-    // Effet fade-in au scroll
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
+    const data = {
+      EDD: {
+        "L1": {
+          "Biologie cellulaire": ["edd_l1_bio_cell_2023.jpg"],
+          "Écologie générale": ["edd_l1_ecologie_2023.jpg"],
+          "Nutrition et développement végétal": ["..."],
+          /* liste complète */
         }
-      });
-    }, { threshold: 0.1 });
+      },
+      AGAP: {/* structure identique */},
+      GC: {/* ... */},
+      DL: {/* ... */}
+    };
 
-    faders.forEach(f => observer.observe(f));
+    const filters = document.querySelectorAll(".filters .filter-btn");
+    const yearContainer = document.querySelector(".year-filter");
+    const matContainer = document.querySelector(".matiere-filter");
+    const grid = document.getElementById("grid-examens");
+    let current = { licence:"EDD", year:null, matiere:null };
 
-    // Gestion des onglets
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Retirer active de tous les boutons et contenus
-        tabBtns.forEach(b => b.classList.remove('active'));
-        tabContents.forEach(content => content.classList.remove('active'));
-
-        // Ajouter active au bouton cliqué et au contenu correspondant
-        btn.classList.add('active');
-        const targetFiliere = btn.getAttribute('data-filiere');
-        document.getElementById(targetFiliere).classList.add('active');
-      });
-    });
-
-    // Fonctionnalité de recherche
-    const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', function() {
-      const searchTerm = this.value.toLowerCase();
-      const examCards = document.querySelectorAll('.exam-card');
-      
-      examCards.forEach(card => {
-        const title = card.querySelector('.exam-title').textContent.toLowerCase();
-        const tags = Array.from(card.querySelectorAll('.exam-tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
-        
-        if (title.includes(searchTerm) || tags.includes(searchTerm)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
+    filters.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filters.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        current.licence = btn.dataset.licence;
+        current.year = null;
+        current.matiere = null;
+        renderYears(); matContainer.innerHTML=""; grid.innerHTML="";
       });
     });
 
-    // Actions des boutons
-    const downloadBtns = document.querySelectorAll('.btn-download');
-    const previewBtns = document.querySelectorAll('.btn-preview');
+    function renderYears(){
+      yearContainer.innerHTML="";
+      const years = Object.keys(data[current.licence]);
+      years.forEach(y => {
+        const b = document.createElement("button");
+        b.textContent = y;
+        b.className = "filter-btn";
+        b.addEventListener("click", () => {
+          current.year = y;
+          current.matiere = null;
+          document.querySelectorAll(".year-filter .filter-btn").forEach(el=>el.classList.remove("active"));
+          b.classList.add("active");
+          renderMatieres();
+          grid.innerHTML="";
+        });
+        yearContainer.appendChild(b);
+      });
+    }
+    function renderMatieres(){
+      matContainer.innerHTML="";
+      const mats = Object.keys(data[current.licence][current.year]);
+      mats.forEach(m => {
+        const b = document.createElement("button");
+        b.textContent = m;
+        b.className = "filter-btn";
+        b.addEventListener("click", () => {
+          current.matiere = m;
+          document.querySelectorAll(".matiere-filter .filter-btn").forEach(el=>el.classList.remove("active"));
+          b.classList.add("active");
+          renderExamens();
+        });
+        matContainer.appendChild(b);
+      });
+    }
+    function renderExamens(){
+      grid.innerHTML="";
+      const examens = data[current.licence][current.year][current.matiere];
+      examens.forEach(src => {
+        const card = document.createElement("div");
+        card.className = "exam-card fade-in";
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = current.matiere + " examen";
+        img.className = "exam-thumb";
+        card.appendChild(img);
+        const cnt = document.createElement("div");
+        cnt.className = "exam-content";
+        const title = document.createElement("h3");
+        title.className = "exam-title";
+        title.textContent = `${current.matiere} – ${current.year}`;
+        const link = document.createElement("a");
+        link.className = "btn-download";
+        link.href = src;
+        link.download = "";
+        link.textContent = "Télécharger";
+        cnt.appendChild(title);
+        cnt.appendChild(link);
+        card.appendChild(cnt);
+        grid.appendChild(card);
+      });
+      // trigger scroll animations
+      setTimeout(() => document.querySelectorAll('.fade-in').forEach(e=>e.classList.add('show')), 50);
+    }
 
-    downloadBtns.forEach(btn => {
-      btn.addEventListener('click', function()
+    // burger responsive
+    document.getElementById('burger').addEventListener('click',()=>document.querySelector('nav ul').classList.toggle('active'));
+
+    // initial load
+    renderYears();
+  </script>
+</body>
+</html>
