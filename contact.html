@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Green Campus 221</title>
+
+  <!-- Icônes dynamiques -->
+
+  <script src="https://kit.fontawesome.com/a2d9d6b3f1.js" crossorigin="anonymous"></script>
+
+  <!-- Style CSS intégré -->
+
+  <style>
+    body.dark {
+      background: #0f172a;
+      color: #f1f5f9;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: #f1f5f9;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+      color: #38bdf8;
+    }
+
+    #burger {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: white;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      border-radius: 1rem;
+      margin: 2rem;
+    }
+
+    .section {
+      padding: 3rem 2rem;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2.5rem;
+      border-radius: 1rem;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2.5rem;
+      border-radius: 1rem;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 0.75rem;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .contact-item:hover {
+      background: rgba(56, 189, 248, 0.1);
+      transform: translateX(10px);
+    }
+
+    .contact-icon {
+      background: #38bdf8;
+      color: #0f172a;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      min-width: 50px;
+    }
+
+    .contact-details h3 {
+      color: #38bdf8;
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+    }
+
+    .contact-details p {
+      color: #cbd5e1;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 2rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 1rem 0;
+      text-decoration: none;
+      width: 100%;
+    }
+
+    .whatsapp-btn:hover {
+      background: #128C7E;
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      color: #38bdf8;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 0.5rem;
+      color: #f1f5f9;
+      font-size: 1rem;
+      transition: all 0.3s;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: #0ea5e9;
+      transform: scale(1.02);
+    }
+
+    .campus-info {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 1rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+
+    .campus-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .stat-item {
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 0.75rem;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #38bdf8;
+      display: block;
+    }
+
+    .stat-label {
+      color: #94a3b8;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .quick-contact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .quick-contact-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #f1f5f9;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .quick-contact-btn:hover {
+      background: rgba(56, 189, 248, 0.1);
+      border-color: #38bdf8;
+      transform: translateY(-2px);
+    }
+
+    .quick-contact-btn i {
+      font-size: 1.5rem;
+      color: #38bdf8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        display: none;
+        background: #1e293b;
+        padding: 1rem;
+        border-radius: 1rem;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      #burger {
+        display: block;
+      }
+
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .campus-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .quick-contact {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animation fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Animation pour les cartes */
+    .contact-item {
+      animation: slideIn 0.6s ease-out forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+
+</head>
+
+<body class="dark">
+  <header>
+    <div class="logo">🌿 Green Campus 221</div>
+    <nav id="nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="filieres.html">Filières</a></li>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="evenements.html">Événements</a></li>
+        <li><a href="ressources.html">Ressources</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div id="burger">&#9776;</div>
+    </nav>
+  </header>
+
+  <section class="hero fade-in">
+    <h1><i class="fas fa-envelope"></i> Nous Contacter</h1>
+    <p>Une question ? Un projet ? N'hésitez pas à nous contacter !</p>
+  </section>
+
+  <section class="campus-info fade-in">
+    <h2><i class="fas fa-university"></i> Green Campus 221</h2>
+    <p>Un campus moderne et écologique au service de l'éducation et de l'innovation</p>
+
+```
+<div class="campus-stats">
+  <div class="stat-item">
+    <span class="stat-number">800+</span>
+    <div class="stat-label">Étudiants</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">45</span>
+    <div class="stat-label">Professeurs</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">4</span>
+    <div class="stat-label">Filières</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">12</span>
+    <div class="stat-label">Clubs Actifs</div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <section class="section fade-in">
+    <div class="contact-container">
+      <!-- Informations de contact -->
+      <div class="contact-info">
+        <h2><i class="fas fa-info-circle"></i> Informations de Contact</h2>
+
+```
+    <div class="contact-item" onclick="openWhatsApp()">
+      <div class="contact-icon">
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <div class="contact-details">
+        <h3>WhatsApp Direct</h3>
+        <p>+221 77 793 42 29</p>
+        <p>Cliquez pour discuter instantanément</p>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="contact-icon">
+        <i class="fas fa-phone"></i>
+      </div>
+      <div class="contact-details">
+        <h3>Téléphone</h3>
+        <p>+221 77 793 42 29</p>
+        <p>Lun - Ven : 8h00 - 18h00</p>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="contact-icon">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <div class="contact-details">
+        <h3>Email</h3>
+        <p>contact@greencampus221.sn</p>
+        <p>Réponse sous 24h</p>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="contact-icon">
+        <i class="fas fa-map-marker-alt"></i>
+      </div>
+      <div class="contact-details">
+        <h3>Adresse</h3>
+        <p>Campus Green 221</p>
+        <p>Dakar, Sénégal</p>
+      </div>
+    </div>
+
+    <a href="#" class="whatsapp-btn" onclick="openWhatsApp(); return false;">
+      <i class="fab fa-whatsapp"></i>
+      Discuter sur WhatsApp
+    </a>
+  </div>
+
+  <!-- Formulaire de contact -->
+  <div class="contact-form">
+    <h2><i class="fas fa-paper-plane"></i> Envoyez-nous un Message</h2>
+    
+    <form id="contactForm">
+      <div class="form-group">
+        <label for="name">Nom Complet *</label>
+        <input type="text" id="name" name="name" required placeholder="Votre nom complet">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required placeholder="votre.email@exemple.com">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Téléphone</label>
+        <input type="tel" id="phone" name="phone" placeholder="+221 XX XXX XX XX">
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Sujet *</label>
+        <select id="subject" name="subject" required>
+          <option value="">Choisissez un sujet</option>
+          <option value="admission">Demande d'admission</option>
+          <option value="information">Demande d'information</option>
+          <option value="stage">Opportunités de stage</option>
+          <option value="partenariat">Partenariat</option>
+          <option value="autre">Autre</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="filiere">Filière d'intérêt</label>
+        <select id="filiere" name="filiere">
+          <option value="">Sélectionnez une filière</option>
+          <option value="edd">Environnement et Développement Durable (EDD)</option>
+          <option value="agap">Agroalimentaire et Productions Alimentaires (AGAP)</option>
+          <option value="gc">Génie Civil (GC)</option>
+          <option value="dl">Développement Local (DL)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message *</label>
+        <textarea id="message" name="message" required placeholder="Décrivez votre demande en détail..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        <i class="fas fa-paper-plane"></i>
+        Envoyer le Message
+      </button>
+    </form>
+  </div>
+</div>
+```
+
+  </section>
+
+  <section class="section fade-in">
+    <h2 style="text-align: center; margin-bottom: 2rem;"><i class="fas fa-rocket"></i> Contact Rapide</h2>
+    <div class="quick-contact">
+      <a href="#" class="quick-contact-btn" onclick="openWhatsApp(); return false;">
+        <i class="fab fa-whatsapp"></i>
+        <div>
+          <strong>WhatsApp</strong>
+          <div style="font-size: 0.9rem; color: #94a3b8;">Discussion instantanée</div>
+        </div>
+      </a>
+
+```
+  <a href="tel:+221777934229" class="quick-contact-btn">
+    <i class="fas fa-phone"></i>
+    <div>
+      <strong>Appel Direct</strong>
+      <div style="font-size: 0.9rem; color: #94a3b8;">+221 77 793 42 29</div>
+    </div>
+  </a>
+  
+  <a href="mailto:contact@greencampus221.sn" class="quick-contact-btn">
+    <i class="fas fa-envelope"></i>
+    <div>
+      <strong>Email</strong>
+      <div style="font-size: 0.9rem; color: #94a3b8;">contact@greencampus221.sn</div>
+    </div>
+  </a>
+</div>
+```
+
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Green Campus 221 | Réalisé avec 💚</p>
+  </footer>
+
+  <!-- JavaScript intégré -->
+
+  <script>
+    // Menu responsive
+    const burger = document.getElementById('burger');
+    const navList = document.querySelector('nav ul');
+
+    burger.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+
+    // Fonction pour ouvrir WhatsApp avec message pré-rempli
+    function openWhatsApp() {
+      const phoneNumber = "221777934229"; // Votre numéro sans le +
+      const message = "Bonjour ! Je vous contacte depuis le site Green Campus 221. J'aimerais avoir des informations sur...";
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+      
+      // Ouvrir WhatsApp dans un nouvel onglet
+      window.open(whatsappURL, '_blank');
+    }
+
+    // Gestion du formulaire de contact
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Récupérer les données du formulaire
+      const formData = new FormData(contactForm);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const phone = formData.get('phone');
+      const subject = formData.get('subject');
+      const filiere = formData.get('filiere');
+      const message = formData.get('message');
+      
+      // Créer le message WhatsApp personnalisé
+      let whatsappMessage = `🌿 *Nouveau message depuis Green Campus 221*\n\n`;
+      whatsappMessage += `👤 *Nom:* ${name}\n`;
+      whatsappMessage += `📧 *Email:* ${email}\n`;
+      if (phone) whatsappMessage += `📱 *Téléphone:* ${phone}\n`;
+      whatsappMessage += `📋 *Sujet:* ${subject}\n`;
+      if (filiere) whatsappMessage += `🎓 *Filière d'intérêt:* ${filiere}\n`;
+      whatsappMessage += `\n💬 *Message:*\n${message}`;
+      
+      // Encoder le message pour l'URL
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      const phoneNumber = "221777934229";
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+      
+      // Ouvrir WhatsApp avec le message
+      window.open(whatsappURL, '_blank');
+      
+      // Réinitialiser le formulaire
+      contactForm.reset();
+      
+      // Afficher un message de confirmation
+      alert('Redirection vers WhatsApp en cours... Votre message a été pré-rempli !');
+    });
+
+    // Effet fade-in au scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    faders.forEach(f => observer.observe(f));
+
+    // Animation des éléments de contact au hover
+    const contactItems = document.querySelectorAll('.contact-item');
+    contactItems.forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateX(10px) scale(1.02)';
+      });
+      
+      item.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateX(0) scale(1)';
+      });
+    });
+  </script>
+
+</body>
+</html>
