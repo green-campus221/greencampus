@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -6,9 +7,11 @@
   <title>Ressources - Green Campus 221</title>
 
   <!-- Icônes dynamiques -->
+
   <script src="https://kit.fontawesome.com/a2d9d6b3f1.js" crossorigin="anonymous"></script>
 
   <!-- Style CSS intégré -->
+
   <style>
     body.dark {
       background: #0f172a;
@@ -319,6 +322,7 @@
       border-radius: 2rem;
       color: #f1f5f9;
       font-size: 1rem;
+      box-sizing: border-box;
     }
 
     .search-input::placeholder {
@@ -386,6 +390,7 @@
       transform: translateY(0);
     }
   </style>
+
 </head>
 
 <body class="dark">
@@ -447,378 +452,385 @@
       <button class="tab-btn" data-filiere="dl">🌐 DL</button>
     </div>
 
-    <div class="resources-container">
-      <!-- Filière EDD -->
-      <div class="tab-content active" id="edd">
-        <div class="filiere-header">
-          <h2 class="filiere-title">🌱 Environnement et Développement Durable (EDD)</h2>
-          <p class="filiere-description">
-            Retrouvez tous les examens et ressources pédagogiques de la filière EDD, couvrant l'écologie, les énergies renouvelables et la gestion environnementale.
-          </p>
+```
+<div class="resources-container">
+  <!-- Filière EDD -->
+  <div class="tab-content active" id="edd">
+    <div class="filiere-header">
+      <h2 class="filiere-title">🌱 Environnement et Développement Durable (EDD)</h2>
+      <p class="filiere-description">
+        Retrouvez tous les examens et ressources pédagogiques de la filière EDD.
+      </p>
+    </div>
+
+    <div class="exams-grid">
+      <div class="exam-card">
+        <div class="exam-image">
+          <img src="assets/images/exams/edd-ecologie.jpg" alt="Examen Écologie" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="exam-placeholder" style="display: none;">
+            <i class="fas fa-leaf"></i>
+            <span style="font-size: 0.8rem;">Écologie Générale</span>
+          </div>
         </div>
-
-        <div class="exams-grid">
-          <div class="exam-card">
-            <div class="exam-image">
-              <img src="assets/images/exams/edd-ecologie.jpg" alt="Examen Écologie" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="exam-placeholder" style="display: none;">
-                <i class="fas fa-leaf"></i>
-                <span style="font-size: 0.8rem;">Écologie Générale</span>
-              </div>
+        <div class="exam-content">
+          <h3 class="exam-title">Examen Écologie Générale</h3>
+          <div class="exam-details">
+            <div class="exam-detail">
+              <i class="fas fa-calendar"></i>
+              <span>Session Juin 2024</span>
             </div>
-            <div class="exam-content">
-              <h3 class="exam-title">Examen Écologie Générale</h3>
-              <div class="exam-details">
-                <div class="exam-detail">
-                  <i class="fas fa-calendar"></i>
-                  <span>Session Juin 2024</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-clock"></i>
-                  <span>Durée : 3h</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-user-graduate"></i>
-                  <span>2ème année EDD</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-download"></i>
-                  <span>127 téléchargements</span>
-                </div>
-              </div>
-              <div class="exam-tags">
-                <span class="exam-tag">Écosystèmes</span>
-                <span class="exam-tag">Biodiversité</span>
-              </div>
-              <div class="exam-actions">
-                <button class="btn-download">
-                  <i class="fas fa-download"></i>
-                  Télécharger
-                </button>
-                <button class="btn-preview">Aperçu</button>
-              </div>
+            <div class="exam-detail">
+              <i class="fas fa-clock"></i>
+              <span>Durée : 3h</span>
+            </div>
+            <div class="exam-detail">
+              <i class="fas fa-user-graduate"></i>
+              <span>2ème année EDD</span>
             </div>
           </div>
-
-          <div class="exam-card">
-            <div class="exam-image">
-              <img src="assets/images/exams/edd-energie.jpg" alt="Examen Énergies Renouvelables" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="exam-placeholder" style="display: none;">
-                <i class="fas fa-solar-panel"></i>
-                <span style="font-size: 0.8rem;">Énergies Renouvelables</span>
-              </div>
-            </div>
-            <div class="exam-content">
-              <h3 class="exam-title">Examen Énergies Renouvelables</h3>
-              <div class="exam-details">
-                <div class="exam-detail">
-                  <i class="fas fa-calendar"></i>
-                  <span>Session Janvier 2024</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-clock"></i>
-                  <span>Durée : 2h30</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-user-graduate"></i>
-                  <span>3ème année EDD</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-download"></i>
-                  <span>89 téléchargements</span>
-                </div>
-              </div>
-              <div class="exam-tags">
-                <span class="exam-tag">Solaire</span>
-                <span class="exam-tag">Éolien</span>
-                <span class="exam-tag">Hydraulique</span>
-              </div>
-              <div class="exam-actions">
-                <button class="btn-download">
-                  <i class="fas fa-download"></i>
-                  Télécharger
-                </button>
-                <button class="btn-preview">Aperçu</button>
-              </div>
-            </div>
+          <div class="exam-tags">
+            <span class="exam-tag">Écosystèmes</span>
+            <span class="exam-tag">Biodiversité</span>
           </div>
-
-          <div class="exam-card">
-            <div class="exam-image">
-              <img src="assets/images/exams/edd-dechets.jpg" alt="Examen Gestion des Déchets" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="exam-placeholder" style="display: none;">
-                <i class="fas fa-recycle"></i>
-                <span style="font-size: 0.8rem;">Gestion des Déchets</span>
-              </div>
-            </div>
-            <div class="exam-content">
-              <h3 class="exam-title">Examen Gestion des Déchets</h3>
-              <div class="exam-details">
-                <div class="exam-detail">
-                  <i class="fas fa-calendar"></i>
-                  <span>Session Juin 2024</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-clock"></i>
-                  <span>Durée : 2h</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-user-graduate"></i>
-                  <span>1ère année EDD</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-download"></i>
-                  <span>156 téléchargements</span>
-                </div>
-              </div>
-              <div class="exam-tags">
-                <span class="exam-tag">Recyclage</span>
-                <span class="exam-tag">Compostage</span>
-              </div>
-              <div class="exam-actions">
-                <button class="btn-download">
-                  <i class="fas fa-download"></i>
-                  Télécharger
-                </button>
-                <button class="btn-preview">Aperçu</button>
-              </div>
-            </div>
+          <div class="exam-actions">
+            <button class="btn-download">
+              <i class="fas fa-download"></i>
+              Télécharger
+            </button>
+            <button class="btn-preview">Aperçu</button>
           </div>
         </div>
       </div>
 
-      <!-- Filière AGAP -->
-      <div class="tab-content" id="agap">
-        <div class="filiere-header">
-          <h2 class="filiere-title">👩‍🌾 Agroalimentaire et Productions Alimentaires (AGAP)</h2>
-          <p class="filiere-description">
-            Ressources pédagogiques en sciences alimentaires, nutrition, technologies agroalimentaires et sécurité alimentaire.
-          </p>
+      <div class="exam-card">
+        <div class="exam-image">
+          <div class="exam-placeholder">
+            <i class="fas fa-solar-panel"></i>
+            <span style="font-size: 0.8rem;">Énergies Renouvelables</span>
+          </div>
         </div>
-
-        <div class="exams-grid">
-          <div class="exam-card">
-            <div class="exam-image">
-              <img src="assets/images/exams/agap-sciences.jpg" alt="Examen Sciences Alimentaires" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="exam-placeholder" style="display: none;">
-                <i class="fas fa-wheat-awn"></i>
-                <span style="font-size: 0.8rem;">Sciences Alimentaires</span>
-              </div>
+        <div class="exam-content">
+          <h3 class="exam-title">Examen Énergies Renouvelables</h3>
+          <div class="exam-details">
+            <div class="exam-detail">
+              <i class="fas fa-calendar"></i>
+              <span>Session Janvier 2024</span>
             </div>
-            <div class="exam-content">
-              <h3 class="exam-title">Examen Sciences Alimentaires</h3>
-              <div class="exam-details">
-                <div class="exam-detail">
-                  <i class="fas fa-calendar"></i>
-                  <span>Session Mai 2024</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-clock"></i>
-                  <span>Durée : 3h</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-user-graduate"></i>
-                  <span>2ème année AGAP</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-download"></i>
-                  <span>201 téléchargements</span>
-                </div>
-              </div>
-              <div class="exam-tags">
-                <span class="exam-tag">Nutrition</span>
-                <span class="exam-tag">Biochimie</span>
-              </div>
-              <div class="exam-actions">
-                <button class="btn-download">
-                  <i class="fas fa-download"></i>
-                  Télécharger
-                </button>
-                <button class="btn-preview">Aperçu</button>
-              </div>
+            <div class="exam-detail">
+              <i class="fas fa-clock"></i>
+              <span>Durée : 2h30</span>
+            </div>
+            <div class="exam-detail">
+              <i class="fas fa-user-graduate"></i>
+              <span>3ème année EDD</span>
             </div>
           </div>
-
-          <div class="exam-card">
-            <div class="exam-image">
-              <img src="assets/images/exams/agap-techno.jpg" alt="Examen Technologie Alimentaire" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="exam-placeholder" style="display: none;">
-                <i class="fas fa-industry"></i>
-                <span style="font-size: 0.8rem;">Technologie Alimentaire</span>
-              </div>
-            </div>
-            <div class="exam-content">
-              <h3 class="exam-title">Examen Technologie Alimentaire</h3>
-              <div class="exam-details">
-                <div class="exam-detail">
-                  <i class="fas fa-calendar"></i>
-                  <span>Session Janvier 2024</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-clock"></i>
-                  <span>Durée : 2h30</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-user-graduate"></i>
-                  <span>3ème année AGAP</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-download"></i>
-                  <span>143 téléchargements</span>
-                </div>
-              </div>
-              <div class="exam-tags">
-                <span class="exam-tag">Transformation</span>
-                <span class="exam-tag">Conservation</span>
-              </div>
-              <div class="exam-actions">
-                <button class="btn-download">
-                  <i class="fas fa-download"></i>
-                  Télécharger
-                </button>
-                <button class="btn-preview">Aperçu</button>
-              </div>
-            </div>
+          <div class="exam-tags">
+            <span class="exam-tag">Solaire</span>
+            <span class="exam-tag">Éolien</span>
           </div>
-
-          <div class="exam-card">
-            <div class="exam-image">
-              <img src="assets/images/exams/agap-agriculture.jpg" alt="Examen Agriculture Durable" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="exam-placeholder" style="display: none;">
-                <i class="fas fa-seedling"></i>
-                <span style="font-size: 0.8rem;">Agriculture Durable</span>
-              </div>
-            </div>
-            <div class="exam-content">
-              <h3 class="exam-title">Examen Agriculture Durable</h3>
-              <div class="exam-details">
-                <div class="exam-detail">
-                  <i class="fas fa-calendar"></i>
-                  <span>Session Juin 2024</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-clock"></i>
-                  <span>Durée : 2h</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-user-graduate"></i>
-                  <span>1ère année AGAP</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-download"></i>
-                  <span>178 téléchargements</span>
-                </div>
-              </div>
-              <div class="exam-tags">
-                <span class="exam-tag">Permaculture</span>
-                <span class="exam-tag">Bio</span>
-              </div>
-              <div class="exam-actions">
-                <button class="btn-download">
-                  <i class="fas fa-download"></i>
-                  Télécharger
-                </button>
-                <button class="btn-preview">Aperçu</button>
-              </div>
-            </div>
+          <div class="exam-actions">
+            <button class="btn-download">
+              <i class="fas fa-download"></i>
+              Télécharger
+            </button>
+            <button class="btn-preview">Aperçu</button>
           </div>
         </div>
       </div>
 
-      <!-- Filière GC -->
-      <div class="tab-content" id="gc">
-        <div class="filiere-header">
-          <h2 class="filiere-title">🏗️ Génie Civil (GC)</h2>
-          <p class="filiere-description">
-            Examens et cours en construction durable, matériaux écologiques, structures et infrastructures respectueuses de l'environnement.
-          </p>
+      <div class="exam-card">
+        <div class="exam-image">
+          <div class="exam-placeholder">
+            <i class="fas fa-recycle"></i>
+            <span style="font-size: 0.8rem;">Gestion des Déchets</span>
+          </div>
         </div>
-
-        <div class="exams-grid">
-          <div class="exam-card">
-            <div class="exam-image">
-              <img src="assets/images/exams/gc-construction.jpg" alt="Examen Construction Durable" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="exam-placeholder" style="display: none;">
-                <i class="fas fa-building"></i>
-                <span style="font-size: 0.8rem;">Construction Durable</span>
-              </div>
+        <div class="exam-content">
+          <h3 class="exam-title">Examen Gestion des Déchets</h3>
+          <div class="exam-details">
+            <div class="exam-detail">
+              <i class="fas fa-calendar"></i>
+              <span>Session Juin 2024</span>
             </div>
-            <div class="exam-content">
-              <h3 class="exam-title">Examen Construction Durable</h3>
-              <div class="exam-details">
-                <div class="exam-detail">
-                  <i class="fas fa-calendar"></i>
-                  <span>Session Avril 2024</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-clock"></i>
-                  <span>Durée : 4h</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-user-graduate"></i>
-                  <span>3ème année GC</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-download"></i>
-                  <span>234 téléchargements</span>
-                </div>
-              </div>
-              <div class="exam-tags">
-                <span class="exam-tag">Matériaux</span>
-                <span class="exam-tag">Écologique</span>
-              </div>
-              <div class="exam-actions">
-                <button class="btn-download">
-                  <i class="fas fa-download"></i>
-                  Télécharger
-                </button>
-                <button class="btn-preview">Aperçu</button>
-              </div>
+            <div class="exam-detail">
+              <i class="fas fa-clock"></i>
+              <span>Durée : 2h</span>
+            </div>
+            <div class="exam-detail">
+              <i class="fas fa-user-graduate"></i>
+              <span>1ère année EDD</span>
             </div>
           </div>
+          <div class="exam-tags">
+            <span class="exam-tag">Recyclage</span>
+            <span class="exam-tag">Compostage</span>
+          </div>
+          <div class="exam-actions">
+            <button class="btn-download">
+              <i class="fas fa-download"></i>
+              Télécharger
+            </button>
+            <button class="btn-preview">Aperçu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <div class="exam-card">
-            <div class="exam-image">
-              <img src="assets/images/exams/gc-resistance.jpg" alt="Examen Résistance des Matériaux" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="exam-placeholder" style="display: none;">
-                <i class="fas fa-hammer"></i>
-                <span style="font-size: 0.8rem;">Résistance Matériaux</span>
-              </div>
+  <!-- Filière AGAP -->
+  <div class="tab-content" id="agap">
+    <div class="filiere-header">
+      <h2 class="filiere-title">👩‍🌾 Agroalimentaire et Productions Alimentaires (AGAP)</h2>
+      <p class="filiere-description">
+        Ressources pédagogiques en sciences alimentaires et nutrition.
+      </p>
+    </div>
+
+    <div class="exams-grid">
+      <div class="exam-card">
+        <div class="exam-image">
+          <div class="exam-placeholder">
+            <i class="fas fa-wheat-awn"></i>
+            <span style="font-size: 0.8rem;">Sciences Alimentaires</span>
+          </div>
+        </div>
+        <div class="exam-content">
+          <h3 class="exam-title">Examen Sciences Alimentaires</h3>
+          <div class="exam-details">
+            <div class="exam-detail">
+              <i class="fas fa-calendar"></i>
+              <span>Session Mai 2024</span>
             </div>
-            <div class="exam-content">
-              <h3 class="exam-title">Examen Résistance des Matériaux</h3>
-              <div class="exam-details">
-                <div class="exam-detail">
-                  <i class="fas fa-calendar"></i>
-                  <span>Session Février 2024</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-clock"></i>
-                  <span>Durée : 3h30</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-user-graduate"></i>
-                  <span>2ème année GC</span>
-                </div>
-                <div class="exam-detail">
-                  <i class="fas fa-download"></i>
-                  <span>189 téléchargements</span>
-                </div>
-              </div>
-              <div class="exam-tags">
-                <span class="exam-tag">Calcul</span>
-                <span class="exam-tag">Structure</span>
-              </div>
-              <div class="exam-actions">
-                <button class="btn-download">
-                  <i class="fas fa-download"></i>
-                  Télécharger
-                </button>
-                <button class="btn-preview">Aperçu</button>
-              </div>
+            <div class="exam-detail">
+              <i class="fas fa-clock"></i>
+              <span>Durée : 3h</span>
+            </div>
+            <div class="exam-detail">
+              <i class="fas fa-user-graduate"></i>
+              <span>2ème année AGAP</span>
             </div>
           </div>
+          <div class="exam-tags">
+            <span class="exam-tag">Nutrition</span>
+            <span class="exam-tag">Biochimie</span>
+          </div>
+          <div class="exam-actions">
+            <button class="btn-download">
+              <i class="fas fa-download"></i>
+              Télécharger
+            </button>
+            <button class="btn-preview">Aperçu</button>
+          </div>
+        </div>
+      </div>
 
-          <div class="exam-card">
-            <div class="exam-image">
-              <img src="​​​​​​​​​​​​​​​​
+      <div class="exam-card">
+        <div class="exam-image">
+          <div class="exam-placeholder">
+            <i class="fas fa-industry"></i>
+            <span style="font-size: 0.8rem;">Technologie Alimentaire</span>
+          </div>
+        </div>
+        <div class="exam-content">
+          <h3 class="exam-title">Examen Technologie Alimentaire</h3>
+          <div class="exam-details">
+            <div class="exam-detail">
+              <i class="fas fa-calendar"></i>
+              <span>Session Janvier 2024</span>
+            </div>
+            <div class="exam-detail">
+              <i class="fas fa-clock"></i>
+              <span>Durée : 2h30</span>
+            </div>
+            <div class="exam-detail">
+              <i class="fas fa-user-graduate"></i>
+              <span>3ème année AGAP</span>
+            </div>
+          </div>
+          <div class="exam-tags">
+            <span class="exam-tag">Transformation</span>
+            <span class="exam-tag">Conservation</span>
+          </div>
+          <div class="exam-actions">
+            <button class="btn-download">
+              <i class="fas fa-download"></i>
+              Télécharger
+            </button>
+            <button class="btn-preview">Aperçu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filière GC -->
+  <div class="tab-content" id="gc">
+    <div class="filiere-header">
+      <h2 class="filiere-title">🏗️ Génie Civil (GC)</h2>
+      <p class="filiere-description">
+        Examens en construction durable et matériaux écologiques.
+      </p>
+    </div>
+
+    <div class="exams-grid">
+      <div class="exam-card">
+        <div class="exam-image">
+          <div class="exam-placeholder">
+            <i class="fas fa-building"></i>
+            <span style="font-size: 0.8rem;">Construction Durable</span>
+          </div>
+        </div>
+        <div class="exam-content">
+          <h3 class="exam-title">Examen Construction Durable</h3>
+          <div class="exam-details">
+            <div class="exam-detail">
+              <i class="fas fa-calendar"></i>
+              <span>Session Avril 2024</span>
+            </div>
+            <div class="exam-detail">
+              <i class="fas fa-clock"></i>
+              <span>Durée : 4h</span>
+            </div>
+            <div class="exam-detail">
+              <i class="fas fa-user-graduate"></i>
+              <span>3ème année GC</span>
+            </div>
+          </div>
+          <div class="exam-tags">
+            <span class="exam-tag">Matériaux</span>
+            <span class="exam-tag">Écologique</span>
+          </div>
+          <div class="exam-actions">
+            <button class="btn-download">
+              <i class="fas fa-download"></i>
+              Télécharger
+            </button>
+            <button class="btn-preview">Aperçu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filière DL -->
+  <div class="tab-content" id="dl">
+    <div class="filiere-header">
+      <h2 class="filiere-title">🌐 Développement Local (DL)</h2>
+      <p class="filiere-description">
+        Ressources en développement communautaire et local.
+      </p>
+    </div>
+
+    <div class="exams-grid">
+      <div class="exam-card">
+        <div class="exam-image">
+          <div class="exam-placeholder">
+            <i class="fas fa-handshake"></i>
+            <span style="font-size: 0.8rem;">Développement Communautaire</span>
+          </div>
+        </div>
+        <div class="exam-content">
+          <h3 class="exam-title">Examen Développement Communautaire</h3>
+          <div class="exam-details">
+            <div class="exam-detail">
+              <i class="fas fa-calendar"></i>
+              <span>Session Mars 2024</span>
+            </div>
+            <div class="exam-detail">
+              <i class="fas fa-clock"></i>
+              <span>Durée : 3h</span>
+            </div>
+            <div class="exam-detail">
+              <i class="fas fa-user-graduate"></i>
+              <span>2ème année DL</span>
+            </div>
+          </div>
+          <div class="exam-tags">
+            <span class="exam-tag">Communauté</span>
+            <span class="exam-tag">Projets</span>
+          </div>
+          <div class="exam-actions">
+            <button class="btn-download">
+              <i class="fas fa-download"></i>
+              Télécharger
+            </button>
+            <button class="btn-preview">Aperçu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Green Campus 221 | Réalisé avec 💚</p>
+  </footer>
+
+  <!-- JavaScript intégré -->
+
+  <script>
+    // Menu responsive
+    const burger = document.getElementById('burger');
+    const navList = document.querySelector('nav ul');
+
+    burger.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+
+    // Effet fade-in au scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    faders.forEach(f => observer.observe(f));
+
+    // Gestion des onglets
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Retirer active de tous les boutons et contenus
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Ajouter active au bouton cliqué et au contenu correspondant
+        btn.classList.add('active');
+        const targetFiliere = btn.getAttribute('data-filiere');
+        document.getElementById(targetFiliere).classList.add('active');
+      });
+    });
+
+    // Fonctionnalité de recherche
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      const examCards = document.querySelectorAll('.exam-card');
+      
+      examCards.forEach(card => {
+        const title = card.querySelector('.exam-title').textContent.toLowerCase();
+        const tags = Array.from(card.querySelectorAll('.exam-tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+        
+        if (title.includes(searchTerm) || tags.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Actions des boutons
+    const downloadBtns = document.querySelectorAll('.btn-download');
+    const previewBtns = document.querySelectorAll('.btn-preview');
+
+    downloadBtns.forEach(btn => {
+      btn.addEventListener('click', function()
