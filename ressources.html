@@ -426,7 +426,6 @@
       </div>
     </div>
 
-```
 <!-- Bouton retour -->
 <button class="back-btn" id="backBtn">
   <i class="fas fa-arrow-left"></i> Retour
@@ -443,13 +442,13 @@
   <div class="filiere-card" data-filiere="agap">
     <div class="filiere-icon">👩‍🌾</div>
     <div class="filiere-name">AGAP</div>
-    <div class="filiere-full-name">Agroalimentaire et Productions Alimentaires</div>
+    <div class="filiere-full-name">Aménagement et Gestion des Aires Protégées</div>
   </div>
   
   <div class="filiere-card" data-filiere="gc">
     <div class="filiere-icon">🏗️</div>
     <div class="filiere-name">GC</div>
-    <div class="filiere-full-name">Génie Civil</div>
+    <div class="filiere-full-name">Géomatique et Climatologie</div>
   </div>
   
   <div class="filiere-card" data-filiere="dl">
@@ -486,7 +485,6 @@
     <!-- Les examens seront générés dynamiquement ici -->
   </div>
 </div>
-```
 
   </section>
 
@@ -514,26 +512,26 @@
       edd: {
         1: [
           { name: "Écologie Générale", image: "assets/images/exams/edd/l1-ecologie.jpg", date: "Juin 2024" },
-          { name: "Mathématiques Environnementales", image: "assets/images/exams/edd/l1-maths.jpg", date: "Juin 2024" },
+          { name: "Microbiologie Environnementales", image: "assets/images/exams/edd/l1-maths.jpg", date: "Juin 2024" },
           { name: "Chimie de l'Environnement", image: "assets/images/exams/edd/l1-chimie.jpg", date: "Janvier 2024" },
-          { name: "Introduction au Développement Durable", image: "assets/images/exams/edd/l1-dd.jpg", date: "Juin 2024" }
+          { name: "Principe du Développement Durable", image: "assets/images/exams/edd/l1-dd.jpg", date: "Juin 2024" }
         ],
         2: [
-          { name: "Énergies Renouvelables", image: "assets/images/exams/edd/l2-energie.jpg", date: "Mai 2024" },
-          { name: "Gestion des Déchets", image: "assets/images/exams/edd/l2-dechets.jpg", date: "Janvier 2024" },
-          { name: "Biodiversité et Conservation", image: "assets/images/exams/edd/l2-biodiversite.jpg", date: "Juin 2024" },
-          { name: "Économie Verte", image: "assets/images/exams/edd/l2-economie.jpg", date: "Mai 2024" }
+          { name: "Techniques d'échantillonnage", image: "assets/images/exams/edd/l2-energie.jpg", date: "Mai 2024" },
+          { name: "Biostatique", image: "assets/images/exams/edd/l2-dechets.jpg", date: "Janvier 2024" },
+          { name: "Télédetection", image: "assets/images/exams/edd/l2-biodiversite.jpg", date: "Juin 2024" },
+          { name: "Cartographie", image: "assets/images/exams/edd/l2-economie.jpg", date: "Mai 2024" }
         ],
         3: [
-          { name: "Audit Environnemental", image: "assets/images/exams/edd/l3-audit.jpg", date: "Avril 2024" },
-          { name: "Politique Environnementale", image: "assets/images/exams/edd/l3-politique.jpg", date: "Juin 2024" },
-          { name: "Projet de Fin d'Études", image: "assets/images/exams/edd/l3-projet.jpg", date: "Juin 2024" }
+          { name: "Écosystémes terrestres", image: "assets/images/exams/edd/l3-audit.jpg", date: "Avril 2024" },
+          { name: "Zones humides", image: "assets/images/exams/edd/l3-politique.jpg", date: "Juin 2024" },
+          { name: "Écosystémes aquatiques", image: "assets/images/exams/edd/l3-projet.jpg", date: "Juin 2024" }
         ]
       },
       agap: {
         1: [
           { name: "Sciences Alimentaires de Base", image: "assets/images/exams/agap/l1-sciences.jpg", date: "Juin 2024" },
-          { name: "Biologie Végétale", image: "assets/images/exams/agap/l1-biologie.jpg", date: "Janvier 2024" },
+          { name: "Biodiversité Végétale", image: "assets/images/exams/agap/l1-biologie.jpg", date: "Janvier 2024" },
           { name: "Chimie Organique", image: "assets/images/exams/agap/l1-chimie.jpg", date: "Juin 2024" }
         ],
         2: [
@@ -649,8 +647,8 @@
       const examens = examensData[selectedFiliere][selectedYear];
       const filiereNames = {
         edd: "Environnement et Développement Durable",
-        agap: "Agroalimentaire et Productions Alimentaires",
-        gc: "Génie Civil",
+        agap: "Aménagement et Gestion des Aires Protégées",
+        gc: "Géomatique et Climatologie",
         dl: "Développement Local"
       };
       
