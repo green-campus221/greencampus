@@ -118,6 +118,244 @@
       opacity: 0.7;
     }
 
+    /* Styles pour le jeu */
+    .game-container {
+      margin: 3rem auto;
+      max-width: 900px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .game-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .game-header h2 {
+      color: #38bdf8;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .game-stats {
+      display: flex;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 0.8rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat {
+      text-align: center;
+      flex: 1;
+    }
+
+    .stat-value {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-top: 0.3rem;
+    }
+
+    .game-field {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .plot {
+      aspect-ratio: 1;
+      background: #1f2937;
+      border-radius: 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s;
+      overflow: hidden;
+    }
+
+    .plot:hover {
+      transform: scale(1.05);
+      background: #2d3748;
+    }
+
+    .plot.planted::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30%;
+      background: #064e3b;
+      z-index: 1;
+    }
+
+    .plot-icon {
+      z-index: 2;
+      position: relative;
+    }
+
+    .game-actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .action-btn {
+      background: #1e40af;
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .action-btn:hover {
+      background: #1e3a8a;
+      transform: translateY(-2px);
+    }
+
+    .action-btn:disabled {
+      background: #475569;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .season-indicator {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+      background: #1e293b;
+      margin: 10% auto;
+      padding: 2rem;
+      border-radius: 1rem;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      right: 1.5rem;
+      top: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .crop-option {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .crop-option:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .crop-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-option {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+    }
+
+    .resource-option:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .progress-bar {
+      height: 1rem;
+      background: #334155;
+      border-radius: 1rem;
+      margin-top: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, #38bdf8, #0ea5e9);
+      border-radius: 1rem;
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    .game-message {
+      text-align: center;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      background: rgba(0, 0, 0, 0.2);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .tooltip {
+      display: none;
+      position: absolute;
+      background: #334155;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      width: 180px;
+      z-index: 100;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      font-size: 0.8rem;
+      pointer-events: none;
+    }
+
     @media (max-width: 768px) {
       nav ul {
         flex-direction: column;
@@ -137,6 +375,10 @@
       #burger {
         display: block;
         color: white;
+      }
+
+      .game-field {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -175,25 +417,742 @@
       </div>
       <div class="filiere-card">
         <h2>👥 DL</h2>
-        <p>La filière Dévelopement Local forme des acteurs capables d’accompagner les collectivités locales dans leur développement économique, social et territorial.</p>
+        <p>La filière Dévelopement Local forme des acteurs capables d'accompagner les collectivités locales dans leur développement économique, social et territorial.</p>
       </div>
     </div>
 
-    <div style="text-align: center;">
-      <a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> Retour à l’accueil</a>
+    <!-- Début du jeu de ferme durable -->
+    <div class="game-container">
+      <div class="game-header">
+        <h2>🌾 Créez une ferme durable</h2>
+        <p>Gérez votre ferme en équilibrant productivité, durabilité et rentabilité !</p>
+      </div>
+
+      <div class="season-indicator">
+        <span id="season-icon">🌱</span> Saison: <span id="current-season">Printemps</span> - Jour: <span id="current-day">1</span>
+      </div>
+
+      <div class="game-stats">
+        <div class="stat">
+          <div>💰 Budget</div>
+          <div class="stat-value" id="money">1000€</div>
+        </div>
+        <div class="stat">
+          <div>🌿 Durabilité</div>
+          <div class="stat-value" id="sustainability">50%</div>
+        </div>
+        <div class="stat">
+          <div>🐝 Biodiversité</div>
+          <div class="stat-value" id="biodiversity">20%</div>
+        </div>
+        <div class="stat">
+          <div>🚜 Productivité</div>
+          <div class="stat-value" id="productivity">0%</div>
+        </div>
+      </div>
+
+      <div class="game-message" id="game-message">
+        Bienvenue dans votre ferme ! Commencez par planter des cultures dans vos parcelles.
+      </div>
+
+      <div class="game-field" id="game-field">
+        <div class="plot" data-plot="0"><span class="plot-icon">🟫</span></div>
+        <div class="plot" data-plot="1"><span class="plot-icon">🟫</span></div>
+        <div class="plot" data-plot="2"><span class="plot-icon">🟫</span></div>
+        <div class="plot" data-plot="3"><span class="plot-icon">🟫</span></div>
+        <div class="plot" data-plot="4"><span class="plot-icon">🟫</span></div>
+        <div class="plot" data-plot="5"><span class="plot-icon">🟫</span></div>
+        <div class="plot" data-plot="6"><span class="plot-icon">🟫</span></div>
+        <div class="plot" data-plot="7"><span class="plot-icon">🟫</span></div>
+      </div>
+
+      <div class="game-actions">
+        <button class="action-btn" id="plant-btn"><i class="fas fa-seedling"></i> Planter</button>
+        <button class="action-btn" id="water-btn"><i class="fas fa-tint"></i> Irriguer</button>
+        <button class="action-btn" id="resources-btn"><i class="fas fa-box"></i> Ressources</button>
+        <button class="action-btn" id="harvest-btn"><i class="fas fa-cut"></i> Récolter</button>
+        <button class="action-btn" id="next-day-btn"><i class="fas fa-arrow-right"></i> Jour suivant</button>
+        <button class="action-btn" id="info-btn"><i class="fas fa-info-circle"></i> Infos</button>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <!-- Modales -->
+    <div id="plant-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" id="close-plant-modal">&times;</span>
+        <h3>Choisir une culture à planter</h3>
+        <div class="modal-grid">
+          <!-- Les cultures seront ajoutées dynamiquement en fonction de la saison -->
+        </div>
+      </div>
+    </div>
+
+    <div id="resources-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" id="close-resources-modal">&times;</span>
+        <h3>Gérer les ressources</h3>
+        <div id="resources-list">
+          <!-- Les ressources seront ajoutées dynamiquement -->
+        </div>
+      </div>
+    </div>
+
+    <div id="info-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" id="close-info-modal">&times;</span>
+        <h3>Informations sur l'agriculture durable</h3>
+        <div id="info-content">
+          <p>L'agriculture durable vise à produire des aliments tout en préservant l'environnement et les ressources naturelles pour les générations futures.</p>
+          <h4>Principes clés :</h4>
+          <ul>
+            <li><strong>Rotation des cultures</strong> - Alterner les types de cultures pour maintenir la santé du sol</li>
+            <li><strong>Gestion de l'eau</strong> - Utiliser des méthodes d'irrigation efficaces</li>
+            <li><strong>Biodiversité</strong> - Encourager la présence d'insectes bénéfiques et la diversité des plantations</li>
+            <li><strong>Intrants naturels</strong> - Préférer le compost et les méthodes biologiques aux produits chimiques</li>
+          </ul>
+          <p>Dans ce jeu, vos choix influencent directement la durabilité de votre ferme et sa performance à long terme.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="tooltip" class="tooltip"></div>
+    <!-- Fin du jeu de ferme durable -->
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
     </div>
   </main>
-
   <footer>
     <p>&copy; 2025 Green Campus 221</p>
   </footer>
 
   <script>
+    // Script de navigation
     const burger = document.getElementById('burger');
     const nav = document.querySelector('nav ul');
-
     burger.addEventListener('click', () => {
       nav.classList.toggle('active');
+    });
+
+    // Script du jeu de ferme durable
+    document.addEventListener('DOMContentLoaded', () => {
+      // Constantes du jeu
+      const SEASONS = ['Printemps', 'Été', 'Automne', 'Hiver'];
+      const SEASON_ICONS = ['🌱', '☀️', '🍂', '❄️'];
+      const DAYS_PER_SEASON = 10;
+      
+      // État du jeu
+      const gameState = {
+        money: 1000,
+        sustainability: 50,
+        biodiversity: 20,
+        productivity: 0,
+        day: 1,
+        seasonIndex: 0,
+        plots: Array(8).fill(null),
+        resources: {
+          compost: 2,
+          bioFertilizer: 1,
+          rainwaterCollector: false,
+          naturalPesticides: 1,
+          hedgerows: false
+        },
+        selectedPlot: null
+      };
+
+      // Cultures disponibles par saison
+      const crops = {
+        Printemps: [
+          { name: 'Carottes', icon: '🥕', cost: 50, growthDays: 8, waterNeeds: 2, profitability: 90, sustainability: 4, biodiversity: 2 },
+          { name: 'Laitue', icon: '🥬', cost: 30, growthDays: 5, waterNeeds: 3, profitability: 60, sustainability: 3, biodiversity: 1 },
+          { name: 'Petits pois', icon: '🟢', cost: 45, growthDays: 7, waterNeeds: 2, profitability: 80, sustainability: 5, biodiversity: 3 },
+          { name: 'Fraises', icon: '🍓', cost: 70, growthDays: 9, waterNeeds: 3, profitability: 120, sustainability: 3, biodiversity: 4 }
+        ],
+        Été: [
+          { name: 'Tomates', icon: '🍅', cost: 60, growthDays: 10, waterNeeds: 4, profitability: 110, sustainability: 3, biodiversity: 3 },
+          { name: 'Maïs', icon: '🌽', cost: 50, growthDays: 12, waterNeeds: 3, profitability: 100, sustainability: 2, biodiversity: 1 },
+          { name: 'Aubergines', icon: '🍆', cost: 65, growthDays: 9, waterNeeds: 3, profitability: 95, sustainability: 4, biodiversity: 2 },
+          { name: 'Concombres', icon: '🥒', cost: 40, growthDays: 7, waterNeeds: 4, profitability: 75, sustainability: 3, biodiversity: 2 }
+        ],
+        Automne: [
+          { name: 'Citrouilles', icon: '🎃', cost: 80, growthDays: 14, waterNeeds: 2, profitability: 130, sustainability: 4, biodiversity: 2 },
+          { name: 'Choux', icon: '🥬', cost: 45, growthDays: 10, waterNeeds: 2, profitability: 85, sustainability: 5, biodiversity: 3 },
+          { name: 'Poireaux', icon: '🧅', cost: 40, growthDays: 8, waterNeeds: 2, profitability: 70, sustainability: 4, biodiversity: 2 },
+          { name: 'Betteraves', icon: '🧠', cost: 35, growthDays: 9, waterNeeds: 1, profitability: 65, sustainability: 5, biodiversity: 3 }
+        ],
+        Hiver: [
+          { name: 'Épinards', icon: '🥬', cost: 40, growthDays: 6, waterNeeds: 1, profitability: 60, sustainability: 4, biodiversity: 2 },
+          { name: 'Ail', icon: '🧄', cost: 30, growthDays: 16, waterNeeds: 1, profitability: 80, sustainability: 5, biodiversity: 3 },
+          { name: 'Brocoli', icon: '🥦', cost: 55, growthDays: 8, waterNeeds: 2, profitability: 90, sustainability: 4, biodiversity: 2 },
+          { name: 'Oignons', icon: '🧅', cost: 35, growthDays: 12, waterNeeds: 1, profitability: 75, sustainability: 3, biodiversity: 2 }
+        ]
+      };
+
+      // Ressources disponibles
+      const availableResources = [
+        { name: 'Compost', description: 'Améliore la fertilité du sol (+10% durabilité)', cost: 40, icon: '🧹' },
+        { name: 'Engrais bio', description: 'Stimule la croissance (+20% productivité)', cost: 60, icon: '🌱' },
+        { name: 'Collecteur d\'eau', description: 'Réduit les besoins en eau (-30%)', cost: 200, icon: '💧' },
+        { name: 'Pesticides naturels', description: 'Protège contre les ravageurs', cost: 70, icon: '🐞' },
+        { name: 'Haies', description: 'Favorise la biodiversité (+25%)', cost: 150, icon: '🌳' }
+      ];
+
+      // Événements aléatoires
+      const randomEvents = [
+        { name: 'Pluie abondante', description: 'Vos cultures sont bien irriguées naturellement !', effect: () => { updateMessage('Une pluie abondante a irrigué naturellement vos cultures !'); } },
+        { name: 'Sécheresse', description: 'La chaleur dessèche vos cultures. Irrigation nécessaire !', effect: () => { droughtEffect(); } },
+        { name: 'Visite d\'école', description: 'Une école visite votre ferme durable. +50€ de revenus !', effect: () => { addMoney(50); updateMessage('Une école a visité votre ferme ! +50€'); } },
+        { name: 'Pollinisateurs', description: 'Des abeilles ont visité votre ferme ! +5% biodiversité', effect: () => { increaseBiodiversity(5); } }
+      ];
+
+      // Références DOM
+      const moneyEl = document.getElementById('money');
+      const sustainabilityEl = document.getElementById('sustainability');
+      const biodiversityEl = document.getElementById('biodiversity');
+      const productivityEl = document.getElementById('productivity');
+      const seasonEl = document.getElementById('current-season');
+      const seasonIconEl = document.getElementById('season-icon');
+      const dayEl = document.getElementById('current-day');
+      const plotsEl = document.querySelectorAll('.plot');
+      const messageEl = document.getElementById('game-message');
+      const progressFillEl = document.getElementById('progress-fill');
+
+      // Boutons
+      const plantBtn = document.getElementById('plant-btn');
+      const waterBtn = document.getElementById('water-btn');
+      const resourcesBtn = document.getElementById('resources-btn');
+      const harvestBtn = document.getElementById('harvest-btn');
+      const nextDayBtn = document.getElementById('next-day-btn');
+      const infoBtn = document.getElementById('info-btn');
+
+      // Modales
+      const plantModal = document.getElementById('plant-modal');
+      const resourcesModal = document.getElementById('resources-modal');
+      const infoModal = document.getElementById('info-modal');
+      const tooltip = document.getElementById('tooltip');
+
+      // Initialisation du jeu
+      function initGame() {
+        updateStats();
+        updateSeason();
+        updatePlots();
+        setupEventListeners();
+      }
+
+      // Mise à jour des statistiques affichées
+      function updateStats() {
+        moneyEl.textContent = gameState.money + '€';
+        sustainabilityEl.textContent = gameState.sustainability + '%';
+        biodiversityEl.textContent = gameState.biodiversity + '%';
+        productivityEl.textContent = gameState.productivity + '%';
+      }
+
+      // Mise à jour de l'affichage de la saison
+      function updateSeason() {
+        const currentSeason = SEASONS[gameState.seasonIndex];
+        seasonEl.textContent = currentSeason;
+        seasonIconEl.textContent = SEASON_ICONS[gameState.seasonIndex];
+        dayEl.textContent = gameState.day;
+      }
+
+      // Mise à jour de l'affichage des parcelles
+      function updatePlots() {
+        plotsEl.forEach((plotEl, index) => {
+          const plot = gameState.plots[index];
+          const plotIcon = plotEl.querySelector('.plot-icon');
+
+          if (!plot) {
+            plotIcon.textContent = '🟫';
+            plotEl.className = 'plot';
+            return;
+          }
+
+          plotIcon.textContent = plot.crop.icon;
+          plotEl.className = 'plot planted';
+
+          if (plot.isWatered) {
+            plotEl.style.boxShadow = '0 0 0 3px #38bdf8';
+          } else {
+            plotEl.style.boxShadow = 'none';
+          }
+
+          // Visualiser l'état de croissance
+          const growthPercent = (plot.daysGrown / plot.crop.growthDays) * 100;
+          plotEl.style.backgroundImage = `linear-gradient(to top, rgba(6, 78, 59, 0.8) ${growthPercent}%, transparent ${growthPercent}%)`;
+        });
+      }
+
+      // Configuration des écouteurs d'événements
+      function setupEventListeners() {
+        // Sélection d'une parcelle
+        plotsEl.forEach(plotEl => {
+          plotEl.addEventListener('click', () => {
+            const plotIndex = parseInt(plotEl.dataset.plot);
+            selectPlot(plotIndex);
+          });
+
+          // Tooltip pour les parcelles
+          plotEl.addEventListener('mouseenter', (e) => {
+            const plotIndex = parseInt(plotEl.dataset.plot);
+            const plot = gameState.plots[plotIndex];
+            
+            if (plot) {
+              const growthPercent = Math.floor((plot.daysGrown / plot.crop.growthDays) * 100);
+              tooltip.innerHTML = `<strong>${plot.crop.name}</strong><br>
+                                  Croissance: ${growthPercent}%<br>
+                                  Besoin en eau: ${plot.crop.waterNeeds - plot.watered} jours<br>
+                                  ${plot.isWatered ? '💧 Irriguée' : '🔥 Besoin d\'eau'}`;
+              
+              tooltip.style.display = 'block';
+              tooltip.style.left = `${e.pageX + 10}px`;
+              tooltip.style.top = `${e.pageY + 10}px`;
+            }
+          });
+
+          plotEl.addEventListener('mouseleave', () => {
+            tooltip.style.display = 'none';
+          });
+        });
+
+        // Boutons d'action
+        plantBtn.addEventListener('click', openPlantModal);
+        waterBtn.addEventListener('click', waterPlot);
+        resourcesBtn.addEventListener('click', openResourcesModal);
+        harvestBtn.addEventListener('click', harvestPlot);
+        nextDayBtn.addEventListener('click', advanceDay);
+        infoBtn.addEventListener('click', () => infoModal.style.display = 'block');
+
+        // Fermeture des modales
+        document.getElementById('close-plant-modal').addEventListener('click', () => plantModal.style.display = 'none');
+        document.getElementById('close-resources-modal').addEventListener('click', () => resourcesModal.style.display = 'none');
+        document.getElementById('close-info-modal').addEventListener('click', () => infoModal.style.display = 'none');
+
+        // Fermeture des modales en cliquant à l'extérieur
+        window.addEventListener('click', (e) => {
+          if (e.target === plantModal) plantModal.style.display = 'none';
+          if (e.target === resourcesModal) resourcesModal.style.display = 'none';
+          if (e.target === infoModal) infoModal.style.display = 'none';
+        });
+      }
+
+      // Sélection d'une parcelle
+      function selectPlot(index) {
+        gameState.selectedPlot = index;
+        
+        // Mettre en évidence la parcelle sélectionnée
+        plotsEl.forEach(plot => plot.style.border = 'none');
+        plotsEl[index].style.border = '2px solid #38bdf8';
+        
+        // Activer/désactiver les boutons selon l'état de la parcelle
+        const plot = gameState.plots[index];
+        
+        if (plot) {
+          plantBtn.disabled = true;
+          waterBtn.disabled = plot.isWatered;
+          harvestBtn.disabled = plot.daysGrown < plot.crop.growthDays;
+        } else {
+          plantBtn.disabled = false;
+          waterBtn.disabled = true;
+          harvestBtn.disabled = true;
+        }
+        
+        updateMessage(plot ? `Parcelle sélectionnée: ${plot.crop.name}` : 'Parcelle vide sélectionnée');
+      }
+
+      // Ouvre la modale pour planter une culture
+      function openPlantModal() {
+        if (gameState.selectedPlot === null) {
+          updateMessage('Sélectionnez d\'abord une parcelle !');
+          return;
+        }
+        
+        const currentSeason = SEASONS[gameState.seasonIndex];
+        const modalGrid = plantModal.querySelector('.modal-grid');
+        modalGrid.innerHTML = '';
+        
+        crops[currentSeason].forEach(crop => {
+          const canAfford = gameState.money >= crop.cost;
+          
+          const cropElement = document.createElement('div');
+          cropElement.className = 'crop-option';
+          cropElement.style.opacity = canAfford ? '1' : '0.5';
+          
+          cropElement.innerHTML = `
+            <div class="crop-icon">${crop.icon}</div>
+            <div>${crop.name}</div>
+            <div>${crop.cost}€</div>
+          `;
+          
+          if (canAfford) {
+            cropElement.addEventListener('click', () => plantCrop(crop));
+          }
+          
+          modalGrid.appendChild(cropElement);
+        });
+        
+        plantModal.style.display = 'block';
+      }
+
+      // Planter une culture
+      function plantCrop(crop) {
+        if (gameState.money < crop.cost) {
+          updateMessage('Fonds insuffisants !');
+          return;
+        }
+        
+        gameState.money -= crop.cost;
+        gameState.plots[gameState.selectedPlot] = {
+          crop: crop,
+          daysGrown: 0,
+          isWatered: false,
+          watered: 0
+        };
+        
+        updateStats();
+        updatePlots();
+        plantModal.style.display = 'none';
+        updateMessage(`${crop.name} planté avec succès !`);
+      }
+
+      // Irriguer une parcelle
+      function waterPlot() {
+        if (gameState.selectedPlot === null) {
+          updateMessage('Sélectionnez d\'abord une parcelle !');
+          return;
+        }
+        
+        const plot = gameState.plots[gameState.selectedPlot];
+        if (!plot) {
+          updateMessage('Cette parcelle est vide !');
+          return;
+        }
+        
+        if (plot.isWatered) {
+          updateMessage('Cette parcelle est déjà irriguée !');
+          return;
+        }
+        
+        // Coût réduit si collecteur d'eau installé
+        const waterCost = gameState.resources.rainwaterCollector ? 10 : 20;
+        
+        if (gameState.money < waterCost) {
+          updateMessage('Fonds insuffisants pour l\'irrigation !');
+          return;
+        }
+        
+        gameState.money -= waterCost;
+        plot.isWatered = true;
+        plot.watered += 1;
+        
+        updateStats();
+        updatePlots();
+        updateMessage('Parcelle irriguée avec succès !');
+        
+        // Augmente légèrement la durabilité
+        increaseSustainability(1);
+      }
+
+      // Ouvrir la modale des ressources
+      function openResourcesModal() {
+        const resourcesList = document.getElementById('resources-list');
+        resourcesList.innerHTML = '';
+        
+        availableResources.forEach((resource, index) => {
+          const resourceElement = document.createElement('div');
+          resourceElement.className = 'resource-option';
+          
+          const isOwned = checkResourceOwnership(index);
+          
+          resourceElement.innerHTML = `
+            <div style="font-size: 1.5rem;">${resource.icon}</div>
+            <div>
+              <strong>${resource.name}</strong> ${isOwned ? '(Possédé)' : ''}
+              <p>${resource.description}</p>
+              ${!isOwned ? `<button class="action-btn" style="margin-top: 0.5rem; padding: 0.3rem 0.8rem;" ${gameState.money < resource.cost ? 'disabled' : ''}>${resource.cost}€</button>` : ''}
+            </div>
+          `;
+          
+          if (!isOwned && gameState.money >= resource.cost) {
+            const button = resourceElement.querySelector('button');
+            button.addEventListener('click', () => purchaseResource(index));
+          }
+          
+          resourcesList.appendChild(resourceElement);
+        });
+        
+        resourcesModal.style.display = 'block';
+      }
+
+      // Vérifier si une ressource est déjà possédée
+      function checkResourceOwnership(index) {
+        switch(index) {
+          case 0: return gameState.resources.compost > 0;
+          case 1: return gameState.resources.bioFertilizer > 0;
+          case 2: return gameState.resources.rainwaterCollector;
+          case 3: return gameState.resources.naturalPesticides > 0;
+          case 4: return gameState.resources.hedgerows;
+          default: return false;
+        }
+      }
+
+      // Acheter une ressource
+      function purchaseResource(index) {
+        const resource = availableResources[index];
+        
+        if (gameState.money < resource.cost) {
+          updateMessage('Fonds insuffisants !');
+          return;
+        }
+        
+        gameState.money -= resource.cost;
+        
+        switch(index) {
+          case 0:
+            gameState.resources.compost++;
+            increaseSustainability(10);
+            updateMessage('Compost ajouté ! +10% durabilité');
+            break;
+          case 1:
+            gameState.resources.bioFertilizer++;
+            gameState.productivity += 20;
+            updateMessage('Engrais bio ajouté ! +20% productivité');
+            break;
+          case 2:
+            gameState.resources.rainwaterCollector = true;
+            increaseSustainability(15);
+            updateMessage('Collecteur d\'eau installé ! Coût d\'irrigation réduit');
+            break;
+          case 3:
+            gameState.resources.naturalPesticides++;
+            updateMessage('Pesticides naturels ajoutés ! Vos cultures sont protégées');
+            break;
+          case 4:
+            gameState.resources.hedgerows = true;
+            increaseBiodiversity(25);
+            updateMessage('Haies plantées ! +25% biodiversité');
+            break;
+        }
+        
+        updateStats();
+        resourcesModal.style.display = 'none';
+      }
+
+      // Récolter une parcelle
+      function harvestPlot() {
+        if (gameState.selectedPlot === null) {
+          updateMessage('Sélectionnez d\'abord une parcelle !');
+          return;
+        }
+        
+        const plot = gameState.plots[gameState.selectedPlot];
+        if (!plot) {
+          updateMessage('Cette parcelle est vide !');
+          return;
+        }
+        
+        if (plot.daysGrown < plot.crop.growthDays) {
+          updateMessage('Cette culture n\'est pas encore prête à être récoltée !');
+          return;
+        }
+        
+        // Calcul du profit, influencé par la durabilité et productivité
+        const baseProfitability = plot.crop.profitability;
+        const sustainabilityBonus = gameState.sustainability * 0.5;
+        const productivityBonus = gameState.productivity * 0.3;
+        
+        let profit = Math.floor(baseProfitability * (1 + (sustainabilityBonus + productivityBonus) / 100));
+        
+        // Bonus si irriguée correctement
+        if (plot.watered >= plot.crop.waterNeeds) {
+          profit = Math.floor(profit * 1.2);
+        }
+        
+        gameState.money += profit;
+        
+        // Augmenter la durabilité et la biodiversité selon la culture
+        increaseSustainability(plot.crop.sustainability);
+        increaseBiodiversity(plot.crop.biodiversity);
+        
+        // Libérer la parcelle
+        gameState.plots[gameState.selectedPlot] = null;
+        
+        updateMessage(`Récolte de ${plot.crop.name} vendue pour ${profit}€ !`);
+        updateStats();
+        updatePlots();
+        
+        // Désélectionner la parcelle
+        plotsEl.forEach(plot => plot.style.border = 'none');
+        waterBtn.disabled = true;
+        harvestBtn.disabled = true;
+        plantBtn.disabled = false;
+        gameState.selectedPlot = null;
+      }
+
+      // Avancer d'un jour
+      function advanceDay() {
+        // Faire progresser les cultures
+        let totalGrowingCrops = 0;
+        let totalReadyCrops = 0;
+        
+        gameState.plots.forEach(plot => {
+          if (!plot) return;
+          
+          if (plot.daysGrown < plot.crop.growthDays) {
+            // La culture continue de croître
+            plot.daysGrown++;
+            totalGrowingCrops++;
+            
+            // Réduire l'effet de l'irrigation
+            plot.isWatered = false;
+            
+            // Vérifier si prête à récolter
+            if (plot.daysGrown >= plot.crop.growthDays) {
+              totalReadyCrops++;
+            }
+          } else {
+            totalReadyCrops++;
+          }
+        });
+        
+        // Mettre à jour la productivité basée sur les cultures
+        updateProductivity();
+        
+        // Avancer le jour
+        gameState.day++;
+        
+        // Changement de saison si nécessaire
+        if (gameState.day > DAYS_PER_SEASON) {
+          gameState.day = 1;
+          gameState.seasonIndex = (gameState.seasonIndex + 1) % 4;
+          updateMessage(`Nouvelle saison : ${SEASONS[gameState.seasonIndex]} !`);
+        }
+        
+        // Événements aléatoires
+        if (Math.random() < 0.2 && gameState.plots.some(plot => plot !== null)) {
+          triggerRandomEvent();
+        }
+        
+        // Messages d'information
+        if (totalReadyCrops > 0) {
+          updateMessage(`${totalReadyCrops} culture(s) prête(s) à être récoltée(s) !`);
+        } else if (totalGrowingCrops > 0) {
+          updateMessage(`Les cultures poussent bien ! Jour ${gameState.day}/${DAYS_PER_SEASON}`);
+        } else {
+          updateMessage(`Jour ${gameState.day}/${DAYS_PER_SEASON} - Plantez quelque chose !`);
+        }
+        
+        // Dégradation naturelle de l'environnement si pas assez de durabilité
+        if (gameState.sustainability < 30) {
+          decreaseBiodiversity(2);
+          if (gameState.biodiversity < 10) {
+            decreaseSustainability(2);
+          }
+        }
+        
+        // Mise à jour
+        updateStats();
+        updateSeason();
+        updatePlots();
+        updateProgressBar();
+      }
+
+      // Déclencher un événement aléatoire
+      function triggerRandomEvent() {
+        const event = randomEvents[Math.floor(Math.random() * randomEvents.length)];
+        event.effect();
+      }
+
+      // Effet de sécheresse
+      function droughtEffect() {
+        let affectedPlots = 0;
+        
+        gameState.plots.forEach(plot => {
+          if (plot && !plot.isWatered) {
+            plot.daysGrown = Math.max(0, plot.daysGrown - 1);
+            affectedPlots++;
+          }
+        });
+        
+        if (affectedPlots > 0) {
+          updateMessage(`Sécheresse ! ${affectedPlots} parcelles ont souffert du manque d'eau.`);
+        }
+      }
+
+      // Mettre à jour la productivité
+      function updateProductivity() {
+        let totalPlots = 0;
+        let filledPlots = 0;
+        let readyPlots = 0;
+        
+        gameState.plots.forEach(plot => {
+          totalPlots++;
+          if (plot) {
+            filledPlots++;
+            if (plot.daysGrown >= plot.crop.growthDays) {
+              readyPlots++;
+            }
+          }
+        });
+        
+        const occupationRate = filledPlots / totalPlots;
+        const readyRate = readyPlots / totalPlots;
+        
+        // Calcul de la productivité
+        gameState.productivity = Math.floor((occupationRate * 50) + (readyRate * 50));
+      }
+
+      // Mettre à jour la barre de progression
+      function updateProgressBar() {
+        const seasonProgress = (gameState.day / DAYS_PER_SEASON) * 100;
+        progressFillEl.style.width = `${seasonProgress}%`;
+      }
+
+      // Augmenter la durabilité
+      function increaseSustainability(amount) {
+        gameState.sustainability = Math.min(100, gameState.sustainability + amount);
+        updateStats();
+      }
+
+      // Diminuer la durabilité
+      function decreaseSustainability(amount) {
+        gameState.sustainability = Math.max(0, gameState.sustainability - amount);
+        updateStats();
+      }
+
+      // Augmenter la biodiversité
+      function increaseBiodiversity(amount) {
+        gameState.biodiversity = Math.min(100, gameState.biodiversity + amount);
+        updateStats();
+      }
+
+      // Diminuer la biodiversité
+      function decreaseBiodiversity(amount) {
+        gameState.biodiversity = Math.max(0, gameState.biodiversity - amount);
+        updateStats();
+      }
+
+      // Ajouter de l'argent
+      function addMoney(amount) {
+        gameState.money += amount;
+        updateStats();
+      }
+
+      // Mettre à jour le message du jeu
+      function updateMessage(message) {
+        messageEl.textContent = message;
+        
+        // Animation du message
+        messageEl.style.animation = 'none';
+        void messageEl.offsetWidth; // Force reflow
+        messageEl.style.animation = 'pulse 0.5s';
+      }
+
+      // Démarrer le jeu
+      initGame();
     });
   </script>
 </body>
