@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus EBDD khelcom - Administration</title>
+  <script src="https://kit.fontawesome.com/a2d9d6b3f1.js" crossorigin="anonymous"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+  <style>
+    body {
+      background: #0f172a;
+      color: #f1f5f9;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    .login-container {
+      background: rgba(30, 41, 59, 0.8);
+      padding: 2.5rem;
+      border-radius: 1.5rem;
+      width: 90%;
+      max-width: 450px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      backdrop-filter: blur(10px);
+    }
+    
+    .login-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .login-header img {
+      height: auto;
+      width: 120px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    
+    .login-header h1 {
+      color: #38bdf8;
+      font-size: 1.8rem;
+      margin: 0.5rem 0;
+    }
+    
+    .login-form input {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 0.75rem;
+      color: #f1f5f9;
+      font-size: 1rem;
+      transition: all 0.3s;
+      outline: none;
+    }
+    
+    .login-form input:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3);
+    }
+    
+    .login-form button {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      border: none;
+      border-radius: 0.75rem;
+      color: #0f172a;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 1rem;
+    }
+    
+    .login-form button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+    }
+    
+    .login-message {
+      margin-top: 1.5rem;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+    
+    .error-message {
+      color: #ef4444;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-top: 1rem;
+      display: none;
+    }
+    
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 2rem;
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .back-link:hover {
+      color: #38bdf8;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-container">
+    <div class="login-header">
+      <img src="logo.png" alt="Logo Green Campus" onerror="this.src='https://via.placeholder.com/120x40?text=EBDD'" />
+      <h1>Administration</h1>
+      <p>Connectez-vous pour gérer le site</p>
+    </div>
+    
+    <form id="loginForm" class="login-form">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Mot de passe" required />
+      <div id="errorMessage" class="error-message"></div>
+      <button type="submit">
+        <i class="fas fa-sign-in-alt"></i> Connexion
+      </button>
+    </form>
+    
+    <div class="login-message">
+      <p>Accès réservé au personnel administratif</p>
+    </div>
+    
+    <a href="index.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Retour au site
+    </a>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
