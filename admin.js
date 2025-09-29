@@ -1,11 +1,11 @@
 // Configuration Firebase
 const firebaseConfig = {
-  apiKey: "VOTRE_API_KEY",
-  authDomain: "votre-projet.firebaseapp.com",
-  projectId: "votre-projet",
-  storageBucket: "votre-projet.appspot.com",
-  messagingSenderId: "VOTRE_MESSAGING_SENDER_ID",
-  appId: "VOTRE_APP_ID"
+  apiKey: "AIzaSyDnePF66gFN34izGfYXbeAiLdBnvZjF3xE",
+  authDomain: "campus-ebdd-khelcom.firebaseapp.com",
+  projectId: "campus-ebdd-khelcom",
+  storageBucket: "campus-ebdd-khelcom.firebasestorage.app",
+  messagingSenderId: "120285880459",
+  appId: "1:120285880459:web:da73cfed4e4868a1b1b48e"
 };
 
 // Initialiser Firebase
