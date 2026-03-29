@@ -3,312 +3,517 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Filières - Campus EBDD khelcom</title>
+  <title>Serre Pilote Box - Campus EBDD Khelcom</title>
+
   <script src="https://kit.fontawesome.com/a2d9d6b3f1.js" crossorigin="anonymous"></script>
 
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body.dark {
       background: #0f172a;
       color: #f1f5f9;
+      font-family: 'Segoe UI', sans-serif;
       overflow-x: hidden;
     }
 
+    /* ── HEADER ── */
     header {
       position: sticky;
       top: 0;
-      background: rgba(15, 23, 42, 0.8);
-      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(15px);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
       z-index: 1000;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.1);
     }
 
     .logo {
+      display: flex;
+      align-items: center;
       font-weight: bold;
       font-size: 1.2rem;
+      color: #f1f5f9;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 8px;
     }
 
     nav ul {
       list-style: none;
       display: flex;
-      gap: 1rem;
-      margin: 0;
-      padding: 0;
+      gap: 1.5rem;
     }
 
     nav a {
       color: #f1f5f9;
       text-decoration: none;
-      transition: color 0.3s;
+      transition: all 0.3s;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      position: relative;
     }
 
     nav a:hover {
       color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
     }
 
     #burger {
       display: none;
       font-size: 1.5rem;
       cursor: pointer;
+      color: white;
     }
 
-    main {
-      padding: 2rem;
-    }
-
-    h1 {
+    /* ── HERO ── */
+    .hero {
       text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .grid {
-      display: grid;
-      gap: 1.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-
-    .filiere-card {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s;
-    }
-
-    .filiere-card:hover {
-      transform: translateY(-5px) scale(1.03);
-    }
-
-    .filiere-card h2 {
-      margin-bottom: 0.5rem;
-      font-size: 1.3rem;
-      color: #38bdf8;
-    }
-
-    .filiere-card p {
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 2rem;
-      text-align: center;
-      background: #38bdf8;
-      padding: 0.6rem 1.4rem;
-      border-radius: 0.5rem;
-      color: #0f172a;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background: #0ea5e9;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-
-    /* Styles pour le jeu 3D */
-    #game-container {
-      width: 100%;
-      margin: 3rem auto;
-      height: 80vh;
+      padding: 5rem 1rem 4rem;
+      background: linear-gradient(135deg, #0d2137, #0f172a, #0d2e1f);
       position: relative;
       overflow: hidden;
-      border-radius: 1rem;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
     }
 
-    canvas {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    #ui {
+    .hero::before {
+      content: '';
       position: absolute;
-      bottom: 20px;
-      left: 20px;
-      background: rgba(15, 23, 42, 0.7);
-      padding: 15px;
-      border-radius: 10px;
-      z-index: 10;
-      backdrop-filter: blur(5px);
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(20, 184, 166, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(56, 189, 248, 0.15) 0%, transparent 50%);
     }
 
-    .tool-btn {
-      margin: 5px;
-      padding: 10px 15px;
-      background: #3b82f6;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-weight: bold;
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(20, 184, 166, 0.15);
+      border: 1px solid rgba(20, 184, 166, 0.4);
+      color: #14b8a6;
+      padding: 0.4rem 1.2rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #38bdf8, #14b8a6, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #4ade80, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 650px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-icons {
       display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-icon-item {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 0.5rem;
+      color: #94a3b8;
+      font-size: 0.85rem;
     }
 
-    .tool-btn:hover {
-      background: #2563eb;
-      transform: translateY(-2px);
+    .hero-icon-item i {
+      font-size: 2rem;
+      color: #14b8a6;
+      background: rgba(20, 184, 166, 0.1);
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(20, 184, 166, 0.2);
     }
 
-    .tool-btn:disabled {
-      background: #475569;
-      cursor: not-allowed;
+    /* ── WHAT IS SECTION ── */
+    .what-is {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .tool-btn.active {
-      background: #10b981;
-      box-shadow: 0 0 0 2px white;
-    }
-
-    #inventory {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(15, 23, 42, 0.7);
-      padding: 15px;
-      border-radius: 10px;
-      z-index: 10;
-      backdrop-filter: blur(5px);
-      min-width: 200px;
-    }
-
-    .stat-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .stat-value {
-      font-weight: bold;
-      color: #38bdf8;
-    }
-
-    #message-box {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(15, 23, 42, 0.8);
-      padding: 12px 20px;
-      border-radius: 10px;
-      z-index: 10;
+    .section-label {
       text-align: center;
-      backdrop-filter: blur(5px);
-      pointer-events: none;
-      transition: opacity 0.3s;
+      color: #14b8a6;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
     }
 
-    #shop-panel {
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #f1f5f9;
+      margin-bottom: 1rem;
+    }
+
+    .section-title span { color: #38bdf8; }
+
+    .section-sub {
+      text-align: center;
+      color: #64748b;
+      max-width: 600px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.6;
+    }
+
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .what-text p {
+      color: #cbd5e1;
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+
+    .what-text p strong { color: #38bdf8; }
+
+    .box-visual {
+      background: linear-gradient(135deg, #1e293b, #0f2027);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .box-visual::before {
+      content: '';
       position: absolute;
-      right: -350px;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(20, 184, 166, 0.05) 1px, transparent 1px);
+      background-size: 25px 25px;
+    }
+
+    .box-icon-main {
+      font-size: 5rem;
+      display: block;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 0 20px rgba(20, 184, 166, 0.5));
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(20, 184, 166, 0.5)); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 35px rgba(20, 184, 166, 0.8)); }
+    }
+
+    .box-visual h3 {
+      color: #38bdf8;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .box-visual p {
+      color: #64748b;
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
+      padding: 0.3rem 0.9rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+    }
+
+    .tag.green {
+      background: rgba(20, 184, 166, 0.1);
+      border-color: rgba(20, 184, 166, 0.3);
+      color: #14b8a6;
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      padding: 5rem 2rem;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .features-inner { max-width: 1200px; margin: 0 auto; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(56, 189, 248, 0.15);
+      border-radius: 1.2rem;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #38bdf8, #14b8a6);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 20px 40px rgba(56, 189, 248, 0.1);
+    }
+
+    .feature-card:hover::after { transform: scaleX(1); }
+
+    .feature-card .icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .feature-card h3 {
+      color: #38bdf8;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card p {
+      color: #64748b;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-it-works {
+      padding: 5rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      left: 2.25rem;
       top: 0;
       bottom: 0;
-      width: 320px;
-      background: rgba(15, 23, 42, 0.95);
-      z-index: 100;
-      transition: right 0.3s ease-in-out;
-      overflow-y: auto;
-      padding: 20px;
-      backdrop-filter: blur(10px);
+      width: 2px;
+      background: linear-gradient(180deg, #38bdf8, #14b8a6, transparent);
     }
 
-    #shop-panel.open {
-      right: 0;
-    }
-
-    .shop-item {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 10px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .shop-item:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-2px);
-    }
-
-    .shop-item-header {
+    .step {
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
+      gap: 2rem;
+      align-items: flex-start;
+      padding: 1.5rem 0;
     }
 
-    .shop-item-name {
-      font-weight: bold;
-      color: #38bdf8;
-    }
-
-    .shop-item-price {
-      color: #34d399;
-    }
-
-    .shop-item-description {
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    .shop-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    #season-indicator {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background: rgba(15, 23, 42, 0.7);
-      padding: 10px 15px;
-      border-radius: 10px;
+    .step-number {
+      min-width: 4.5rem;
+      height: 4.5rem;
+      background: linear-gradient(135deg, #38bdf8, #14b8a6);
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 10px;
-      backdrop-filter: blur(5px);
-    }
-
-    #season-icon {
+      justify-content: center;
       font-size: 1.5rem;
+      font-weight: bold;
+      color: #0f172a;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
     }
 
-    .tooltip {
+    .step-content h3 {
+      color: #f1f5f9;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-content p {
+      color: #64748b;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    /* ── VISION ── */
+    .vision {
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, #0d2e1f, #0f172a, #0d2137);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vision::before {
+      content: '';
       position: absolute;
-      background: rgba(15, 23, 42, 0.9);
-      color: white;
-      padding: 8px 12px;
-      border-radius: 5px;
-      font-size: 0.8rem;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.2s;
-      max-width: 200px;
-      z-index: 1000;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(20, 184, 166, 0.08) 0%, transparent 70%);
     }
 
+    .vision-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .vision h2 {
+      font-size: 2.5rem;
+      color: #f1f5f9;
+      margin-bottom: 1.5rem;
+    }
+
+    .vision h2 span { color: #4ade80; }
+
+    .vision p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .vision-pillars {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .pillar {https://green-campus221.github.io/greencampus/filieres.html
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(74, 222, 128, 0.2);
+      border-radius: 1rem;
+      padding: 1.5rem 2rem;
+      min-width: 150px;
+    }
+
+    .pillar .pillar-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+    .pillar strong { color: #4ade80; display: block; margin-bottom: 0.3rem; }
+    .pillar span { color: #64748b; font-size: 0.85rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(15, 23, 42, 0.8);
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(56, 189, 248, 0.1);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: #38bdf8; }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 50%;
+      color: #38bdf8;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: #38bdf8;
+      color: #0f172a;
+      transform: translateY(-3px);
+    }
+
+    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav ul {
         flex-direction: column;
@@ -319,45 +524,34 @@
         position: absolute;
         top: 60px;
         right: 10px;
+        min-width: 200px;
       }
+      nav ul.active { display: flex; }
+      #burger { display: block; }
 
-      nav ul.active {
-        display: flex;
-      }
-
-      #burger {
-        display: block;
-        color: white;
-      }
-
-      #game-container {
-        height: 60vh;
-      }
-
-      #ui {
-        bottom: 10px;
-        left: 10px;
-        padding: 10px;
-      }
-
-      .tool-btn {
-        padding: 8px 10px;
-        font-size: 0.8rem;
-      }
-
-      #inventory {
-        top: 10px;
-        right: 10px;
-        padding: 10px;
-      }
+      .hero h1 { font-size: 2.2rem; }
+      .what-grid { grid-template-columns: 1fr; }
+      .steps::before { left: 2rem; }
     }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 
-<body>
+<body class="dark">
+
   <header>
-    <div class="logo">🌿 Campus EBDD khelcom</div>
-    <nav>
+    <div class="logo">
+      <img src="Logo.png" alt="Logo" style="height:auto;width:120px;" onerror="this.style.display='none'" />
+      <span>Campus EBDD Khelcom</span>
+    </div>
+    <nav id="nav">
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="filieres.html">Filières</a></li>
@@ -365,1443 +559,242 @@
         <li><a href="evenements.html">Événements</a></li>
         <li><a href="ressources.html">Ressources</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="admin-login.html">Admin</a></li>
       </ul>
       <div id="burger">&#9776;</div>
     </nav>
   </header>
 
-  <main>
-    <h1><i class="fas fa-book-reader"></i> Nos Filières</h1>
-    <div class="grid">
-      <div class="filiere-card">
-        <h2>🌱 EDD</h2>
-        <p>La filière Environnement et Developement Durable forme des experts en gestion écologique, développement durable et préservation des ressources naturelles.</p>
-      </div>
-      <div class="filiere-card">
-        <h2>🌍 AGAP</h2>
-        <p>La Licence Aménagement et Gestion des Aires Protégées s'appuie sur un socle de connaissances fondamentales et techniques et un ensemble de compétences pratiques et professionnelles nécessaires à la conception, à l'aménagement et à la gestion durable des aires protégées.</p>
-      </div>
-      <div class="filiere-card">
-        <h2>🛰️ GC</h2>
-        <p>La Licence Géomatique et Climatologie s'appuie sur un socle de connaissances fondamentales et techniques et un ensemble de compétences pratiques et professionnelles nécessaires à la collecte, au traitement et à l'analyse des données en télédétection et agroclimatologie.</p>
-      </div>
-      <div class="filiere-card">
-        <h2>👥 DL</h2>
-        <p>La filière Dévelopement Local forme des acteurs capables d'accompagner les collectivités locales dans leur développement économique, social et territorial.</p>
+  <!-- ── HERO ── -->
+  <section class="hero fade-in">
+    <div class="hero-content">
+      <div class="hero-badge">🌿 Innovation Agricole</div>
+      <h1>C'est quoi la<br><span>Serre Pilote Box ?</span></h1>
+      <p>Une solution tout-en-un pour rendre l'agriculture <strong style="color:#4ade80">intelligente</strong>, <strong style="color:#38bdf8">durable</strong> et <strong style="color:#14b8a6">accessible</strong> à tous les agriculteurs.</p>
+
+      <div class="hero-icons">
+        <div class="hero-icon-item">
+          <i class="fas fa-server"></i>
+          Mini PC Serveur
+        </div>
+        <div class="hero-icon-item">
+          <i class="fas fa-home"></i>
+          Home Assistant
+        </div>
+        <div class="hero-icon-item">
+          <i class="fas fa-wifi"></i>
+          Zigbee / IoT
+        </div>
+        <div class="hero-icon-item">
+          <i class="fas fa-mobile-alt"></i>
+          Pilotage distant
+        </div>
+        <div class="hero-icon-item">
+          <i class="fas fa-seedling"></i>
+          Agriculture durable
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Début du jeu d'agriculture en 3D -->
-    <h2 style="text-align: center; margin-top: 3rem;">🌾 Ferme Virtuelle 3D</h2>
-    <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem auto;">
-      Gérez votre propre ferme durable en 3D ! Plantez des cultures, irriguez vos parcelles et améliorez la durabilité de votre exploitation.
-    </p>
+  <!-- ── WHAT IS ── -->
+  <section class="what-is fade-in">
+    <p class="section-label">Définition</p>
+    <h2 class="section-title">Une <span>box intelligente</span> pour votre serre ou champ</h2>
+    <p class="section-sub">Comprendre la Serre Pilote Box en quelques mots</p>
 
-    <div id="game-container">
-      <div id="season-indicator">
-        <span id="season-icon">🌱</span>
-        <span>Saison: <span id="current-season">Printemps</span> - Jour <span id="current-day">1</span></span>
+    <div class="what-grid">
+      <div class="what-text">
+        <p>La <strong>Serre Pilote Box</strong> est une solution technologique innovante composée d'un <strong>mini PC</strong> qui joue le rôle de serveur local. Ce serveur héberge des logiciels puissants comme <strong>Home Assistant</strong> pour automatiser et piloter entièrement une serre ou un champ agricole.</p>
+        <p>Grâce au protocole <strong>Zigbee</strong> — une technologie sans fil économe en énergie — la box connecte capteurs, actionneurs et équipements agricoles pour créer un environnement <strong>100% autonome</strong>.</p>
+        <p>L'agriculteur peut surveiller et contrôler son exploitation <strong>à distance depuis son téléphone</strong>, en temps réel, peu importe où il se trouve.</p>
+        <p>À terme, la Serre Pilote Box ambitionne d'héberger plusieurs <strong>logiciels agricoles spécialisés</strong> pour offrir un véritable <strong>tout-en-un</strong> au service des agriculteurs.</p>
       </div>
 
-      <div id="inventory">
-        <h3 style="margin-top: 0; margin-bottom: 10px;">Inventaire</h3>
-        <div class="stat-item">
-          <div>💰 Argent:</div>
-          <div class="stat-value" id="money">100</div>
-        </div>
-        <div class="stat-item">
-          <div>🌱 Graines:</div>
-          <div class="stat-value" id="seeds">10</div>
-        </div>
-        <div class="stat-item">
-          <div>🌽 Récoltes:</div>
-          <div class="stat-value" id="harvests">0</div>
-        </div>
-        <div class="stat-item">
-          <div>🌿 Durabilité:</div>
-          <div class="stat-value" id="sustainability">50%</div>
-        </div>
-        <div class="stat-item">
-          <div>🐝 Biodiversité:</div>
-          <div class="stat-value" id="biodiversity">20%</div>
+      <div class="box-visual">
+        <span class="box-icon-main">📦</span>
+        <h3>Serre Pilote Box</h3>
+        <p>Votre centre de contrôle agricole</p>
+        <div class="tech-tags">
+          <span class="tag">Mini PC</span>
+          <span class="tag green">Home Assistant</span>
+          <span class="tag">Zigbee</span>
+          <span class="tag green">IoT Agricole</span>
+          <span class="tag">Serveur local</span>
+          <span class="tag green">Open Source</span>
         </div>
       </div>
-
-      <div id="ui">
-        <button class="tool-btn" id="seed-btn">
-          <i class="fas fa-seedling"></i> Planter
-        </button>
-        <button class="tool-btn" id="water-btn">
-          <i class="fas fa-tint"></i> Arroser
-        </button>
-        <button class="tool-btn" id="harvest-btn">
-          <i class="fas fa-cut"></i> Récolter
-        </button>
-        <button class="tool-btn" id="shop-btn">
-          <i class="fas fa-store"></i> Boutique
-        </button>
-        <button class="tool-btn" id="next-day-btn">
-          <i class="fas fa-arrow-right"></i> Jour suivant
-        </button>
-      </div>
-
-      <div id="message-box">
-        Bienvenue dans votre ferme virtuelle !
-      </div>
-
-      <div id="shop-panel">
-        <button class="shop-close">&times;</button>
-        <h3>Boutique</h3>
-        <div id="shop-items">
-          <!-- Rempli dynamiquement -->
-        </div>
-      </div>
-
-      <div id="tooltip" class="tooltip"></div>
     </div>
+  </section>
 
-    <div style="text-align: center; margin-top: 2rem;">
-      <a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
+  <!-- ── FEATURES ── -->
+  <section class="features fade-in">
+    <div class="features-inner">
+      <p class="section-label">Fonctionnalités</p>
+      <h2 class="section-title">Ce que la <span>Serre Pilote Box</span> peut faire</h2>
+      <p class="section-sub">Un écosystème complet pour moderniser votre agriculture</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="icon">🤖</span>
+          <h3>Automatisation complète</h3>
+          <p>Programmez l'arrosage, la ventilation, l'éclairage et bien plus encore. La box gère tout automatiquement selon vos règles et les données des capteurs.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="icon">📱</span>
+          <h3>Pilotage à distance</h3>
+          <p>Contrôlez votre serre ou votre champ depuis votre smartphone, partout dans le monde. Consultez les données en temps réel et intervenez à tout moment.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="icon">🌡️</span>
+          <h3>Capteurs intelligents</h3>
+          <p>Température, humidité, luminosité, CO₂, humidité du sol… Des dizaines de paramètres sont surveillés en continu via le protocole Zigbee.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="icon">⚡</span>
+          <h3>Protocole Zigbee</h3>
+          <p>Une technologie sans fil fiable, à faible consommation d'énergie, idéale pour les environnements agricoles. Compatible avec des centaines d'appareils du marché.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="icon">🖥️</span>
+          <h3>Serveur tout-en-un</h3>
+          <p>Le mini PC héberge tous les logiciels localement. Pas besoin d'abonnement cloud, vos données restent chez vous, sécurisées et accessibles même sans internet.</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="icon">🌾</span>
+          <h3>Logiciels agricoles intégrés</h3>
+          <p>La vision : centraliser les meilleurs outils agricoles (gestion de cultures, météo, alertes, suivi des rendements) dans une seule interface unifiée.</p>
+        </div>
+      </div>
     </div>
-  </main>
+  </section>
 
+  <!-- ── HOW IT WORKS ── -->
+  <section class="how-it-works fade-in">
+    <p class="section-label">Fonctionnement</p>
+    <h2 class="section-title">Comment ça <span>marche ?</span></h2>
+    <p class="section-sub">Du capteur à votre téléphone, en quelques étapes simples</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Installation de la box</h3>
+          <p>Le mini PC est installé dans votre serre ou près de votre champ. Il démarre automatiquement avec tous les logiciels préconfigurés — aucune compétence technique requise.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Connexion des capteurs via Zigbee</h3>
+          <p>Les capteurs (température, humidité, sol…) et actionneurs (vannes, pompes, ventilateurs) sont appairés sans fil à la box grâce au protocole Zigbee.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Configuration des automatisations</h3>
+          <p>Via Home Assistant, vous définissez vos règles : "Si l'humidité du sol descend sous 30%, déclencher l'arrosage pendant 10 minutes". Simple et visuel.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Pilotage depuis votre téléphone</h3>
+          <p>L'application mobile vous donne accès à un tableau de bord complet : données en direct, contrôle manuel, alertes, historiques et rapports.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>Agriculture autonome et intelligente</h3>
+          <p>Votre serre ou champ fonctionne de façon optimale, 24h/24, en consommant moins d'eau, moins d'énergie, pour de meilleurs rendements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VISION ── -->
+  <section class="vision fade-in">
+    <div class="vision-inner">
+      <p class="section-label">Notre Vision</p>
+      <h2>Une agriculture <span>intelligente pour tous</span></h2>
+      <p>La Serre Pilote Box est bien plus qu'un outil technologique. C'est une vision d'avenir pour l'agriculture africaine et mondiale : rendre les outils numériques les plus avancés accessibles aux petits comme aux grands agriculteurs.</p>
+      <p>En hébergeant progressivement davantage de logiciels agricoles, la box deviendra le <strong style="color:#4ade80">centre névralgique</strong> de l'exploitation agricole moderne — une véritable révolution agricole entre vos mains.</p>
+
+      <div class="vision-pillars">
+        <div class="pillar">
+          <span class="pillar-icon">🧠</span>
+          <strong>Intelligente</strong>
+          <span>Automatisation & IA</span>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">🌍</span>
+          <strong>Durable</strong>
+          <span>Éco-responsable</span>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">🤝</span>
+          <strong>Accessible</strong>
+          <span>Pour tous les agriculteurs</span>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">📡</span>
+          <strong>Connectée</strong>
+          <span>Pilotage à distance</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
   <footer>
-    <p>&copy; 2025 Green Campus 221</p>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="filieres.html">Filières</a>
+      <a href="clubs.html">Clubs</a>
+      <a href="evenements.html">Événements</a>
+      <a href="ressources.html">Ressources</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="social-links">
+      <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p>&copy; Copyright 2025 Green Campus 221 | Réalisé avec le groupe SunuMbey 🍃</p>
   </footer>
 
-  <!-- Scripts Three.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
-
   <script>
-    // Script de navigation
+    // Menu responsive
     const burger = document.getElementById('burger');
-    const nav = document.querySelector('nav ul');
-    burger.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
+    const navList = document.querySelector('nav ul');
+    burger.addEventListener('click', () => navList.classList.toggle('active'));
 
-    // Jeu de ferme en 3D
-    document.addEventListener('DOMContentLoaded', () => {
-      // Configuration du jeu
-      const GRID_SIZE = 10;
-      const CELL_SIZE = 1;
-      const SEASONS = ['Printemps', 'Été', 'Automne', 'Hiver'];
-      const SEASON_ICONS = ['🌱', '☀️', '🍂', '❄️'];
-      const DAYS_PER_SEASON = 10;
-      
-      // État du jeu
-      let gameState = {
-          money: 100,
-          seeds: 10,
-          harvests: 0,
-          sustainability: 50,
-          biodiversity: 20,
-          day: 1,
-          seasonIndex: 0,
-          currentTool: 'seed',
-          plots: Array(GRID_SIZE * GRID_SIZE).fill(null).map(() => ({
-              status: 'empty',  // empty, seeded, growing, ready
-              growthStage: 0,
-              waterLevel: 0
-          })),
-          resources: {
-              compost: 0,
-              rainwaterCollector: false,
-              hedgerows: false,
-              beeHive: false
-          }
-      };
-      
-      // Cultures disponibles par saison
-      const crops = {
-          Printemps: [
-              { name: 'Carottes', icon: '🥕', cost: 20, growthDays: 8, waterNeeds: 2, value: 40, sustainability: 3, biodiversity: 2 },
-              { name: 'Laitue', icon: '🥬', cost: 15, growthDays: 6, waterNeeds: 3, value: 30, sustainability: 2, biodiversity: 1 },
-              { name: 'Petits pois', icon: '🟢', cost: 25, growthDays: 9, waterNeeds: 2, value: 45, sustainability: 4, biodiversity: 2 },
-              { name: 'Fraises', icon: '🍓', cost: 30, growthDays: 10, waterNeeds: 3, value: 65, sustainability: 3, biodiversity: 4 }
-          ],
-          Été: [
-              { name: 'Tomates', icon: '🍅', cost: 30, growthDays: 10, waterNeeds: 4, value: 60, sustainability: 3, biodiversity: 3 },
-              { name: 'Maïs', icon: '🌽', cost: 25, growthDays: 12, waterNeeds: 3, value: 50, sustainability: 2, biodiversity: 1 },
-              { name: 'Aubergines', icon: '🍆', cost: 35, growthDays: 11, waterNeeds: 3, value: 70, sustainability: 4, biodiversity: 2 },
-              { name: 'Concombres', icon: '🥒', cost: 20, growthDays: 8, waterNeeds: 4, value: 40, sustainability: 3, biodiversity: 2 }
-          ],
-          Automne: [
-              { name: 'Citrouilles', icon: '🎃', cost: 40, growthDays: 14, waterNeeds: 2, value: 85, sustainability: 4, biodiversity: 2 },
-              { name: 'Choux', icon: '🥬', cost: 25, growthDays: 11, waterNeeds: 2, value: 55, sustainability: 5, biodiversity: 3 },
-              { name: 'Poireaux', icon: '🧅', cost: 20, growthDays: 9, waterNeeds: 2, value: 45, sustainability: 4, biodiversity: 2 },
-              { name: 'Betteraves', icon: '🫐', cost: 15, growthDays: 10, waterNeeds: 1, value: 35, sustainability: 5, biodiversity: 3 }
-          ],
-          Hiver: [
-              { name: 'Épinards', icon: '🥬', cost: 20, growthDays: 7, waterNeeds: 1, value: 40, sustainability: 4, biodiversity: 2 },
-              { name: 'Ail', icon: '🧄', cost: 15, growthDays: 15, waterNeeds: 1, value: 50, sustainability: 5, biodiversity: 3 },
-              { name: 'Brocoli', icon: '🥦', cost: 30, growthDays: 10, waterNeeds: 2, value: 60, sustainability: 4, biodiversity: 2 },
-              { name: 'Oignons', icon: '🧅', cost: 20, growthDays: 12, waterNeeds: 1, value: 45, sustainability: 3, biodiversity: 2 }
-          ]
-      };
+    // Fade-in au scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-      // Ressources disponibles dans la boutique
-      const shopItems = [
-          { name: 'Compost', icon: '🧹', description: 'Améliore la fertilité du sol (+10% durabilité)', cost: 40 },
-          { name: 'Collecteur d\'eau', icon: '💧', description: 'Réduit les besoins en eau de 30%', cost: 200, type: 'rainwaterCollector' },
-          { name: 'Haies', icon: '🌳', description: 'Favorise la biodiversité (+25%)', cost: 150, type: 'hedgerows' },
-          { name: 'Ruche d\'abeilles', icon: '🐝', description: 'Améliore la pollinisation et les rendements (+20%)', cost: 300, type: 'beeHive' }
-      ];
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-      // Événements aléatoires
-      const randomEvents = [
-          { 
-              name: 'Pluie abondante', 
-              description: 'Une pluie rafraîchissante a irrigué naturellement vos cultures !', 
-              effect: () => {
-                  for (let i = 0; i < gameState.plots.length; i++) {
-                      if (gameState.plots[i].status !== 'empty') {
-                          gameState.plots[i].waterLevel = 3;
-                      }
-                  }
-                  showMessage('☔ Une pluie abondante a irrigué vos cultures !');
-              }
-          },
-          {
-              name: 'Pollinisateurs',
-              description: 'Des abeilles sauvages ont visité votre ferme !',
-              effect: () => {
-                  gameState.biodiversity += 5;
-                  showMessage('🐝 Des abeilles sauvages ont visité votre ferme ! +5% biodiversité');
-              }
-          },
-          {
-              name: 'Sécheresse',
-              description: 'Une vague de chaleur dessèche vos cultures !',
-              effect: () => {
-                  let affected = 0;
-                  for (let i = 0; i < gameState.plots.length; i++) {
-                      if (gameState.plots[i].status !== 'empty' && gameState.plots[i].waterLevel === 0) {
-                          gameState.plots[i].growthStage = Math.max(0, gameState.plots[i].growthStage - 1);
-                          affected++;
-                      }
-                  }
-                  if (affected > 0) {
-                      showMessage(`🔥 Sécheresse ! ${affected} cultures souffrent de la chaleur`);
-                  }
-              }
-          },
-          {
-              name: 'Visite d\'école',
-              description: 'Une école visite votre ferme durable.',
-              effect: () => {
-                  gameState.money += 50;
-                  showMessage('🏫 Une école a visité votre ferme durable ! +50€');
-              }
-          }
-      ];
-      
-      // Variables Three.js
-      let scene, camera, renderer, controls;
-      let ground, skybox;
-      let plotMeshes = [];
-      let plantMeshes = [];
-      let waterIndicators = [];
-      let raycaster = new THREE.Raycaster();
-      let mouse = new THREE.Vector2();
-      let selectedPlot = null;
-      
-      // Éléments UI
-      const moneyEl = document.getElementById('money');
-      const seedsEl = document.getElementById('seeds');
-      const harvestsEl = document.getElementById('harvests');
-      const sustainabilityEl = document.getElementById('sustainability');
-      const biodiversityEl = document.getElementById('biodiversity');
-      const seasonEl = document.getElementById('current-season');
-      const seasonIconEl = document.getElementById('season-icon');
-      const dayEl = document.getElementById('current-day');
-      const messageBox = document.getElementById('message-box');
-      const shopPanel = document.getElementById('shop-panel');
-      const tooltip = document.getElementById('tooltip');
-      
-      // Initialisation Three.js
-      function initThreeJS() {
-          const container = document.getElementById('game-container');
-          
-          // Créer la scène
-          scene = new THREE.Scene();
-          
-          // Créer la caméra
-          camera = new THREE.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.1, 1000);
-          camera.position.set(0, 10, 15);
-          
-          // Créer le rendu
-          renderer = new THREE.WebGLRenderer({ antialias: true });
-          renderer.setSize(container.clientWidth, container.clientHeight);
-          renderer.shadowMap.enabled = true;
-          renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-          container.appendChild(renderer.domElement);
-          
-          // Contrôles OrbitControls
-          controls = new THREE.OrbitControls(camera, renderer.domElement);
-          controls.enableDamping = true;
-          controls.dampingFactor = 0.05;
-          controls.screenSpacePanning = false;
-          controls.minDistance = 5;
-          controls.maxDistance = 30;
-          controls.maxPolarAngle = Math.PI / 2.1;
-          
-          // Lumières
-          const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-          scene.add(ambientLight);
-          
-          const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-          directionalLight.position.set(5, 15, 10);
-          directionalLight.castShadow = true;
-          directionalLight.shadow.mapSize.width = 2048;
-          directionalLight.shadow.mapSize.height = 2048;
-          directionalLight.shadow.camera.near = 0.1;
-          directionalLight.shadow.camera.far = 50;
-          directionalLight.shadow.camera.left = -15;
-          directionalLight.shadow.camera.right = 15;
-          directionalLight.shadow.camera.top = 15;
-          directionalLight.shadow.camera.bottom = -15;
-          scene.add(directionalLight);
-          
-          // Skybox
-          createSkybox();
-          
-          // Terrain
-          createGround();
-          
-          // Créer les parcelles
-          createPlots();
-          
-          // Gestion du redimensionnement
-          window.addEventListener('resize', onWindowResize);
-          
-          // Gestion des clics
-          renderer.domElement.addEventListener('click', onMouseClick);
-          renderer.domElement.addEventListener('mousemove', onMouseMove);
-          
-          // Animation
-          animate();
-      }
-      
-      function createSkybox() {
-          scene.background = new THREE.Color(getCurrentSkyColor());
-          
-          // Ajouter des montagnes distantes
-          const mountainGeometry = new THREE.CylinderGeometry(1, 2, 4, 8, 1, false, 0, Math.PI * 2);
-          const mountainMaterial = new THREE.MeshPhongMaterial({ color: 0x4b6043 });
-          
-          for (let i = 0; i < 20; i++) {
-              const mountain = new THREE.Mesh(mountainGeometry, mountainMaterial);
-              const angle = (i / 20) * Math.PI * 2;
-              const distance = 50 + Math.random() * 20;
-              mountain.position.set(
-                  Math.cos(angle) * distance,
-                  -1,
-                  Math.sin(angle) * distance
-              );
-              mountain.scale.set(
-                  2 + Math.random() * 3,
-                  2 + Math.random() * 5,
-                  2 + Math.random() * 3
-              );
-              scene.add(mountain);
-          }
-      }
-      
-      function getCurrentSkyColor() {
-          switch(gameState.seasonIndex) {
-              case 0: return 0x87ceeb; // Printemps - ciel bleu clair
-              case 1: return 0x66ccff; // Été - bleu vif
-              case 2: return 0xadc2eb; // Automne - bleu grisâtre
-              case 3: return 0xb0c4de; // Hiver - bleu pâle
-          }
-      }
-      
-      function createGround() {
-          // Terrain principal
-          const groundGeometry = new THREE.PlaneGeometry(50, 50);
-          const groundMaterial = new THREE.MeshStandardMaterial({ 
-              color: getCurrentGroundColor(),
-              roughness: 0.8,
-              metalness: 0.2
-          });
-          ground = new THREE.Mesh(groundGeometry, groundMaterial);
-          ground.rotation.x = -Math.PI / 2;
-          ground.receiveShadow = true;
-          ground.position.y = -0.05;
-          scene.add(ground);
-      }
-      
-      function getCurrentGroundColor() {
-          switch(gameState.seasonIndex) {
-              case 0: return 0x7cba7c; // Printemps - vert vif
-              case 1: return 0x8a9a5b; // Été - vert jaunâtre
-              case 2: return 0xb29b69; // Automne - beige doré
-              case 3: return 0xf0f0f0; // Hiver - blanc neigeux
-          }
-      }
-      
-      function createPlots() {
-          // Créer une grille de parcelles
-          const plotGeometry = new THREE.BoxGeometry(CELL_SIZE * 0.9, 0.1, CELL_SIZE * 0.9);
-          const plotMaterial = new THREE.MeshStandardMaterial({ 
-              color: 0x5d4037,
-              roughness: 0.9,
-              metalness: 0.1 
-          });
-          
-          // Disposer les parcelles en grille
-          const centerOffset = (GRID_SIZE - 1) / 2;
-          for (let x = 0; x < GRID_SIZE; x++) {
-              for (let z = 0; z < GRID_SIZE; z++) {
-                  // Ne créer que les parcelles sur une zone carrée au centre
-                  if (x >= 2 && x < GRID_SIZE - 2 && z >= 2 && z < GRID_SIZE - 2) {
-                      const plot = new THREE.Mesh(plotGeometry, plotMaterial.clone());
-                      plot.position.set(
-                          (x - centerOffset) * CELL_SIZE,
-                          0,
-                          (z - centerOffset) * CELL_SIZE
-                      );
-                      plot.receiveShadow = true;
-                      plot.userData = { type: 'plot', plotId: x * GRID_SIZE + z };
-                      
-                      // Créer un indicateur d'eau (initialement invisible)
-                      const waterIndicator = createWaterIndicator();
-                      waterIndicator.position.copy(plot.position);
-                      waterIndicator.position.y = 0.06;
-                      waterIndicator.scale.set(0.8, 0.05, 0.8);
-                      waterIndicator.visible = false;
-                      scene.add(waterIndicator);
-                      
-                      scene.add(plot);
-                      plotMeshes.push(plot);
-                      waterIndicators.push(waterIndicator);
-                  }
-              }
-          }
-      }
-      
-      function createWaterIndicator() {
-          const geometry = new THREE.BoxGeometry(1, 1, 1);
-          const material = new THREE.MeshBasicMaterial({ 
-              color: 0x4fc3f7,
-              transparent: true,
-              opacity: 0.6 
-          });
-          return new THREE.Mesh(geometry, material);
-      }
-      
-      // Création de modèles de plantes
-      function createPlantModel(plotId, cropType) {
-          // Supprimer l'ancienne plante si elle existe
-          if (plantMeshes[plotId]) {
-              scene.remove(plantMeshes[plotId]);
-          }
-          
-          const plot = gameState.plots[plotId];
-          if (plot.status === 'empty') return;
-          
-          const plotMesh = plotMeshes.find(mesh => mesh.userData.plotId === plotId);
-          if (!plotMesh) return;
-          
-          let plantMesh;
-          
-          if (plot.status === 'seeded') {
-              // Simple graine
-              const seedGeometry = new THREE.SphereGeometry(0.1, 8, 8);
-              const seedMaterial = new THREE.MeshStandardMaterial({ color: 0x8B4513 });
-              plantMesh = new THREE.Mesh(seedGeometry, seedMaterial);
-              plantMesh.position.copy(plotMesh.position);
-              plantMesh.position.y = 0.1;
-          } 
-          else if (plot.status === 'growing') {
-              // Plante en croissance
-              const growthPercent = plot.growthStage / 5;
-              const stemHeight = 0.2 + growthPercent * 0.5;
-              
-              // Groupe pour contenir la plante
-              plantMesh = new THREE.Group();
-              
-              // Tige
-              const stemGeometry = new THREE.CylinderGeometry(0.03, 0.05, stemHeight, 8);
-              const stemMaterial = new THREE.MeshStandardMaterial({ color: 0x228B22 });
-              const stem = new THREE.Mesh(stemGeometry, stemMaterial);
-              stem.position.y = stemHeight / 2;
-              
-              // Feuilles
-              if (growthPercent > 0.2) {
-                  const leafGeometry = new THREE.SphereGeometry(0.1 + growthPercent * 0.15, 8, 8);
-                  leafGeometry.scale(1, 0.3, 1);
-                  const leafMaterial = new THREE.MeshStandardMaterial({ color: 0x32CD32 });
-                  
-                  for (let i = 0; i < 3; i++) {
-                      const leaf = new THREE.Mesh(leafGeometry, leafMaterial);
-                      const angle = (i / 3) * Math.PI * 2;
-                      leaf.position.set(
-                          Math.cos(angle) * 0.15,
-                          stemHeight * 0.4,
-                          Math.sin(angle) * 0.15
-                      );
-                      leaf.rotation.x = Math.PI / 4;
-                      leaf.rotation.y = angle;
-                      plantMesh.add(leaf);
-                  }
-              }
-              
-              plantMesh.add(stem);
-              plantMesh.position.copy(plotMesh.position);
-              plantMesh.position.y += 0.05;
-          } 
-          else if (plot.status === 'ready') {
-              // Plante prête avec fruit
-              const plantGroup = new THREE.Group();
-              
-              // Tige
-              const stemGeometry = new THREE.CylinderGeometry(0.03, 0.05, 0.7, 8);
-              const stemMaterial = new THREE.MeshStandardMaterial({ color: 0x228B22 });
-              const stem = new THREE.Mesh(stemGeometry, stemMaterial);
-              stem.position.y = 0.35;
-              plantGroup.add(stem);
-              
-              // Feuilles
-              const leafGeometry = new THREE.SphereGeometry(0.2, 8, 8);
-              leafGeometry.scale(1, 0.3, 1);
-              const leafMaterial = new THREE.MeshStandardMaterial({ color: 0x32CD32 });
-              
-              for (let i = 0; i < 4; i++) {
-                  const leaf = new THREE.Mesh(leafGeometry, leafMaterial);
-                  const angle = (i / 4) * Math.PI * 2;
-                  const height = 0.2 + i * 0.1;
-                  leaf.position.set(
-                      Math.cos(angle) * 0.2,
-                      height,
-                      Math.sin(angle) * 0.2
-                  );
-                  leaf.rotation.x = Math.PI / 4;
-                  leaf.rotation.y = angle;
-                  plantGroup.add(leaf);
-              }
-              
-              // Fruit (basé sur l'icône de la culture)
-              const fruitGeometry = new THREE.SphereGeometry(0.15, 8, 8);
-              let fruitColor;
-              
-              // Déterminer la couleur basée sur le type de culture
-              if (cropType.includes('🥕')) fruitColor = 0xFF7F00; // Carottes - orange
-              else if (cropType.includes('🥬')) fruitColor = 0x90EE90; // Laitue - vert clair
-              else if (cropType.includes('🟢')) fruitColor = 0x228B22; // Petits pois - vert
-              else if (cropType.includes('🍓')) fruitColor = 0xDC143C; // Fraises - rouge
-              else if (cropType.includes('🍅')) fruitColor = 0xFF6347; // Tomates - rouge tomate
-              else if (cropType.includes('🌽')) fruitColor = 0xFFFF00; // Maïs - jaune
-              else if (cropType.includes('🍆')) fruitColor = 0x663399; // Aubergines - violet
-              else if (cropType.includes('🥒')) fruitColor = 0x32CD32; // Concombres - vert
-              else if (cropType.includes('🎃')) fruitColor = 0xFF7518; // Citrouilles - orange
-              else if (cropType.includes('🧅') || cropType.includes('🧄')) fruitColor = 0xF5F5DC; // Oignons/Ail - beige
-              else if (cropType.includes('🥦')) fruitColor = 0x0FFF50; // Brocoli - vert vif
-              else if (cropType.includes('🫐')) fruitColor = 0x8A2BE2; // Betteraves - violet foncé
-              else fruitColor = 0xFFD700; // Couleur par défaut - or
-              
-              const fruitMaterial = new THREE.MeshStandardMaterial({ 
-                  color: fruitColor,
-                  roughness: 0.6,
-                  metalness: 0.1
-              });
-              
-              for (let i = 0; i < 3; i++) {
-                  const fruit = new THREE.Mesh(fruitGeometry, fruitMaterial);
-                  const angle = (i / 3) * Math.PI * 2;
-                  fruit.position.set(
-                      Math.cos(angle) * 0.15,
-                      0.6 + Math.sin(i) * 0.1,
-                      Math.sin(angle) * 0.15
-                  );
-                  plantGroup.add(fruit);
-              }
-              
-              plantMesh = plantGroup;
-              plantMesh.position.copy(plotMesh.position);
-              plantMesh.position.y += 0.05;
-          }
-          
-          if (plantMesh) {
-              plantMesh.traverse(object => {
-                  if (object.isMesh) {
-                      object.castShadow = true;
-                      object.receiveShadow = true;
-                  }
-              });
-              
-              scene.add(plantMesh);
-              plantMeshes[plotId] = plantMesh;
-          }
-      }
-      
-      function updatePlot(plotId) {
-          const plot = gameState.plots[plotId];
-          const plotMesh = plotMeshes.find(mesh => mesh.userData.plotId === plotId);
-          const waterIndicator = waterIndicators[plotMeshes.indexOf(plotMesh)];
-          
-          if (!plotMesh) return;
-          
-          // Mettre à jour la texture du sol selon l'état
-          if (plot.status === 'empty') {
-              plotMesh.material.color.set(0x5d4037); // Marron standard
-              plotMesh.material.roughness = 0.9;
-              
-              // Masquer l'indicateur d'eau
-              waterIndicator.visible = false;
-          } else {
-              plotMesh.material.color.set(0x3e2723); // Sol plus foncé car labouré
-              plotMesh.material.roughness = 0.7;
-              
-              // Afficher l'indicateur d'eau si la parcelle est arrosée
-              waterIndicator.visible = plot.waterLevel > 0;
-          }
-          
-          // Créer ou mettre à jour la plante
-          if (plot.status !== 'empty') {
-              // Trouver le type de culture à partir de la saison et de l'indice
-              const season = SEASONS[gameState.seasonIndex];
-              const cropType = getCropFromSeason(season, plot.cropIndex);
-              createPlantModel(plotId, cropType ? cropType.icon : '🌱');
-          } else if (plantMeshes[plotId]) {
-              scene.remove(plantMeshes[plotId]);
-              plantMeshes[plotId] = null;
-          }
-      }
-      
-      function updateAllPlots() {
-          for (let i = 0; i < plotMeshes.length; i++) {
-              const plotId = plotMeshes[i].userData.plotId;
-              updatePlot(plotId);
-          }
-      }
-      
-      function getCropFromSeason(season, index) {
-          if (!crops[season] || index === undefined || index >= crops[season].length) {
-              return null;
-          }
-          return crops[season][index];
-      }
-      
-      function onWindowResize() {
-          const container = document.getElementById('game-container');
-          camera.aspect = container.clientWidth / container.clientHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(container.clientWidth, container.clientHeight);
-      }
-      
-      function onMouseClick(event) {
-          // Calculer la position de la souris normalisée
-          const rect = renderer.domElement.getBoundingClientRect();
-          mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-          mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-          
-          // Vérifier les intersections
-          raycaster.setFromCamera(mouse, camera);
-          const intersects = raycaster.intersectObjects(plotMeshes);
-          
-          if (intersects.length > 0) {
-              const plotId = intersects[0].object.userData.plotId;
-              handlePlotInteraction(plotId);
-          }
-      }
-      
-      function onMouseMove(event) {
-          // Calculer la position de la souris normalisée
-          const rect = renderer.domElement.getBoundingClientRect();
-          mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-          mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-          
-          // Vérifier les intersections
-          raycaster.setFromCamera(mouse, camera);
-          const intersects = raycaster.intersectObjects(plotMeshes);
-          
-          // Mettre à jour le pointeur et le tooltip
-          document.body.style.cursor = intersects.length > 0 ? 'pointer' : 'default';
-          
-          // Afficher un tooltip
-          if (intersects.length > 0) {
-              const plotId = intersects[0].object.userData.plotId;
-              const plot = gameState.plots[plotId];
-              const season = SEASONS[gameState.seasonIndex];
-              
-              tooltip.style.opacity = '1';
-              tooltip.style.left = event.clientX + 10 + 'px';
-              tooltip.style.top = event.clientY + 10 + 'px';
-              
-              if (plot.status === 'empty') {
-                  tooltip.innerHTML = 'Parcelle vide<br>Cliquez pour interagir';
-              } else {
-                  const crop = getCropFromSeason(season, plot.cropIndex);
-                  const growthPercent = Math.floor((plot.growthStage / 5) * 100);
-                  tooltip.innerHTML = `${crop ? crop.icon + ' ' + crop.name : 'Culture'}<br>` +
-                                    `Croissance: ${growthPercent}%<br>` +
-                                    `Eau: ${plot.waterLevel > 0 ? '💧 Arrosée' : '🔥 A besoin d\'eau'}`;
-              }
-          } else {
-              tooltip.style.opacity = '0';
-          }
-      }
-      
-      function handlePlotInteraction(plotId) {
-          selectedPlot = plotId;
-          const plot = gameState.plots[plotId];
-          
-          // Mettre en évidence la parcelle sélectionnée
-          highlightSelectedPlot(plotId);
-          
-          // Action selon l'outil courant
-          if (gameState.currentTool === 'seed' && plot.status === 'empty') {
-              // Montrer les options de plantation
-              openSeedMenu(plotId);
-          }
-          else if (gameState.currentTool === 'water' && plot.status !== 'empty' && plot.waterLevel === 0) {
-              // Arroser la parcelle
-              waterPlot(plotId);
-          }
-          else if (gameState.currentTool === 'harvest' && plot.status === 'ready') {
-              // Récolter la parcelle
-              harvestPlot(plotId);
-          }
-      }
-      
-      function highlightSelectedPlot(plotId) {
-          // Réinitialiser tous les contours
-          for (let mesh of plotMeshes) {
-              mesh.material.emissive = new THREE.Color(0x000000);
-          }
-          
-          // Mettre en évidence la parcelle sélectionnée
-          const plotMesh = plotMeshes.find(mesh => mesh.userData.plotId === plotId);
-          if (plotMesh) {
-              plotMesh.material.emissive = new THREE.Color(0x3388ff);
-          }
-      }
-      
-      function openSeedMenu(plotId) {
-          // Créer le menu de semences pour la saison actuelle
-          const season = SEASONS[gameState.seasonIndex];
-          const seasonCrops = crops[season];
-          
-          // Ouvrir un menu modal
-          const modalContent = document.createElement('div');
-          modalContent.className = 'modal-content';
-          modalContent.innerHTML = `
-              <h3>Choisir une culture</h3>
-              <div id="crops-list" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;"></div>
-          `;
-          
-          document.body.appendChild(modalContent);
-          
-          // Position au centre
-          const rect = document.getElementById('game-container').getBoundingClientRect();
-          modalContent.style.position = 'absolute';
-          modalContent.style.width = '300px';
-          modalContent.style.left = rect.left + (rect.width - 300) / 2 + 'px';
-          modalContent.style.top = rect.top + 100 + 'px';
-          modalContent.style.backgroundColor = '#1e293b';
-          modalContent.style.padding = '15px';
-          modalContent.style.borderRadius = '10px';
-          modalContent.style.zIndex = '1000';
-          modalContent.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.5)';
-          
-          const cropsList = modalContent.querySelector('#crops-list');
-          
-          seasonCrops.forEach((crop, index) => {
-              const cropElement = document.createElement('div');
-              cropElement.className = 'crop-option';
-              cropElement.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-              cropElement.style.padding = '10px';
-              cropElement.style.borderRadius = '5px';
-              cropElement.style.cursor = 'pointer';
-              
-              cropElement.innerHTML = `
-                  <div style="font-size: 2rem;">${crop.icon}</div>
-                  <div>${crop.name}</div>
-                  <div>${crop.cost}€</div>
-              `;
-              
-              cropElement.addEventListener('click', () => {
-                  if (gameState.money >= crop.cost) {
-                      plantCrop(plotId, index);
-                      document.body.removeChild(modalContent);
-                  } else {
-                      showMessage('💰 Pas assez d\'argent !');
-                  }
-              });
-              
-              cropElement.addEventListener('mouseover', () => {
-                  cropElement.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-              });
-              
-              cropElement.addEventListener('mouseout', () => {
-                  cropElement.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-              });
-              
-              cropsList.appendChild(cropElement);
-          });
-          
-          // Bouton de fermeture
-          const closeButton = document.createElement('button');
-          closeButton.innerHTML = '&times;';
-          closeButton.style.position = 'absolute';
-          closeButton.style.top = '10px';
-          closeButton.style.right = '10px';
-          closeButton.style.background = 'none';
-          closeButton.style.border = 'none';
-          closeButton.style.fontSize = '1.5rem';
-          closeButton.style.color = 'white';
-          closeButton.style.cursor = 'pointer';
-          
-          closeButton.addEventListener('click', () => {
-              document.body.removeChild(modalContent);
-          });
-          
-          modalContent.appendChild(closeButton);
-      }
-      
-      function plantCrop(plotId, cropIndex) {
-          const season = SEASONS[gameState.seasonIndex];
-          const crop = crops[season][cropIndex];
-          
-          if (gameState.money < crop.cost) {
-              showMessage('💰 Pas assez d\'argent !');
-              return;
-          }
-          
-          gameState.money -= crop.cost;
-          gameState.seeds--;
-          
-          // Mettre à jour l'état de la parcelle
-          gameState.plots[plotId] = {
-              status: 'seeded',
-              growthStage: 0,
-              waterLevel: 0,
-              cropIndex: cropIndex
-          };
-          
-          updatePlot(plotId);
-          updateUI();
-          showMessage(`🌱 ${crop.name} planté !`);
-      }
-      
-      function waterPlot(plotId) {
-          const plot = gameState.plots[plotId];
-          
-          if (plot.status === 'empty') {
-              showMessage('Cette parcelle est vide !');
-              return;
-          }
-          
-          if (plot.waterLevel > 0) {
-              showMessage('Cette parcelle est déjà arrosée !');
-              return;
-          }
-          
-          // Coût réduit si collecteur d'eau installé
-          const waterCost = gameState.resources.rainwaterCollector ? 5 : 10;
-          
-          if (gameState.money < waterCost) {
-              showMessage('💰 Pas assez d\'argent pour irriguer !');
-              return;
-          }
-          
-          gameState.money -= waterCost;
-          plot.waterLevel = 3; // Reste arrosé pendant 3 jours
-          
-          // Effet visuel d'eau
-          const plotMesh = plotMeshes.find(mesh => mesh.userData.plotId === plotId);
-          if (plotMesh) {
-              const waterIndicator = waterIndicators[plotMeshes.indexOf(plotMesh)];
-              waterIndicator.visible = true;
-              
-              // Animation d'arrosage
-              const originalY = waterIndicator.position.y;
-              waterIndicator.position.y = originalY + 1;
-              waterIndicator.scale.set(0.4, 0.1, 0.4);
-              waterIndicator.material.opacity = 0.8;
-              
-              const waterAnimation = () => {
-                  waterIndicator.position.y -= 0.05;
-                  waterIndicator.scale.x += 0.02;
-                  waterIndicator.scale.z += 0.02;
-                  waterIndicator.material.opacity -= 0.02;
-                  
-                  if (waterIndicator.position.y > originalY) {
-                      requestAnimationFrame(waterAnimation);
-                  } else {
-                      waterIndicator.position.y = originalY;
-                      waterIndicator.scale.set(0.8, 0.05, 0.8);
-                      waterIndicator.material.opacity = 0.6;
-                  }
-              };
-              
-              waterAnimation();
-          }
-          
-          updateUI();
-          showMessage('💧 Parcelle arrosée !');
-      }
-      
-      function harvestPlot(plotId) {
-          const plot = gameState.plots[plotId];
-          
-          if (plot.status !== 'ready') {
-              showMessage('Cette culture n\'est pas prête à être récoltée !');
-              return;
-          }
-          
-          const season = SEASONS[gameState.seasonIndex];
-          const crop = crops[season][plot.cropIndex];
-          
-          // Calculer les gains
-          let value = crop.value;
-          
-          // Bonus si des haies sont présentes (biodiversité)
-          if (gameState.resources.hedgerows) value = Math.floor(value * 1.1);
-          
-          // Bonus si des ruches sont présentes
-          if (gameState.resources.beeHive) value = Math.floor(value * 1.2);
-          
-          // Augmenter durabilité et biodiversité
-          gameState.sustainability = Math.min(100, gameState.sustainability + crop.sustainability);
-          gameState.biodiversity = Math.min(100, gameState.biodiversity + crop.biodiversity);
-          
-          // Ajouter la récolte et l'argent
-          gameState.harvests++;
-          gameState.money += value;
-          
-          // Vider la parcelle
-          gameState.plots[plotId] = {
-              status: 'empty',
-              growthStage: 0,
-              waterLevel: 0
-          };
-          
-          // Animation de récolte
-          if (plantMeshes[plotId]) {
-              const plant = plantMeshes[plotId];
-              const originalY = plant.position.y;
-              let scaleY = 1;
-              
-              const harvestAnimation = () => {
-                  scaleY -= 0.05;
-                  plant.scale.y = Math.max(0, scaleY);
-                  plant.position.y -= 0.02;
-                  
-                  if (scaleY > 0) {
-                      requestAnimationFrame(harvestAnimation);
-                  } else {
-                      scene.remove(plant);
-                      plantMeshes[plotId] = null;
-                      
-                      // Créer une particule de "points"
-                      const textSprite = createTextSprite(`+${value}€`, 0x34d399);
-                      textSprite.position.copy(plotMeshes.find(mesh => mesh.userData.plotId === plotId).position);
-                      textSprite.position.y += 1;
-                      scene.add(textSprite);
-                      
-                      // Animation de la particule
-                      let particleY = 1;
-                      let opacity = 1;
-                      
-                      const particleAnimation = () => {
-                          particleY += 0.05;
-                          opacity -= 0.02;
-                          textSprite.position.y += 0.05;
-                          textSprite.material.opacity = opacity;
-                          
-                          if (opacity > 0) {
-                              requestAnimationFrame(particleAnimation);
-                          } else {
-                              scene.remove(textSprite);
-                          }
-                      };
-                      
-                      particleAnimation();
-                  }
-              };
-              
-              harvestAnimation();
-          }
-          
-          updatePlot(plotId);
-          updateUI();
-          showMessage(`🌽 Récolte de ${crop.name} vendue pour ${value}€ !`);
-      }
-      
-      function createTextSprite(text, color) {
-          const canvas = document.createElement('canvas');
-          const context = canvas.getContext('2d');
-          canvas.width = 256;
-          canvas.height = 128;
-          
-          context.font = 'Bold 40px Arial';
-          context.fillStyle = 'rgba(255, 255, 255, 0.95)';
-          context.textAlign = 'center';
-          context.fillText(text, 128, 64);
-          
-          const texture = new THREE.CanvasTexture(canvas);
-          const material = new THREE.SpriteMaterial({ 
-              map: texture,
-              transparent: true
-          });
-          
-          const sprite = new THREE.Sprite(material);
-          sprite.scale.set(2, 1, 1);
-          
-          return sprite;
-      }
-      
-      function advanceDay() {
-          // Faire progresser les plantes
-          for (let i = 0; i < gameState.plots.length; i++) {
-              const plot = gameState.plots[i];
-              
-              if (plot.status !== 'empty') {
-                  // Réduire l'eau
-                  if (plot.waterLevel > 0) {
-                      plot.waterLevel--;
-                      
-                      // Faire croître la plante si elle a de l'eau
-                      if (plot.status !== 'ready') {
-                          plot.growthStage++;
-                          
-                          // Mise à jour du statut
-                          if (plot.growthStage >= 1 && plot.growthStage < 5) {
-                              plot.status = 'growing';
-                          } else if (plot.growthStage >= 5) {
-                              plot.status = 'ready';
-                          }
-                      }
-                  }
-              }
-          }
-          
-          // Avancer le jour
-          gameState.day++;
-          
-          // Changement de saison si nécessaire
-          if (gameState.day > DAYS_PER_SEASON) {
-              gameState.day = 1;
-              gameState.seasonIndex = (gameState.seasonIndex + 1) % 4;
-              
-              // Mettre à jour les couleurs du monde
-              ground.material.color.set(getCurrentGroundColor());
-              scene.background = new THREE.Color(getCurrentSkyColor());
-              
-              showMessage(`🌞 Nouvelle saison : ${SEASONS[gameState.seasonIndex]} !`);
-          }
-          
-          // Événement aléatoire (20% de chance)
-          if (Math.random() < 0.2) {
-              triggerRandomEvent();
-          }
-          
-          // Conversion automatique des récoltes en argent
-          if (gameState.harvests > 0) {
-              const baseValue = 20;
-              const bonus = gameState.biodiversity / 100; // Bonus basé sur la biodiversité
-              const value = Math.floor(baseValue * (1 + bonus));
-              
-              gameState.money += value;
-              gameState.harvests--;
-              
-              showMessage(`🌽 Récolte vendue pour ${value}€`);
-          }
-          
-          // Acheter automatiquement des graines si besoin
-          if (gameState.seeds < 5 && gameState.money >= 30) {
-              gameState.money -= 30;
-              gameState.seeds += 5;
-              showMessage('🌱 Achat de 5 graines pour 30€');
-          }
-          
-          // Mettre à jour l'interface
-          updateUI();
-          updateAllPlots();
-          updateSeasonIndicator();
-      }
-      
-      function triggerRandomEvent() {
-          const event = randomEvents[Math.floor(Math.random() * randomEvents.length)];
-          event.effect();
-      }
-      
-      function updateUI() {
-          // Mettre à jour les statistiques
-          moneyEl.textContent = gameState.money + '€';
-          seedsEl.textContent = gameState.seeds;
-          harvestsEl.textContent = gameState.harvests;
-          sustainabilityEl.textContent = gameState.sustainability + '%';
-          biodiversityEl.textContent = gameState.biodiversity + '%';
-      }
-      
-      function updateSeasonIndicator() {
-          seasonEl.textContent = SEASONS[gameState.seasonIndex];
-          seasonIconEl.textContent = SEASON_ICONS[gameState.seasonIndex];
-          dayEl.textContent = gameState.day;
-      }
-      
-      function showMessage(text) {
-          messageBox.textContent = text;
-          messageBox.style.opacity = '1';
-          
-          // Faire disparaître le message après un délai
-          clearTimeout(messageBox.fadeTimeout);
-          messageBox.fadeTimeout = setTimeout(() => {
-              messageBox.style.opacity = '0';
-          }, 3000);
-      }
-      
-      function setupUIInteractions() {
-          // Boutons d'outils
-          document.getElementById('seed-btn').addEventListener('click', () => {
-              gameState.currentTool = 'seed';
-              updateToolButtonState('seed-btn');
-          });
-          
-          document.getElementById('water-btn').addEventListener('click', () => {
-              gameState.currentTool = 'water';
-              updateToolButtonState('water-btn');
-          });
-          
-          document.getElementById('harvest-btn').addEventListener('click', () => {
-              gameState.currentTool = 'harvest';
-              updateToolButtonState('harvest-btn');
-          });
-          
-          document.getElementById('shop-btn').addEventListener('click', () => {
-              shopPanel.classList.toggle('open');
-              populateShop();
-          });
-          
-          document.getElementById('next-day-btn').addEventListener('click', advanceDay);
-          
-          // Fermer la boutique
-          document.querySelector('.shop-close').addEventListener('click', () => {
-              shopPanel.classList.remove('open');
-          });
-          
-          // Etat initial des boutons
-          updateToolButtonState('seed-btn');
-      }
-      
-      function updateToolButtonState(activeButtonId) {
-          const buttons = ['seed-btn', 'water-btn', 'harvest-btn'];
-          
-          buttons.forEach(btnId => {
-              const btn = document.getElementById(btnId);
-              if (btnId === activeButtonId) {
-                  btn.classList.add('active');
-              } else {
-                  btn.classList.remove('active');
-              }
-          });
-      }
-      
-      function populateShop() {
-          const shopItems = document.getElementById('shop-items');
-          shopItems.innerHTML = '';
-          
-          // Articles de la boutique
-          [
-              { 
-                  name: 'Compost',
-                  description: 'Améliore la fertilité du sol et augmente la durabilité de 10%',
-                  price: 40,
-                  icon: '🧹',
-                  action: () => {
-                      if (gameState.money >= 40) {
-                          gameState.money -= 40;
-                          gameState.sustainability = Math.min(100, gameState.sustainability + 10);
-                          updateUI();
-                          showMessage('🧹 Compost ajouté ! Durabilité +10%');
-                      } else {
-                          showMessage('💰 Pas assez d\'argent !');
-                      }
-                  }
-              },
-              {
-                  name: 'Collecteur d\'eau',
-                  description: 'Réduit les coûts d\'irrigation de 50%',
-                  price: 200,
-                  icon: '💧',
-                  action: () => {
-                      if (gameState.resources.rainwaterCollector) {
-                          showMessage('Vous possédez déjà un collecteur d\'eau');
-                          return;
-                      }
-                      
-                      if (gameState.money >= 200) {
-                          gameState.money -= 200;
-                          gameState.resources.rainwaterCollector = true;
-                          updateUI();
-                          showMessage('💧 Collecteur d\'eau installé !');
-                      } else {
-                          showMessage('💰 Pas assez d\'argent !');
-                      }
-                  }
-              },
-              {
-                  name: 'Haies',
-                  description: 'Favorise la biodiversité (+25%)',
-                  price: 150,
-                  icon: '🌳',
-                  action: () => {
-                      if (gameState.resources.hedgerows) {
-                          showMessage('Vous possédez déjà des haies');
-                          return;
-                      }
-                      
-                      if (gameState.money >= 150) {
-                          gameState.money -= 150;
-                          gameState.resources.hedgerows = true;
-                          gameState.biodiversity = Math.min(100, gameState.biodiversity + 25);
-                          updateUI();
-                          showMessage('🌳 Haies installées ! Biodiversité +25%');
-                          
-                          // Ajouter des haies autour du terrain
-                          addHedgesToScene();
-                      } else {
-                          showMessage('💰 Pas assez d\'argent !');
-                      }
-                  }
-              },
-              {
-                  name: 'Ruche d\'abeilles',
-                  description: 'Améliore la pollinisation et augmente les rendements de 20%',
-                  price: 300,
-                  icon: '🐝',
-                  action: () => {
-                      if (gameState.resources.beeHive) {
-                          showMessage('Vous possédez déjà une ruche');
-                          return;
-                      }
-                      
-                      if (gameState.money >= 300) {
-                          gameState.money -= 300;
-                          gameState.resources.beeHive = true;
-                          gameState.biodiversity = Math.min(100, gameState.biodiversity + 15);
-                          updateUI();
-                          showMessage('🐝 Ruche installée ! Rendements +20%');
-                          
-                          // Ajouter une ruche à la scène
-                          addBeeHiveToScene();
-                      } else {
-                          showMessage('💰 Pas assez d\'argent !');
-                      }
-                  }
-              },
-              {
-                  name: 'Graines (5)',
-                  description: 'Acheter 5 graines supplémentaires',
-                  price: 30,
-                  icon: '🌱',
-                  action: () => {
-                      if (gameState.money >= 30) {
-                          gameState.money -= 30;
-                          gameState.seeds += 5;
-                          updateUI();
-                          showMessage('🌱 5 graines achetées !');
-                      } else {
-                          showMessage('💰 Pas assez d\'argent !');
-                      }
-                  }
-              }
-          ].forEach(item => {
-              const itemElement = document.createElement('div');
-              itemElement.className = 'shop-item';
-              
-              itemElement.innerHTML = `
-                  <div class="shop-item-header">
-                      <span class="shop-item-name">${item.icon} ${item.name}</span>
-                      <span class="shop-item-price">${item.price}€</span>
-                  </div>
-                  <div class="shop-item-description">${item.description}</div>
-              `;
-              
-              itemElement.addEventListener('click', item.action);
-              shopItems.appendChild(itemElement);
-          });
-      }
-      
-      function addHedgesToScene() {
-          // Créer des haies autour du terrain de jeu
-          const hedgeGeometry = new THREE.BoxGeometry(0.5, 1, 0.5);
-          const hedgeMaterial = new THREE.MeshLambertMaterial({ color: 0x2e7d32 });
-          
-          const gridSize = 10;
-          const halfGrid = gridSize / 2;
-          
-          for (let i = -halfGrid; i <= halfGrid; i += 1) {
-              // Haies sur les bords
-              if (Math.abs(i) > halfGrid - 3) continue; // Laisser des trous pour l'entrée
-              
-              // Haie Nord
-              const hedgeN = new THREE.Mesh(hedgeGeometry, hedgeMaterial);
-              hedgeN.position.set(i, 0.5, -halfGrid - 0.5);
-              hedgeN.castShadow = true;
-              hedgeN.receiveShadow = true;
-              scene.add(hedgeN);
-              
-              // Haie Sud
-              const hedgeS = new THREE.Mesh(hedgeGeometry, hedgeMaterial);
-              hedgeS.position.set(i, 0.5, halfGrid + 0.5);
-              hedgeS.castShadow = true;
-              hedgeS.receiveShadow = true;
-              scene.add(hedgeS);
-              
-              // Haie Est
-              const hedgeE = new THREE.Mesh(hedgeGeometry, hedgeMaterial);
-              hedgeE.position.set(halfGrid + 0.5, 0.5, i);
-              hedgeE.castShadow = true;
-              hedgeE.receiveShadow = true;
-              scene.add(hedgeE);
-              
-              // Haie Ouest
-              const hedgeW = new THREE.Mesh(hedgeGeometry, hedgeMaterial);
-              hedgeW.position.set(-halfGrid - 0.5, 0.5, i);
-              hedgeW.castShadow = true;
-              hedgeW.receiveShadow = true;
-              scene.add(hedgeW);
-          }
-      }
-      
-      function addBeeHiveToScene() {
-          // Créer une ruche
-          const hiveGroup = new THREE.Group();
-          
-          // Base de la ruche
-          const baseGeometry = new THREE.CylinderGeometry(0.6, 0.7, 0.3, 8);
-          const baseMaterial = new THREE.MeshLambertMaterial({ color: 0xFFB74D });
-          const base = new THREE.Mesh(baseGeometry, baseMaterial);
-          hiveGroup.add(base);
-          
-          // Corps de la ruche
-          const bodyGeometry = new THREE.CylinderGeometry(0.5, 0.6, 0.8, 8);
-          const bodyMaterial = new THREE.MeshLambertMaterial({ color: 0xFF9800 });
-          const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
-          body.position.y = 0.5;
-          hiveGroup.add(body);
-          
-          // Toit de la ruche
-          const roofGeometry = new THREE.ConeGeometry(0.6, 0.4, 8);
-          const roofMaterial = new THREE.MeshLambertMaterial({ color: 0xE65100 });
-          const roof = new THREE.Mesh(roofGeometry, roofMaterial);
-          roof.position.y = 1.1;
-          hiveGroup.add(roof);
-          
-          // Positionnement de la ruche
-          hiveGroup.position.set(-5, 0.15, 5);
-          hiveGroup.traverse(obj => {
-              if (obj.isMesh) {
-                  obj.castShadow = true;
-                  obj.receiveShadow = true;
-              }
-          });
-          
-          scene.add(hiveGroup);
-          
-          // Ajouter quelques abeilles animées
-          for (let i = 0; i < 5; i++) {
-              const bee = createBee();
-              bee.position.copy(hiveGroup.position);
-              bee.position.y += 0.8;
-              scene.add(bee);
-              
-              // Animation de vol aléatoire
-              animateBee(bee, hiveGroup.position);
-          }
-      }
-      
-      function createBee() {
-          const beeGroup = new THREE.Group();
-          
-          // Corps de l'abeille
-          const bodyGeometry = new THREE.SphereGeometry(0.08, 8, 8);
-          const bodyMaterial = new THREE.MeshLambertMaterial({ color: 0xFDD835 });
-          const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
-          body.scale.z = 1.5;
-          beeGroup.add(body);
-          
-          // Rayures noires
-          const stripeGeometry = new THREE.BoxGeometry(0.06, 0.04, 0.12);
-          const stripeMaterial = new THREE.MeshLambertMaterial({ color: 0x000000 });
-          
-          for (let i = 0; i < 3; i++) {
-              const stripe = new THREE.Mesh(stripeGeometry, stripeMaterial);
-              stripe.position.z = -0.02 - i * 0.08;
-              beeGroup.add(stripe);
-          }
-          
-          // Ailes
-          const wingGeometry = new THREE.CircleGeometry(0.1, 8);
-          const wingMaterial = new THREE.MeshBasicMaterial({ 
-              color: 0xFFFFFF,
-              transparent: true,
-              opacity: 0.5,
-              side: THREE.DoubleSide
-          });
-          
-          const leftWing = new THREE.Mesh(wingGeometry, wingMaterial);
-          leftWing.rotation.x = -Math.PI / 2;
-          leftWing.position.set(0.1, 0.05, 0);
-          beeGroup.add(leftWing);
-          
-          const rightWing = new THREE.Mesh(wingGeometry, wingMaterial);
-          rightWing.rotation.x = -Math.PI / 2;
-          rightWing.position.set(-0.1, 0.05, 0);
-          beeGroup.add(rightWing);
-          
-          return beeGroup;
-      }
-      
-      function animateBee(bee, center) {
-          const radius = 1 + Math.random() * 2;
-          const speed = 0.001 + Math.random() * 0.003;
-          const height = 0.8 + Math.random() * 0.5;
-          let angle = Math.random() * Math.PI * 2;
-          
-          function animateWings() {
-              // Faire battre les ailes
-              if (bee.children[3] && bee.children[4]) {
-                  bee.children[3].rotation.y = Math.sin(Date.now() * 0.05) * 0.3;
-                  bee.children[4].rotation.y = -Math.sin(Date.now() * 0.05) * 0.3;
-              }
-          }
-          
-          function updatePosition() {
-              angle += speed;
-              bee.position.x = center.x + Math.cos(angle) * radius;
-              bee.position.z = center.z + Math.sin(angle) * radius;
-              bee.position.y = center.y + height + Math.sin(angle * 3) * 0.2;
-              
-              // Orienter l'abeille dans la direction du mouvement
-              bee.rotation.y = angle + Math.PI / 2;
-              
-              animateWings();
-              
-              requestAnimationFrame(updatePosition);
-          }
-          
-          updatePosition();
-      }
-      
-      function animate() {
-          requestAnimationFrame(animate);
-          controls.update();
-          renderer.render(scene, camera);
-      }
-      
-      // Initialisation du jeu
-      initThreeJS();
-      setupUIInteractions();
-      updateUI();
-      updateSeasonIndicator();
+    window.addEventListener('load', () => {
+      setTimeout(() => document.querySelector('.hero').classList.add('show'), 200);
     });
   </script>
+
 </body>
 </html>
