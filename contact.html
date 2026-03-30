@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact - Green Campus 221</title>
 
-  <!-- Icônes dynamiques -->
   <script src="https://kit.fontawesome.com/a2d9d6b3f1.js" crossorigin="anonymous"></script>
 
-  <!-- Style CSS intégré -->
   <style>
     body.dark {
       background: #0f172a;
@@ -18,59 +16,42 @@
     }
 
     header {
-      position: sticky;
-      top: 0;
-      background: rgba(15, 23, 42, 0.8);
-      backdrop-filter: blur(10px);
+      position: sticky; top: 0;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(15px);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
       z-index: 1000;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.1);
     }
 
-    .logo {
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
+    .logo { font-weight: bold; font-size: 1.2rem; color: #f1f5f9; }
 
     nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-      margin: 0;
-      padding: 0;
+      list-style: none; display: flex;
+      gap: 1rem; margin: 0; padding: 0;
     }
 
-    nav a {
-      color: #f1f5f9;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
+    nav a { color: #f1f5f9; text-decoration: none; transition: color 0.3s; padding: 0.5rem 1rem; border-radius: 0.5rem; }
+    nav a:hover, nav a.active { color: #38bdf8; background: rgba(56,189,248,0.1); }
 
-    nav a:hover, nav a.active {
-      color: #38bdf8;
-    }
+    #burger { display: none; font-size: 1.5rem; cursor: pointer; color: white; }
 
-    #burger {
-      display: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: white;
-    }
-
+    /* ── HERO ── */
     .hero {
-      text-align: center;
-      padding: 3rem 1rem;
+      text-align: center; padding: 3rem 1rem;
       background: linear-gradient(145deg, #1e293b, #0f172a);
-      border-radius: 1rem;
-      margin: 2rem;
+      border-radius: 1rem; margin: 2rem;
     }
 
-    .section {
-      padding: 3rem 2rem;
-    }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 0.75rem; color: #38bdf8; }
+    .hero p  { color: #94a3b8; font-size: 1.1rem; }
 
+    .section { padding: 3rem 2rem; }
+
+    /* ── CONTACT LAYOUT ── */
     .contact-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -79,281 +60,215 @@
       margin: 0 auto;
     }
 
-    .contact-info {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2.5rem;
-      border-radius: 1rem;
+    .contact-info, .contact-form {
+      background: rgba(255,255,255,0.05);
+      padding: 2.5rem; border-radius: 1rem;
       backdrop-filter: blur(5px);
-      border: 1px solid rgba(56, 189, 248, 0.2);
+      border: 1px solid rgba(56,189,248,0.2);
     }
 
-    .contact-form {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2.5rem;
-      border-radius: 1rem;
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(56, 189, 248, 0.2);
+    .contact-info h2, .contact-form h2 {
+      color: #38bdf8; margin-bottom: 1.5rem; font-size: 1.4rem;
     }
 
+    /* ── CONTACT ITEMS ── */
     .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 2rem 0;
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.05);
+      display: flex; align-items: center; gap: 1rem;
+      margin: 1.5rem 0; padding: 1.2rem 1.5rem;
+      background: rgba(255,255,255,0.04);
       border-radius: 0.75rem;
-      transition: all 0.3s;
-      cursor: pointer;
+      border: 1px solid rgba(56,189,248,0.1);
+      transition: all 0.3s; cursor: pointer;
     }
 
     .contact-item:hover {
-      background: rgba(56, 189, 248, 0.1);
-      transform: translateX(10px);
+      background: rgba(56,189,248,0.08);
+      border-color: rgba(56,189,248,0.3);
+      transform: translateX(8px);
     }
 
+    /* Icône ronde avec image Simple Icons */
     .contact-icon {
-      background: #38bdf8;
-      color: #0f172a;
-      width: 50px;
-      height: 50px;
+      width: 50px; height: 50px; min-width: 50px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      min-width: 50px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
     }
 
-    .contact-details h3 {
-      color: #38bdf8;
-      margin: 0 0 0.5rem 0;
-      font-size: 1.1rem;
+    .contact-icon img {
+      width: 26px; height: 26px; object-fit: contain;
     }
 
-    .contact-details p {
-      color: #cbd5e1;
-      margin: 0;
-      line-height: 1.5;
-    }
+    /* Couleurs de fond par type */
+    .icon-whatsapp { background: rgba(37,211,102,0.15); border: 2px solid rgba(37,211,102,0.4); }
+    .icon-phone    { background: rgba(56,189,248,0.15); border: 2px solid rgba(56,189,248,0.4); }
+    .icon-email    { background: rgba(234,67,53,0.15);  border: 2px solid rgba(234,67,53,0.4); }
+    .icon-location { background: rgba(20,184,166,0.15); border: 2px solid rgba(20,184,166,0.4); }
 
+    .contact-details h3 { color: #f1f5f9; margin: 0 0 0.3rem 0; font-size: 1rem; font-weight: 600; }
+    .contact-details p  { color: #94a3b8; margin: 0; font-size: 0.9rem; line-height: 1.5; }
+
+    /* ── WHATSAPP BUTTON ── */
     .whatsapp-btn {
-      background: #25D366;
-      color: white;
-      border: none;
-      padding: 1rem 2rem;
-      border-radius: 2rem;
-      font-size: 1.1rem;
-      font-weight: bold;
-      cursor: pointer;
+      background: #25D366; color: white;
+      border: none; padding: 1rem 2rem;
+      border-radius: 2rem; font-size: 1rem;
+      font-weight: bold; cursor: pointer;
       transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      margin: 1rem 0;
-      text-decoration: none;
-      width: 100%;
+      display: flex; align-items: center;
+      justify-content: center; gap: 0.75rem;
+      margin-top: 1.5rem; text-decoration: none; width: 100%;
     }
+
+    .whatsapp-btn img { width: 22px; height: 22px; filter: brightness(0) invert(1); }
 
     .whatsapp-btn:hover {
       background: #128C7E;
-      transform: scale(1.05);
-      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+      transform: scale(1.03);
+      box-shadow: 0 10px 30px rgba(37,211,102,0.35);
     }
 
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
+    /* ── FORMULAIRE ── */
+    .form-group { margin-bottom: 1.5rem; }
 
     .form-group label {
-      display: block;
-      color: #38bdf8;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
+      display: block; color: #38bdf8;
+      margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem;
     }
 
     .form-group input,
     .form-group textarea,
     .form-group select {
-      width: 100%;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 0.5rem;
-      color: #f1f5f9;
-      font-size: 1rem;
-      transition: all 0.3s;
+      width: 100%; padding: 0.9rem 1rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(56,189,248,0.25);
+      border-radius: 0.5rem; color: #f1f5f9;
+      font-size: 0.95rem; transition: all 0.3s;
       box-sizing: border-box;
     }
 
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus {
-      outline: none;
-      border-color: #38bdf8;
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+      outline: none; border-color: #38bdf8;
+      box-shadow: 0 0 0 3px rgba(56,189,248,0.1);
     }
 
     .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: #94a3b8;
-    }
+    .form-group textarea::placeholder { color: #475569; }
 
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
+    .form-group select option { background: #1e293b; }
+    .form-group textarea { resize: vertical; min-height: 120px; }
 
     .submit-btn {
-      background: #38bdf8;
-      color: #0f172a;
-      border: none;
-      padding: 1rem 2rem;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s;
-      width: 100%;
+      background: linear-gradient(135deg, #14b8a6, #38bdf8);
+      color: #0f172a; border: none;
+      padding: 1rem 2rem; border-radius: 0.75rem;
+      font-size: 1rem; font-weight: bold;
+      cursor: pointer; transition: all 0.3s; width: 100%;
     }
 
     .submit-btn:hover {
-      background: #0ea5e9;
       transform: scale(1.02);
+      box-shadow: 0 10px 25px rgba(56,189,248,0.3);
     }
 
+    /* ── CAMPUS INFO ── */
     .campus-info {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 1rem;
-      margin: 3rem 0;
-      text-align: center;
+      background: rgba(255,255,255,0.04);
+      padding: 2rem; border-radius: 1rem;
+      margin: 0 2rem 0; text-align: center;
+      border: 1px solid rgba(56,189,248,0.1);
     }
+
+    .campus-info h2 { color: #38bdf8; margin-bottom: 0.5rem; }
+    .campus-info p  { color: #94a3b8; }
 
     .map-container {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 1rem;
-      margin: 2rem 0;
-      text-align: center;
+      background: rgba(255,255,255,0.04);
+      padding: 2rem; border-radius: 1rem;
+      margin: 2rem 0; text-align: center;
     }
 
-    .map-container h3 {
-      color: #38bdf8;
-      margin-bottom: 1.5rem;
-    }
+    .map-container h3 { color: #38bdf8; margin-bottom: 1.5rem; }
 
     #map {
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       transition: transform 0.3s;
     }
 
-    #map:hover {
-      transform: scale(1.02);
-    }
+    #map:hover { transform: scale(1.01); }
 
+    /* ── CONTACT RAPIDE ── */
     .quick-contact {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 1.5rem; margin: 2rem 0;
     }
 
     .quick-contact-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      color: #f1f5f9;
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(56,189,248,0.2);
+      color: #f1f5f9; padding: 1.5rem;
+      border-radius: 0.75rem; cursor: pointer;
+      transition: all 0.3s; text-decoration: none;
+      display: flex; align-items: center; gap: 1rem;
     }
 
     .quick-contact-btn:hover {
-      background: rgba(56, 189, 248, 0.1);
+      background: rgba(56,189,248,0.08);
       border-color: #38bdf8;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(56,189,248,0.1);
     }
 
-    .quick-contact-btn i {
-      font-size: 1.5rem;
-      color: #38bdf8;
+    .quick-icon {
+      width: 44px; height: 44px; min-width: 44px;
+      border-radius: 0.75rem;
+      display: flex; align-items: center; justify-content: center;
     }
 
+    .quick-icon img { width: 24px; height: 24px; object-fit: contain; }
+
+    /* ── FOOTER ── */
     footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      opacity: 0.7;
+      text-align: center; padding: 2rem;
+      font-size: 0.9rem; color: #64748b;
+      border-top: 1px solid rgba(56,189,248,0.1);
+      margin-top: 3rem;
     }
 
-    /* Responsive */
+    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav ul {
-        flex-direction: column;
-        display: none;
-        background: #1e293b;
-        padding: 1rem;
-        border-radius: 1rem;
-        position: absolute;
-        top: 60px;
-        right: 10px;
+        flex-direction: column; display: none;
+        background: #1e293b; padding: 1rem;
+        border-radius: 1rem; position: absolute;
+        top: 60px; right: 10px; min-width: 200px;
       }
-
-      nav ul.active {
-        display: flex;
-      }
-
-      #burger {
-        display: block;
-      }
-
-      .contact-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .quick-contact {
-        grid-template-columns: 1fr;
-      }
+      nav ul.active { display: flex; }
+      #burger { display: block; }
+      .contact-container { grid-template-columns: 1fr; gap: 2rem; }
+      .quick-contact { grid-template-columns: 1fr; }
+      .campus-info { margin: 0 1rem; }
     }
 
-    /* Animation fade-in */
+    /* ── ANIMATIONS ── */
     .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.9s ease-out, transform 0.9s ease-out;
     }
-
-    .fade-in.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Animation pour les cartes */
-    .contact-item {
-      animation: slideIn 0.6s ease-out forwards;
-    }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
 
     @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateX(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+      from { opacity: 0; transform: translateX(-20px); }
+      to   { opacity: 1; transform: translateX(0); }
     }
   </style>
 </head>
 
 <body class="dark">
+
   <header>
     <div class="logo">🌿 Green Campus 221</div>
     <nav id="nav">
@@ -369,34 +284,37 @@
     </nav>
   </header>
 
+  <!-- HERO -->
   <section class="hero fade-in">
     <h1><i class="fas fa-envelope"></i> Nous Contacter</h1>
     <p>Une question ? Un projet ? N'hésitez pas à nous contacter !</p>
   </section>
 
+  <!-- CAMPUS + CARTE -->
   <section class="campus-info fade-in">
     <h2><i class="fas fa-university"></i> Green Campus 221</h2>
     <p>Un campus moderne et écologique au service de l'éducation et de l'innovation</p>
-
-    <!-- Carte remplaçant les statistiques -->
     <div class="map-container">
       <h3><i class="fas fa-map-marker-alt"></i> Notre Localisation</h3>
-      <div id="map" style="height: 400px; border-radius: 1rem; overflow: hidden; border: 2px solid rgba(56, 189, 248, 0.3);"></div>
-      <p style="margin-top: 1rem; text-align: center; color: #94a3b8;">
-        <i class="fas fa-location-dot"></i> Coordonnées: 14.2243298, -16.0587850
+      <div id="map" style="height:400px;border-radius:1rem;overflow:hidden;border:2px solid rgba(56,189,248,0.3);"></div>
+      <p style="margin-top:1rem;color:#94a3b8;">
+        <i class="fas fa-location-dot"></i> Coordonnées : 14.2243298, -16.0587850
       </p>
     </div>
   </section>
 
+  <!-- CONTACT PRINCIPAL -->
   <section class="section fade-in">
     <div class="contact-container">
-      <!-- Informations de contact -->
+
+      <!-- ── INFORMATIONS DE CONTACT ── -->
       <div class="contact-info">
         <h2><i class="fas fa-info-circle"></i> Informations de Contact</h2>
 
+        <!-- WhatsApp → Simple Icons #25D366 -->
         <div class="contact-item" onclick="openWhatsApp()">
-          <div class="contact-icon">
-            <i class="fab fa-whatsapp"></i>
+          <div class="contact-icon icon-whatsapp">
+            <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" />
           </div>
           <div class="contact-details">
             <h3>WhatsApp Direct</h3>
@@ -405,20 +323,22 @@
           </div>
         </div>
 
+        <!-- Téléphone → Simple Icons viber (téléphone) #665CAC -->
         <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-phone"></i>
+          <div class="contact-icon icon-phone">
+            <img src="https://cdn.simpleicons.org/viber/38bdf8" alt="Téléphone" />
           </div>
           <div class="contact-details">
             <h3>Téléphone</h3>
             <p>+221 77 793 42 29</p>
-            <p>Lun - Ven : 8h00 - 18h00</p>
+            <p>Lun – Ven : 8h00 – 18h00</p>
           </div>
         </div>
 
+        <!-- Email → Simple Icons Gmail #EA4335 -->
         <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-envelope"></i>
+          <div class="contact-icon icon-email">
+            <img src="https://cdn.simpleicons.org/gmail/EA4335" alt="Gmail" />
           </div>
           <div class="contact-details">
             <h3>Email</h3>
@@ -427,41 +347,45 @@
           </div>
         </div>
 
+        <!-- Adresse → point de localisation SVG inline -->
         <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-map-marker-alt"></i>
+          <div class="contact-icon icon-location">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="#14b8a6" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+            </svg>
           </div>
           <div class="contact-details">
             <h3>Adresse</h3>
             <p>Campus Green 221</p>
-            <p>Dakar, Sénégal</p>
+            <p>Khelcom, Sénégal</p>
           </div>
         </div>
 
+        <!-- Bouton WhatsApp principal -->
         <a href="#" class="whatsapp-btn" onclick="openWhatsApp(); return false;">
-          <i class="fab fa-whatsapp"></i>
+          <img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="WhatsApp" />
           Discuter sur WhatsApp
         </a>
       </div>
 
-      <!-- Formulaire de contact -->
+      <!-- ── FORMULAIRE ── -->
       <div class="contact-form">
         <h2><i class="fas fa-paper-plane"></i> Envoyez-nous un Message</h2>
-        
+
         <form id="contactForm">
           <div class="form-group">
             <label for="name">Nom Complet *</label>
-            <input type="text" id="name" name="name" required placeholder="Votre nom complet">
+            <input type="text" id="name" name="name" required placeholder="Votre nom complet" />
           </div>
 
           <div class="form-group">
             <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required placeholder="votre.email@exemple.com">
+            <input type="email" id="email" name="email" required placeholder="votre.email@exemple.com" />
           </div>
 
           <div class="form-group">
             <label for="phone">Téléphone</label>
-            <input type="tel" id="phone" name="phone" placeholder="+221 XX XXX XX XX">
+            <input type="tel" id="phone" name="phone" placeholder="+221 XX XXX XX XX" />
           </div>
 
           <div class="form-group">
@@ -493,177 +417,122 @@
           </div>
 
           <button type="submit" class="submit-btn">
-            <i class="fas fa-paper-plane"></i>
-            Envoyer le Message
+            <i class="fas fa-paper-plane"></i> Envoyer le Message
           </button>
         </form>
       </div>
     </div>
   </section>
 
+  <!-- CONTACT RAPIDE -->
   <section class="section fade-in">
-    <h2 style="text-align: center; margin-bottom: 2rem;"><i class="fas fa-rocket"></i> Contact Rapide</h2>
+    <h2 style="text-align:center;margin-bottom:2rem;color:#f1f5f9;">
+      <i class="fas fa-rocket"></i> Contact Rapide
+    </h2>
     <div class="quick-contact">
+
+      <!-- WhatsApp -->
       <a href="#" class="quick-contact-btn" onclick="openWhatsApp(); return false;">
-        <i class="fab fa-whatsapp"></i>
+        <div class="quick-icon" style="background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.3);">
+          <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" />
+        </div>
         <div>
           <strong>WhatsApp</strong>
-          <div style="font-size: 0.9rem; color: #94a3b8;">Discussion instantanée</div>
+          <div style="font-size:0.85rem;color:#94a3b8;margin-top:0.2rem;">Discussion instantanée</div>
         </div>
       </a>
 
+      <!-- Appel Direct → Viber -->
       <a href="tel:+221777934229" class="quick-contact-btn">
-        <i class="fas fa-phone"></i>
+        <div class="quick-icon" style="background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.3);">
+          <img src="https://cdn.simpleicons.org/viber/38bdf8" alt="Téléphone" />
+        </div>
         <div>
           <strong>Appel Direct</strong>
-          <div style="font-size: 0.9rem; color: #94a3b8;">+221 77 793 42 29</div>
+          <div style="font-size:0.85rem;color:#94a3b8;margin-top:0.2rem;">+221 77 793 42 29</div>
         </div>
       </a>
-      
+
+      <!-- Email → Gmail -->
       <a href="mailto:contact@greencampus221.sn" class="quick-contact-btn">
-        <i class="fas fa-envelope"></i>
+        <div class="quick-icon" style="background:rgba(234,67,53,0.12);border:1px solid rgba(234,67,53,0.3);">
+          <img src="https://cdn.simpleicons.org/gmail/EA4335" alt="Gmail" />
+        </div>
         <div>
           <strong>Email</strong>
-          <div style="font-size: 0.9rem; color: #94a3b8;">⚠️information indisponible</div>
+          <div style="font-size:0.85rem;color:#94a3b8;margin-top:0.2rem;">⚠️ Information indisponible</div>
         </div>
       </a>
+
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 Green Campus 221 | Réalisé avec le groupe Sunu Mbeye💚</p>
+    <p>&copy; 2025 Green Campus 221 | Réalisé avec le groupe SunuMbey 🍃</p>
   </footer>
 
-  <!-- JavaScript intégré -->
   <script>
     // Menu responsive
     const burger = document.getElementById('burger');
     const navList = document.querySelector('nav ul');
+    burger.addEventListener('click', () => navList.classList.toggle('active'));
 
-    burger.addEventListener('click', () => {
-      navList.classList.toggle('active');
-    });
-
-    // Fonction pour ouvrir WhatsApp avec message pré-rempli
+    // WhatsApp
     function openWhatsApp() {
-      const phoneNumber = "221777934229"; // Votre numéro sans le +
-      const message = "Bonjour ! Je vous contacte depuis le site Green Campus 221. J'aimerais avoir des informations sur...";
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-      
-      // Ouvrir WhatsApp dans un nouvel onglet
-      window.open(whatsappURL, '_blank');
-    }
-
-    // Gestion du formulaire de contact
-    const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Récupérer les données du formulaire
-      const formData = new FormData(contactForm);
-      const name = formData.get('name');
-      const email = formData.get('email');
-      const phone = formData.get('phone');
-      const subject = formData.get('subject');
-      const filiere = formData.get('filiere');
-      const message = formData.get('message');
-      
-      // Créer le message WhatsApp personnalisé
-      let whatsappMessage = `🌿 *Nouveau message depuis Green Campus 221*\n\n`;
-      whatsappMessage += `👤 *Nom:* ${name}\n`;
-      whatsappMessage += `📧 *Email:* ${email}\n`;
-      if (phone) whatsappMessage += `📱 *Téléphone:* ${phone}\n`;
-      whatsappMessage += `📋 *Sujet:* ${subject}\n`;
-      if (filiere) whatsappMessage += `🎓 *Filière d'intérêt:* ${filiere}\n`;
-      whatsappMessage += `\n💬 *Message:*\n${message}`;
-      
-      // Encoder le message pour l'URL
-      const encodedMessage = encodeURIComponent(whatsappMessage);
       const phoneNumber = "221777934229";
-      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-      
-      // Ouvrir WhatsApp avec le message
-      window.open(whatsappURL, '_blank');
-      
-      // Réinitialiser le formulaire
-      contactForm.reset();
-      
-      // Afficher un message de confirmation
-      alert('Redirection vers WhatsApp en cours... Votre message a été pré-rempli !');
-    });
-
-    // Initialisation de la carte avec Leaflet
-    function initMap() {
-      // Coordonnées du Green Campus 221
-      const campusCoords = [14.2243298, -16.0587850];
-      
-      // Créer la carte
-      const map = L.map('map').setView(campusCoords, 15);
-      
-      // Ajouter les tuiles de carte
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-      }).addTo(map);
-      
-      // Ajouter un marqueur personnalisé
-      const customIcon = L.divIcon({
-        html: '<i class="fas fa-university" style="color: #38bdf8; font-size: 24px;"></i>',
-        iconSize: [30, 30],
-        className: 'custom-marker'
-      });
-      
-      L.marker(campusCoords, { icon: customIcon })
-        .addTo(map)
-        .bindPopup(`
-          <div style="text-align: center; padding: 10px;">
-            <strong>🌿 Green Campus 221</strong><br>
-            <small>Campus écologique moderne</small><br>
-            <a href="https://www.google.com/maps?q=${campusCoords[0]},${campusCoords[1]}" target="_blank" style="color: #38bdf8;">
-              <i class="fas fa-external-link-alt"></i> Voir sur Google Maps
-            </a>
-          </div>
-        `)
-        .openPopup();
+      const message = "Bonjour ! Je vous contacte depuis le site Green Campus 221. J'aimerais avoir des informations sur...";
+      window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
     }
 
-    // Charger la carte après le chargement de la page
+    // Formulaire → WhatsApp
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const f = new FormData(this);
+      let msg = `🌿 *Nouveau message depuis Green Campus 221*\n\n`;
+      msg += `👤 *Nom:* ${f.get('name')}\n`;
+      msg += `📧 *Email:* ${f.get('email')}\n`;
+      if (f.get('phone')) msg += `📱 *Téléphone:* ${f.get('phone')}\n`;
+      msg += `📋 *Sujet:* ${f.get('subject')}\n`;
+      if (f.get('filiere')) msg += `🎓 *Filière:* ${f.get('filiere')}\n`;
+      msg += `\n💬 *Message:*\n${f.get('message')}`;
+      window.open(`https://wa.me/221777934229?text=${encodeURIComponent(msg)}`, '_blank');
+      this.reset();
+      alert('Redirection vers WhatsApp… Votre message a été pré-rempli !');
+    });
+
+    // Carte Leaflet
     document.addEventListener('DOMContentLoaded', function() {
-      // Charger Leaflet CSS et JS
-      const leafletCSS = document.createElement('link');
-      leafletCSS.rel = 'stylesheet';
-      leafletCSS.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-      document.head.appendChild(leafletCSS);
-      
-      const leafletJS = document.createElement('script');
-      leafletJS.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-      leafletJS.onload = initMap;
-      document.head.appendChild(leafletJS);
+      const css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+      document.head.appendChild(css);
+
+      const js = document.createElement('script');
+      js.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      js.onload = function() {
+        const coords = [14.2243298, -16.0587850];
+        const map = L.map('map').setView(coords, 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        const icon = L.divIcon({
+          html: '<div style="background:#14b8a6;width:16px;height:16px;border-radius:50%;border:3px solid white;box-shadow:0 0 10px rgba(20,184,166,0.8);"></div>',
+          iconSize: [16, 16], iconAnchor: [8, 8], className: ''
+        });
+        L.marker(coords, { icon })
+          .addTo(map)
+          .bindPopup(`<div style="text-align:center;padding:8px;"><strong>🌿 Green Campus 221</strong><br><small>Campus EBDD Khelcom</small><br><a href="https://www.google.com/maps?q=${coords[0]},${coords[1]}" target="_blank" style="color:#38bdf8;">Voir sur Google Maps</a></div>`)
+          .openPopup();
+      };
+      document.head.appendChild(js);
     });
 
-    // Effet fade-in au scroll
-    const faders = document.querySelectorAll('.fade-in');
+    // Fade-in
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
     }, { threshold: 0.1 });
-
-    faders.forEach(f => observer.observe(f));
-
-    // Animation des éléments de contact au hover
-    const contactItems = document.querySelectorAll('.contact-item');
-    contactItems.forEach(item => {
-      item.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateX(10px) scale(1.02)';
-      });
-      
-      item.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateX(0) scale(1)';
-      });
-    });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
+
 </body>
 </html>
