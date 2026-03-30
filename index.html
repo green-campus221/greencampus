@@ -7,8 +7,15 @@
 
   <script src="https://kit.fontawesome.com/a2d9d6b3f1.js" crossorigin="anonymous"></script>
 
+  <!-- Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=desktop_cloud_stack,wifi_tethering,sprinkler" />
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
 
     body.dark {
       background: #0f172a;
@@ -19,8 +26,7 @@
 
     /* ── HEADER ── */
     header {
-      position: sticky;
-      top: 0;
+      position: sticky; top: 0;
       background: rgba(15, 23, 42, 0.95);
       backdrop-filter: blur(15px);
       display: flex;
@@ -32,89 +38,54 @@
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-      font-weight: bold;
-      font-size: 1.2rem;
-      color: #f1f5f9;
+      display: flex; align-items: center;
+      font-weight: bold; font-size: 1.2rem; color: #f1f5f9;
     }
 
-    .logo img {
-      height: 40px;
-      margin-right: 10px;
-      border-radius: 8px;
-    }
+    .logo img { height: 40px; margin-right: 10px; border-radius: 8px; }
 
     nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
+      list-style: none; display: flex;
+      gap: 1.5rem; margin: 0; padding: 0;
     }
 
     nav a {
-      color: #f1f5f9;
-      text-decoration: none;
-      transition: all 0.3s;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      position: relative;
+      color: #f1f5f9; text-decoration: none;
+      transition: all 0.3s; padding: 0.5rem 1rem;
+      border-radius: 0.5rem; position: relative;
     }
 
     nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      width: 0;
-      height: 2px;
-      background: #38bdf8;
-      transition: all 0.3s;
+      content: ''; position: absolute;
+      bottom: -5px; left: 50%; width: 0; height: 2px;
+      background: #38bdf8; transition: all 0.3s;
       transform: translateX(-50%);
     }
 
-    nav a:hover {
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.1);
-    }
-
+    nav a:hover { color: #38bdf8; background: rgba(56, 189, 248, 0.1); }
     nav a:hover::after { width: 80%; }
 
-    #burger {
-      display: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: white;
-    }
+    #burger { display: none; font-size: 1.5rem; cursor: pointer; color: white; }
 
     /* ── HERO ── */
     .hero {
       text-align: center;
       padding: 5rem 1rem 4rem;
       background: linear-gradient(135deg, #0d2137, #0f172a, #0d2e1f);
-      border-radius: 2rem;
-      margin: 2rem;
-      position: relative;
-      overflow: hidden;
+      border-radius: 2rem; margin: 2rem;
+      position: relative; overflow: hidden;
     }
 
     .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      content: ''; position: absolute;
+      top: -50%; left: -50%; width: 200%; height: 200%;
       background: radial-gradient(circle, rgba(20, 184, 166, 0.08) 1px, transparent 1px);
       background-size: 30px 30px;
       animation: float 20s ease-in-out infinite;
     }
 
     .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background:
         radial-gradient(circle at 20% 50%, rgba(20, 184, 166, 0.12) 0%, transparent 50%),
         radial-gradient(circle at 80% 50%, rgba(56, 189, 248, 0.12) 0%, transparent 50%);
@@ -122,30 +93,23 @@
 
     @keyframes float {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(180deg); }
+      50%       { transform: translateY(-20px) rotate(180deg); }
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
+    .hero-content { position: relative; z-index: 2; }
 
     .hero-badge {
       display: inline-block;
       background: rgba(20, 184, 166, 0.15);
       border: 1px solid rgba(20, 184, 166, 0.4);
-      color: #14b8a6;
-      padding: 0.4rem 1.2rem;
-      border-radius: 2rem;
-      font-size: 0.85rem;
-      margin-bottom: 1.5rem;
-      letter-spacing: 1px;
+      color: #14b8a6; padding: 0.4rem 1.2rem;
+      border-radius: 2rem; font-size: 0.85rem;
+      margin-bottom: 1.5rem; letter-spacing: 1px;
       text-transform: uppercase;
     }
 
     .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
+      font-size: 3.5rem; margin-bottom: 1rem;
       background: linear-gradient(135deg, #38bdf8, #14b8a6, #4ade80);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -160,67 +124,51 @@
     }
 
     .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      color: #94a3b8;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.7;
+      font-size: 1.2rem; margin-bottom: 2rem; color: #94a3b8;
+      max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.7;
     }
 
-    /* Stats */
+    /* ── STATS ── */
     .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin: 2.5rem 0;
-      flex-wrap: wrap;
+      display: flex; justify-content: center;
+      gap: 2rem; margin: 2.5rem 0; flex-wrap: wrap;
     }
 
     .stat-item {
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(20, 184, 166, 0.2);
-      border-radius: 1rem;
-      padding: 1.2rem 1.8rem;
-      text-align: center;
-      min-width: 120px;
+      border-radius: 1rem; padding: 1.2rem 1.8rem;
+      text-align: center; min-width: 130px;
     }
 
     .stat-number {
-      display: block;
-      font-size: 2rem;
-      font-weight: bold;
-      color: #14b8a6;
-      margin-bottom: 0.3rem;
+      display: block; font-size: 2rem; font-weight: bold;
+      color: #14b8a6; margin-bottom: 0.3rem;
     }
 
-    .stat-label {
-      color: #64748b;
-      font-size: 0.85rem;
+    /* Icône Simple Icons dans stat */
+    .stat-icon-img {
+      width: 32px; height: 32px;
+      object-fit: contain; margin-bottom: 0.4rem;
+      display: block; margin-left: auto; margin-right: auto;
     }
 
-    /* Boutons */
+    .stat-label { color: #64748b; font-size: 0.85rem; }
+
+    /* ── BOUTONS ── */
     .btn {
-      display: inline-block;
-      margin: 0.5rem;
+      display: inline-block; margin: 0.5rem;
       background: linear-gradient(135deg, #14b8a6, #38bdf8);
-      padding: 1rem 2rem;
-      border-radius: 2rem;
-      color: #0f172a;
-      font-weight: bold;
-      text-decoration: none;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
+      padding: 1rem 2rem; border-radius: 2rem;
+      color: #0f172a; font-weight: bold;
+      text-decoration: none; transition: all 0.3s;
+      position: relative; overflow: hidden;
       box-shadow: 0 10px 30px rgba(20, 184, 166, 0.3);
     }
 
     .btn::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
+      content: ''; position: absolute;
+      top: 0; left: -100%; width: 100%; height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
       transition: left 0.6s;
     }
@@ -235,46 +183,30 @@
     .btn-secondary {
       background: transparent;
       border: 2px solid #38bdf8;
-      color: #38bdf8;
-      box-shadow: none;
+      color: #38bdf8; box-shadow: none;
     }
 
-    .btn-secondary:hover {
-      background: #38bdf8;
-      color: #0f172a;
-    }
+    .btn-secondary:hover { background: #38bdf8; color: #0f172a; }
 
-    /* ── APERÇU SERRE PILOTE ── */
-    .apercu {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    /* ── APERÇU CARDS ── */
+    .apercu { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
 
     .section-label {
-      text-align: center;
-      color: #14b8a6;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.85rem;
-      margin-bottom: 0.75rem;
+      text-align: center; color: #14b8a6;
+      text-transform: uppercase; letter-spacing: 2px;
+      font-size: 0.85rem; margin-bottom: 0.75rem;
     }
 
     .section-title {
-      text-align: center;
-      font-size: 2.2rem;
-      color: #f1f5f9;
-      margin-bottom: 1rem;
+      text-align: center; font-size: 2.2rem;
+      color: #f1f5f9; margin-bottom: 1rem;
     }
 
     .section-title span { color: #38bdf8; }
 
     .section-sub {
-      text-align: center;
-      color: #64748b;
-      max-width: 600px;
-      margin: 0 auto 3.5rem;
-      line-height: 1.6;
+      text-align: center; color: #64748b;
+      max-width: 600px; margin: 0 auto 3.5rem; line-height: 1.6;
     }
 
     .apercu-grid {
@@ -286,21 +218,16 @@
     .apercu-card {
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(56, 189, 248, 0.15);
-      border-radius: 1.2rem;
-      padding: 2rem;
+      border-radius: 1.2rem; padding: 2rem;
       transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
 
     .apercu-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, #38bdf8, #14b8a6);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
+      transform: scaleX(0); transition: transform 0.3s ease;
     }
 
     .apercu-card:hover {
@@ -311,122 +238,91 @@
 
     .apercu-card:hover::after { transform: scaleX(1); }
 
-    .apercu-card .icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      display: block;
+    /* Wrapper icône dans les aperçu cards */
+    .card-icon-wrap {
+      width: 54px; height: 54px;
+      border-radius: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.1rem;
     }
 
-    .apercu-card h3 {
-      color: #38bdf8;
-      font-size: 1.05rem;
-      margin-bottom: 0.75rem;
+    .card-icon-wrap img {
+      width: 28px; height: 28px; object-fit: contain;
     }
 
-    .apercu-card p {
-      color: #64748b;
-      font-size: 0.9rem;
-      line-height: 1.6;
+    /* Material Symbol dans card */
+    .card-icon-wrap .material-symbols-outlined {
+      font-size: 28px;
     }
 
-    /* ── BANNIÈRE CTA ── */
+    .apercu-card h3 { color: #38bdf8; font-size: 1.05rem; margin-bottom: 0.75rem; }
+    .apercu-card p  { color: #64748b; font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── CTA BANNIÈRE ── */
     .cta-banner {
       margin: 0 2rem 2rem;
       padding: 3.5rem 2rem;
       background: linear-gradient(135deg, #0d2e1f, #0f172a, #0d2137);
-      border-radius: 2rem;
-      text-align: center;
+      border-radius: 2rem; text-align: center;
       border: 1px solid rgba(20, 184, 166, 0.2);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
 
     .cta-banner::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: radial-gradient(circle at center, rgba(20, 184, 166, 0.08) 0%, transparent 70%);
     }
 
     .cta-banner-content { position: relative; z-index: 1; }
 
-    .cta-banner h2 {
-      font-size: 2rem;
-      color: #f1f5f9;
-      margin-bottom: 1rem;
-    }
-
+    .cta-banner h2 { font-size: 2rem; color: #f1f5f9; margin-bottom: 1rem; }
     .cta-banner h2 span { color: #4ade80; }
 
     .cta-banner p {
-      color: #94a3b8;
-      margin-bottom: 2rem;
-      max-width: 550px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
+      color: #94a3b8; margin-bottom: 2rem;
+      max-width: 550px; margin-left: auto; margin-right: auto; line-height: 1.6;
     }
 
     /* ── FOOTER ── */
     footer {
       background: rgba(15, 23, 42, 0.8);
-      text-align: center;
-      padding: 3rem 2rem;
+      text-align: center; padding: 3rem 2rem;
       border-top: 1px solid rgba(56, 189, 248, 0.1);
     }
 
     .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
+      display: flex; justify-content: center;
+      gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap;
     }
 
-    .footer-links a {
-      color: #94a3b8;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
+    .footer-links a { color: #94a3b8; text-decoration: none; transition: color 0.3s; }
     .footer-links a:hover { color: #38bdf8; }
 
     .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1.5rem 0;
+      display: flex; justify-content: center;
+      gap: 1rem; margin: 1.5rem 0;
     }
 
     .social-links a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       width: 40px; height: 40px;
       background: rgba(56, 189, 248, 0.1);
-      border-radius: 50%;
-      color: #38bdf8;
-      text-decoration: none;
-      transition: all 0.3s;
+      border-radius: 50%; color: #38bdf8;
+      text-decoration: none; transition: all 0.3s;
     }
 
     .social-links a:hover {
-      background: #38bdf8;
-      color: #0f172a;
+      background: #38bdf8; color: #0f172a;
       transform: translateY(-3px);
     }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav ul {
-        flex-direction: column;
-        display: none;
-        background: #1e293b;
-        padding: 1rem;
-        border-radius: 1rem;
-        position: absolute;
-        top: 60px; right: 10px;
-        min-width: 200px;
+        flex-direction: column; display: none;
+        background: #1e293b; padding: 1rem;
+        border-radius: 1rem; position: absolute;
+        top: 60px; right: 10px; min-width: 200px;
       }
       nav ul.active { display: flex; }
       #burger { display: block; }
@@ -438,8 +334,7 @@
 
     /* ── ANIMATIONS ── */
     .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
+      opacity: 0; transform: translateY(30px);
       transition: opacity 0.9s ease-out, transform 0.9s ease-out;
     }
     .fade-in.show { opacity: 1; transform: translateY(0); }
@@ -473,29 +368,35 @@
     <div class="hero-content">
       <div class="hero-badge">🌿 Groupe SunuMbey — Campus EBDD Khelcom</div>
       <h1>Bienvenue dans le site<br>du groupe SunuMbey</h1>
-      <p>Découvrez notre prototype phare : la <strong style="color:#4ade80">Serre Pilote Box</strong> une solution innovante pour rendre l'agriculture intelligente, autonome et accessible à tous.</p>
+      <p>Découvrez notre prototype phare : la <strong style="color:#4ade80">Serre Pilote Box</strong> — une solution innovante pour rendre l'agriculture intelligente, autonome et accessible à tous.</p>
 
       <div class="hero-stats">
+
+        <!-- +10 Étudiants -->
         <div class="stat-item">
-          <span class="stat-number" data-target="500">0</span>
+          <span class="stat-number" data-target="10" data-prefix="+">0</span>
           <div class="stat-label">Étudiants</div>
         </div>
+
+        <!-- 2 Projets en cours -->
         <div class="stat-item">
-          <span class="stat-number" data-target="45">0</span>
-          <div class="stat-label">Professeurs</div>
+          <span class="stat-number" data-target="2">0</span>
+          <div class="stat-label">Projets en cours</div>
         </div>
+
+        <!-- Prototype → icône Jira #00103C -->
         <div class="stat-item">
-          <span class="stat-number" data-target="4">0</span>
-          <div class="stat-label">Filières</div>
+          <img
+            src="https://cdn.simpleicons.org/jira/00103C"
+            alt="Prototype"
+            class="stat-icon-img"
+          />
+          <div class="stat-label">Prototype</div>
         </div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="1">0</span>
-          <div class="stat-label">Prototype 🚀</div>
-        </div>
+
       </div>
 
       <div>
-        <!-- ✅ CORRIGÉ : pointe vers filieres.html -->
         <a href="filieres.html" class="btn">
           <i class="fas fa-seedling"></i> Découvrir c'est quoi Serre Pilote Box
         </a>
@@ -513,41 +414,61 @@
     <p class="section-sub">Une box tout-en-un pour piloter votre serre ou champ depuis votre téléphone, automatiser vos cultures et rendre l'agriculture durable.</p>
 
     <div class="apercu-grid">
+
+      <!-- Mini PC Serveur → Material Symbol desktop_cloud_stack -->
       <div class="apercu-card">
-        <span class="icon">🖥️</span>
+        <div class="card-icon-wrap" style="background:rgba(0,125,184,0.12);border:1px solid rgba(0,125,184,0.3);">
+          <span class="material-symbols-outlined" style="color:#007DB8;">desktop_cloud_stack</span>
+        </div>
         <h3>Mini PC Serveur</h3>
         <p>Un mini PC héberge tous les logiciels localement. Vos données restent chez vous, sans abonnement cloud, fonctionnel même sans connexion internet.</p>
       </div>
 
+      <!-- Home Assistant → Simple Icons #18BCF2 -->
       <div class="apercu-card">
-        <span class="icon">🏡</span>
+        <div class="card-icon-wrap" style="background:rgba(24,188,242,0.12);border:1px solid rgba(24,188,242,0.3);">
+          <img src="https://cdn.simpleicons.org/homeassistant/18BCF2" alt="Home Assistant" />
+        </div>
         <h3>Home Assistant</h3>
         <p>Le logiciel Home Assistant permet de créer des automatisations puissantes : arrosage automatique, ventilation, alertes… tout se configure visuellement.</p>
       </div>
 
+      <!-- Protocole Zigbee → Simple Icons #EB0443 -->
       <div class="apercu-card">
-        <span class="icon">📡</span>
+        <div class="card-icon-wrap" style="background:rgba(235,4,67,0.1);border:1px solid rgba(235,4,67,0.3);">
+          <img src="https://cdn.simpleicons.org/zigbee/EB0443" alt="Zigbee" />
+        </div>
         <h3>Protocole Zigbee</h3>
         <p>Les capteurs et actionneurs (température, humidité, vannes…) se connectent sans fil à la box via Zigbee, une technologie fiable et économe en énergie.</p>
       </div>
 
+      <!-- Pilotage à distance → Material Symbol wifi_tethering -->
       <div class="apercu-card">
-        <span class="icon">📱</span>
+        <div class="card-icon-wrap" style="background:rgba(243,128,32,0.12);border:1px solid rgba(243,128,32,0.3);">
+          <span class="material-symbols-outlined" style="color:#F38020;">wifi_tethering</span>
+        </div>
         <h3>Pilotage à distance</h3>
         <p>Surveillez et contrôlez votre serre ou champ depuis votre smartphone, où que vous soyez, en temps réel avec des tableaux de bord intuitifs.</p>
       </div>
 
+      <!-- Agriculture autonome → Material Symbol sprinkler -->
       <div class="apercu-card">
-        <span class="icon">🌾</span>
+        <div class="card-icon-wrap" style="background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);">
+          <span class="material-symbols-outlined" style="color:#4ade80;">sprinkler</span>
+        </div>
         <h3>Agriculture autonome</h3>
         <p>Votre exploitation fonctionne 24h/24 de façon optimale, en consommant moins d'eau et moins d'énergie, pour de meilleurs rendements agricoles.</p>
       </div>
 
+      <!-- Logiciels tout-en-un → Simple Icons Jira #0052CC -->
       <div class="apercu-card">
-        <span class="icon">🧩</span>
+        <div class="card-icon-wrap" style="background:rgba(0,82,204,0.12);border:1px solid rgba(0,82,204,0.3);">
+          <img src="https://cdn.simpleicons.org/jira/0052CC" alt="Logiciels intégrés" />
+        </div>
         <h3>Logiciels tout-en-un</h3>
         <p>La vision : héberger plusieurs logiciels agricoles spécialisés dans une seule interface pour que l'agriculteur ait tout au même endroit.</p>
       </div>
+
     </div>
   </section>
 
@@ -588,19 +509,20 @@
     const navList = document.querySelector('nav ul');
     burger.addEventListener('click', () => navList.classList.toggle('active'));
 
-    // Compteurs animés
+    // Compteurs animés avec préfixe optionnel
     function animateCounters() {
       document.querySelectorAll('.stat-number').forEach(counter => {
         const target = parseInt(counter.getAttribute('data-target'));
+        const prefix = counter.getAttribute('data-prefix') || '';
         const increment = target / (2000 / 16);
         let current = 0;
         const update = () => {
           if (current < target) {
             current += increment;
-            counter.textContent = Math.floor(current);
+            counter.textContent = prefix + Math.floor(current);
             requestAnimationFrame(update);
           } else {
-            counter.textContent = target;
+            counter.textContent = prefix + target;
           }
         };
         update();
